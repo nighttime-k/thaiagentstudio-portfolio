@@ -3,66 +3,561 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Portfolio ของ ThaiAgent Studio — AI systems, automation, websites และเครื่องมือดิจิทัลสำหรับธุรกิจ">
+  <meta name="description" content="Portfolio ของ ThaiAgent Studio — AI solutions, web applications, business systems และ automation">
   <title>ThaiAgent Studio — Portfolio</title>
+
   <script src="https://cdn.tailwindcss.com/3.4.17"></script>
   <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+
   <style>
-    :root { --navy:#06101f; --navy-deep:#020712; --ink:#f4f8ff; --muted:#a9b9d2; --cyan:#42d9ff; --violet:#9567ff; --border:rgba(174,213,255,.17); }
-    *{box-sizing:border-box} body{width:100%;min-height:100%;margin:0;color:var(--ink);background:var(--navy-deep);font-family:"DM Sans",sans-serif}
-    .portfolio-shell{width:100%;min-height:100%;overflow:hidden;position:relative;isolation:isolate}
-    .portfolio-shell::before,.portfolio-shell::after{content:"";position:absolute;pointer-events:none;z-index:-1;border-radius:999px;filter:blur(12px)}
-    .portfolio-shell::before{width:600px;height:600px;top:-250px;left:-180px;background:radial-gradient(circle,rgba(66,217,255,.21) 0%,rgba(66,217,255,0) 68%)}
-    .portfolio-shell::after{width:650px;height:650px;top:300px;right:-300px;background:radial-gradient(circle,rgba(149,103,255,.19) 0%,rgba(149,103,255,0) 70%)}
-    .network-field{position:absolute;inset:0;z-index:-1;overflow:hidden;pointer-events:none;opacity:.58;background-image:linear-gradient(120deg,transparent 0 47%,rgba(82,210,255,.10) 47.1% 47.35%,transparent 47.45% 100%),linear-gradient(53deg,transparent 0 59%,rgba(161,116,255,.10) 59.1% 59.35%,transparent 59.45% 100%);background-size:220px 220px,290px 290px;mask-image:linear-gradient(to bottom,black,transparent 84%)}
-    .network-field::before,.network-field::after{content:"";position:absolute;border-radius:50%;width:7px;height:7px;background:var(--cyan);box-shadow:92px 56px 0 rgba(149,103,255,.85),240px 142px 0 rgba(66,217,255,.65),415px 54px 0 rgba(149,103,255,.62),628px 206px 0 rgba(66,217,255,.62),820px 88px 0 rgba(149,103,255,.72)}
-    .network-field::before{top:82px;left:6%}.network-field::after{right:8%;top:560px;opacity:.54;transform:scale(.7)}
-    .brand-mark{width:39px;height:39px;display:grid;place-items:center;border-radius:12px;color:#04111d;background:linear-gradient(135deg,var(--cyan),#8ee6ff 47%,var(--violet));box-shadow:0 0 22px rgba(66,217,255,.26);transform:rotate(-7deg)}
-    .hero-copy{font-family:"Outfit",sans-serif;letter-spacing:-.055em;text-wrap:balance}
-    .hero-image-frame{min-height:350px;position:relative;overflow:hidden;border:1px solid rgba(137,223,255,.26);border-radius:24px;background:#07182e;box-shadow:0 24px 70px rgba(0,0,0,.38),0 0 44px rgba(66,217,255,.11)}
-    .hero-image-frame::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(135deg,rgba(66,217,255,.18),transparent 37%,rgba(149,103,255,.24));mix-blend-mode:screen}
-    .hero-image-frame img{filter:saturate(1.08) contrast(1.08) brightness(.82);transition:transform 500ms ease}.hero-image-frame:hover img{transform:scale(1.035)}
-    .work-card{min-height:292px;position:relative;overflow:hidden;border:1px solid rgba(173,215,255,.17);box-shadow:0 14px 38px rgba(0,0,0,.20);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);transition:transform 240ms ease,box-shadow 240ms ease,border-color 240ms ease}
-    .work-card::before{content:"";position:absolute;width:170px;height:170px;right:-82px;top:-82px;border-radius:999px;background:radial-gradient(circle,rgba(66,217,255,.17),transparent 68%);pointer-events:none}
-    .work-card:hover{transform:translateY(-7px);border-color:rgba(86,220,255,.54);box-shadow:0 24px 50px rgba(0,0,0,.36),0 0 30px rgba(66,217,255,.11)}
-    .card-number{font-family:"Outfit",sans-serif;font-size:3.1rem;font-weight:700;line-height:1;color:rgba(172,213,255,.15);letter-spacing:-.08em}
-    .project-link{display:inline-flex;align-items:center;gap:.5rem;width:fit-content;text-decoration:none;transition:gap 180ms ease,opacity 180ms ease,transform 180ms ease}.project-link:hover{gap:.8rem;opacity:.9;transform:translateX(2px)}
-    .project-link:focus-visible,a:focus-visible,button:focus-visible{outline:3px solid var(--cyan);outline-offset:4px;border-radius:8px}
-    .reveal{animation:rise-in 700ms cubic-bezier(.22,.8,.25,1) both}.delay-1{animation-delay:100ms}.delay-2{animation-delay:180ms}.delay-3{animation-delay:260ms}
-    @keyframes rise-in{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
-    .lang-switcher{border:1px solid rgba(173,215,255,.19);background:rgba(5,16,31,.56);box-shadow:inset 0 1px 0 rgba(255,255,255,.05);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
-    .lang-btn{border:none;color:var(--muted);background:transparent;cursor:pointer}.lang-btn.active{color:#06101f;background:linear-gradient(135deg,var(--cyan),#b4efff);box-shadow:0 2px 12px rgba(66,217,255,.25);font-weight:700}.lang-btn:hover:not(.active){color:#fff;background:rgba(148,198,255,.10)}
-    .footer-line{border-color:rgba(173,215,255,.17)}
-    @media(prefers-reduced-motion:reduce){.reveal{animation:none}.work-card,.project-link,.hero-image-frame img{transition:none}}
+    :root {
+      --navy-deep: #020712;
+      --ink: #f4f8ff;
+      --muted: #a9b9d2;
+      --cyan: #42d9ff;
+      --violet: #9567ff;
+      --border: rgba(174, 213, 255, 0.17);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      width: 100%;
+      min-height: 100%;
+      margin: 0;
+      color: var(--ink);
+      background: var(--navy-deep);
+      font-family: "DM Sans", sans-serif;
+    }
+
+    .portfolio-shell {
+      width: 100%;
+      min-height: 100%;
+      overflow: hidden;
+      position: relative;
+      isolation: isolate;
+    }
+
+    .portfolio-shell::before,
+    .portfolio-shell::after {
+      content: "";
+      position: absolute;
+      pointer-events: none;
+      z-index: -1;
+      border-radius: 999px;
+      filter: blur(12px);
+    }
+
+    .portfolio-shell::before {
+      width: 600px;
+      height: 600px;
+      top: -250px;
+      left: -180px;
+      background: radial-gradient(circle, rgba(66, 217, 255, 0.21) 0%, rgba(66, 217, 255, 0) 68%);
+    }
+
+    .portfolio-shell::after {
+      width: 650px;
+      height: 650px;
+      top: 300px;
+      right: -300px;
+      background: radial-gradient(circle, rgba(149, 103, 255, 0.19) 0%, rgba(149, 103, 255, 0) 70%);
+    }
+
+    .network-field {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      overflow: hidden;
+      pointer-events: none;
+      opacity: 0.58;
+      background-image:
+        linear-gradient(120deg, transparent 0 47%, rgba(82, 210, 255, 0.10) 47.1% 47.35%, transparent 47.45% 100%),
+        linear-gradient(53deg, transparent 0 59%, rgba(161, 116, 255, 0.10) 59.1% 59.35%, transparent 59.45% 100%);
+      background-size: 220px 220px, 290px 290px;
+      mask-image: linear-gradient(to bottom, black, transparent 88%);
+    }
+
+    .brand-mark {
+      width: 39px;
+      height: 39px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      color: #04111d;
+      background: linear-gradient(135deg, var(--cyan), #8ee6ff 47%, var(--violet));
+      box-shadow: 0 0 22px rgba(66, 217, 255, 0.26);
+      transform: rotate(-7deg);
+    }
+
+    .hero-copy {
+      font-family: "Outfit", sans-serif;
+      letter-spacing: -0.055em;
+      text-wrap: balance;
+    }
+
+    .hero-image-frame {
+      min-height: 350px;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(137, 223, 255, 0.26);
+      border-radius: 24px;
+      background: #07182e;
+      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.38), 0 0 44px rgba(66, 217, 255, 0.11);
+    }
+
+    .hero-image-frame::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: linear-gradient(135deg, rgba(66, 217, 255, 0.18), transparent 37%, rgba(149, 103, 255, 0.24));
+      mix-blend-mode: screen;
+    }
+
+    .hero-image-frame img {
+      filter: saturate(1.08) contrast(1.08) brightness(0.82);
+      transition: transform 500ms ease;
+    }
+
+    .hero-image-frame:hover img { transform: scale(1.035); }
+
+    .solution-section {
+      padding-top: 2rem;
+      margin-top: 2rem;
+      border-top: 1px solid rgba(173, 215, 255, 0.12);
+    }
+
+    .solution-section:first-of-type {
+      padding-top: 0;
+      margin-top: 0;
+      border-top: 0;
+    }
+
+    .section-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      color: #75e5ff;
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    .section-kicker::before {
+      content: "";
+      width: 22px;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--cyan), var(--violet));
+      box-shadow: 0 0 12px rgba(66,217,255,.55);
+    }
+
+    .work-card {
+      min-height: 300px;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(173, 215, 255, 0.17);
+      box-shadow: 0 14px 38px rgba(0, 0, 0, 0.20);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      transition: transform 240ms ease, box-shadow 240ms ease, border-color 240ms ease;
+    }
+
+    .work-card::before {
+      content: "";
+      position: absolute;
+      width: 170px;
+      height: 170px;
+      right: -82px;
+      top: -82px;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(66, 217, 255, 0.17), transparent 68%);
+      pointer-events: none;
+    }
+
+    .work-card:hover {
+      transform: translateY(-7px);
+      border-color: rgba(86, 220, 255, 0.54);
+      box-shadow: 0 24px 50px rgba(0, 0, 0, 0.36), 0 0 30px rgba(66, 217, 255, 0.11);
+    }
+
+    .card-number {
+      font-family: "Outfit", sans-serif;
+      font-size: 3rem;
+      font-weight: 700;
+      line-height: 1;
+      color: rgba(172, 213, 255, 0.15);
+      letter-spacing: -0.08em;
+    }
+
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      width: fit-content;
+      text-decoration: none;
+      transition: gap 180ms ease, opacity 180ms ease, transform 180ms ease;
+    }
+
+    .project-link:hover {
+      gap: 0.8rem;
+      opacity: 0.9;
+      transform: translateX(2px);
+    }
+
+    .brand-logo-box {
+      width: fit-content;
+      min-width: 128px;
+      height: 54px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 14px;
+      border-radius: 12px;
+      border: 1px solid rgba(173, 215, 255, 0.14);
+      margin-top: 1.1rem;
+    }
+
+    .brand-logo-box.light { background: rgba(255,255,255,.96); }
+    .brand-logo-box.dark { background: rgba(2,7,18,.68); }
+    .brand-logo-box img { display: block; max-width: 118px; max-height: 32px; object-fit: contain; }
+
+    .credential-box {
+      margin-top: 1rem;
+      padding: 0.85rem 1rem;
+      border-radius: 12px;
+      border: 1px solid rgba(149,103,255,.24);
+      background: rgba(149,103,255,.08);
+      color: #d8caee;
+      font-size: 0.83rem;
+      line-height: 1.55;
+    }
+
+    .credential-box code {
+      color: #ffffff;
+      font-family: "DM Sans", sans-serif;
+      font-weight: 700;
+      background: rgba(255,255,255,.07);
+      border-radius: 5px;
+      padding: 0.08rem 0.3rem;
+    }
+
+    .project-link:focus-visible,
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid var(--cyan);
+      outline-offset: 4px;
+      border-radius: 8px;
+    }
+
+    .reveal { animation: rise-in 700ms cubic-bezier(.22, .8, .25, 1) both; }
+    .delay-1 { animation-delay: 100ms; }
+    .delay-2 { animation-delay: 180ms; }
+    .delay-3 { animation-delay: 260ms; }
+
+    @keyframes rise-in {
+      from { opacity: 0; transform: translateY(18px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .lang-switcher {
+      border: 1px solid rgba(173, 215, 255, 0.19);
+      background: rgba(5, 16, 31, 0.56);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .lang-btn {
+      border: none;
+      color: var(--muted);
+      background: transparent;
+      cursor: pointer;
+    }
+
+    .lang-btn.active {
+      color: #06101f;
+      background: linear-gradient(135deg, var(--cyan), #b4efff);
+      box-shadow: 0 2px 12px rgba(66, 217, 255, 0.25);
+      font-weight: 700;
+    }
+
+    .lang-btn:hover:not(.active) {
+      color: #ffffff;
+      background: rgba(148, 198, 255, 0.10);
+    }
+
+    .footer-line { border-color: rgba(173, 215, 255, 0.17); }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { animation: none; }
+      .work-card, .project-link, .hero-image-frame img { transition: none; }
+    }
   </style>
 </head>
-<body style="background:radial-gradient(circle at 77% 18%,rgb(19,40,80) 0%,rgb(7,19,38) 40%,rgb(2,7,18) 100%);">
+
+<body style="background: radial-gradient(circle at 77% 18%, rgb(19, 40, 80) 0%, rgb(7, 19, 38) 40%, rgb(2, 7, 18) 100%);">
   <div class="portfolio-shell">
     <div class="network-field" aria-hidden="true"></div>
+
     <header class="w-full px-5 sm:px-8 lg:px-12 pt-6">
       <div class="mx-auto max-w-7xl flex items-center justify-between gap-5">
-        <div class="flex items-center gap-3"><div class="brand-mark" aria-hidden="true"><i data-lucide="sparkles" style="width:20px;height:20px"></i></div><p data-template-id="brand-name" class="font-semibold tracking-tight" style="color:#f4f8ff;font-weight:700;font-size:18px;">ThaiAgent Studio</p></div>
-        <div class="flex items-center gap-4"><div id="language-toggle" class="lang-switcher flex gap-1 rounded-full p-1"><button id="btn-th" class="lang-btn active px-3 py-1.5 rounded-full text-xs font-semibold transition-all" aria-pressed="true">TH</button><button id="btn-en" class="lang-btn px-3 py-1.5 rounded-full text-xs font-semibold transition-all" aria-pressed="false">EN</button></div><p data-template-id="header-note" class="hidden sm:block text-sm text-right" style="color:#a9b9d2;font-size:14px;">AI systems · automation · digital experiences</p></div>
+        <div class="flex items-center gap-3">
+          <div class="brand-mark" aria-hidden="true"><i data-lucide="sparkles" style="width:20px;height:20px"></i></div>
+          <p data-i18n="brand-name" class="font-semibold tracking-tight" style="color:#f4f8ff;font-weight:700;font-size:18px;">ThaiAgent Studio</p>
+        </div>
+        <div class="flex items-center gap-4">
+          <div class="lang-switcher flex gap-1 rounded-full p-1">
+            <button id="btn-th" class="lang-btn active px-3 py-1.5 rounded-full text-xs font-semibold transition-all" aria-pressed="true">TH</button>
+            <button id="btn-en" class="lang-btn px-3 py-1.5 rounded-full text-xs font-semibold transition-all" aria-pressed="false">EN</button>
+          </div>
+          <p data-i18n="header-note" class="hidden sm:block text-sm text-right" style="color:#a9b9d2;font-size:14px;">AI systems · automation · digital experiences</p>
+        </div>
       </div>
     </header>
+
     <main>
-      <section class="w-full px-5 sm:px-8 lg:px-12 pt-12 pb-16 sm:pt-16 lg:pt-20"><div class="mx-auto max-w-7xl grid lg:grid-cols-12 gap-10 lg:gap-14 items-center"><div class="lg:col-span-7"><p data-template-id="hero-eyebrow" class="reveal inline-flex items-center gap-2 font-semibold uppercase tracking-widest text-xs" style="color:#75e5ff;font-weight:700;font-size:16px;letter-spacing:.12rem;">SELECTED WORK / 2026</p><h1 data-template-id="hero-title" class="hero-copy reveal delay-1 mt-5 max-w-3xl font-bold" style="color:#f7fbff;font-weight:700;font-size:32px;line-height:1.12;">งานที่ทำให้ไอเดียธุรกิจเดินหน้าได้จริง</h1><p data-template-id="hero-description" class="reveal delay-2 mt-6 max-w-2xl text-lg leading-relaxed" style="color:#bfd0e7;font-size:18px;line-height:1.6;">รวมผลงานจาก ThaiAgent Studio ตั้งแต่สื่อข่าวที่ขับเคลื่อนด้วย AI ไปจนถึงระบบแชท เว็บไซต์ และเครื่องมือช่วยสร้างคอนเทนต์สำหรับธุรกิจ</p><div class="reveal delay-3 mt-8 flex items-center gap-3 text-sm font-medium"><span class="inline-block h-2.5 w-2.5 rounded-full bg-cyan-300 shadow-[0_0_14px_rgba(66,217,255,0.95)]" aria-hidden="true"></span><span data-template-id="hero-meta" style="color:#d9e8f8;font-weight:600;font-size:16px;">5 โปรเจกต์ พร้อมให้คุณกดเข้าไปสำรวจ</span></div></div><div class="lg:col-span-5 hero-image-frame reveal delay-2"><img class="w-full h-full object-cover" loading="lazy" src="https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=1280" alt="A robotic hand reaching into a digital network on a blue background, symbolizing AI technology."></div></div></section>
-      <section class="w-full px-5 sm:px-8 lg:px-12 pb-20 sm:pb-24"><div class="mx-auto max-w-7xl"><div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8 sm:mb-10"><div><p data-template-id="work-eyebrow" class="font-semibold uppercase tracking-widest text-xs" style="color:#75e5ff;font-weight:700;font-size:16px;letter-spacing:.12rem;">PORTFOLIO</p><h2 data-template-id="work-title" class="hero-copy mt-3 font-bold" style="color:#f7fbff;font-weight:700;font-size:24px;">เลือกดูผลงานที่อยากรู้จัก</h2></div><p data-template-id="work-note" class="max-w-sm text-sm leading-relaxed sm:text-right" style="color:#a9b9d2;font-size:14px;line-height:1.55;">ทุกลิงก์จะเปิดผลงานในแท็บใหม่ เพื่อให้คุณดูรายละเอียดต่อได้ทันที</p></div><div class="portfolio-grid grid md:grid-cols-2 xl:grid-cols-3 gap-5">
-        <article class="work-card rounded-2xl p-6 flex flex-col" style="background:linear-gradient(145deg,rgba(13,39,63,.96),rgba(7,21,40,.91));"><div class="flex justify-between items-start gap-4"><p data-template-id="project-tag-1" class="inline-flex rounded-full px-3 py-1 text-xs font-semibold" style="background:rgba(66,217,255,.14);color:#81eaff;font-weight:700;font-size:16px;letter-spacing:.05rem;">AI NEWSROOM</p><span class="card-number">01</span></div><h3 data-template-id="project-title-1" class="mt-5 font-semibold" style="font-size:22px;font-weight:700;">Agent2Day</h3><p data-template-id="project-description-1" class="mt-3 leading-relaxed" style="color:#b8c8df;font-size:15px;line-height:1.6;">เว็บไซต์ข่าว AI ที่ใช้ AI และ Automation ดูแลกระบวนการตั้งแต่การรวบรวมข้อมูลไปจนถึงการเผยแพร่</p><a data-template-id="project-link-1" class="project-link mt-auto pt-6 font-semibold" href="https://agent2day.thaiagentstudio.com" target="_blank" rel="noopener noreferrer" style="color:#69e3ff;font-weight:700;font-size:16px;">เข้าชมผลงาน</a></article>
-        <article class="work-card rounded-2xl p-6 flex flex-col" style="background:linear-gradient(145deg,rgba(29,25,63,.95),rgba(10,18,42,.92));"><div class="flex justify-between items-start gap-4"><p data-template-id="project-tag-2" class="inline-flex rounded-full px-3 py-1 text-xs font-semibold" style="background:rgba(149,103,255,.17);color:#c6afff;font-weight:700;font-size:16px;letter-spacing:.05rem;">VIDEO PROMPT TOOL</p><span class="card-number">02</span></div><h3 data-template-id="project-title-2" class="mt-5 font-semibold" style="font-size:22px;font-weight:700;">CartClip AI</h3><p data-template-id="project-description-2" class="mt-3 leading-relaxed" style="color:#b8c8df;font-size:15px;line-height:1.6;">เครื่องมือที่นำข้อมูลสินค้ามาแปลงเป็น Prompt สำหรับสร้างวิดีโอ ช่วยเริ่มต้นงานคอนเทนต์ได้เร็วขึ้น</p><a data-template-id="project-link-2" class="project-link mt-auto pt-6 font-semibold" href="https://cartclip-ai.thaiagentstudio.com" target="_blank" rel="noopener noreferrer" style="color:#c6afff;font-weight:700;font-size:16px;">เข้าชมผลงาน</a></article>
-        <article class="work-card rounded-2xl p-6 flex flex-col" style="background:linear-gradient(145deg,rgba(13,47,68,.95),rgba(12,23,52,.92));"><div class="flex justify-between items-start gap-4"><p data-template-id="project-tag-3" class="inline-flex rounded-full px-3 py-1 text-xs font-semibold" style="background:rgba(66,217,255,.15);color:#8deaff;font-weight:700;font-size:16px;letter-spacing:.05rem;">AI SOLUTIONS</p><span class="card-number">03</span></div><h3 data-template-id="project-title-3" class="mt-5 font-semibold" style="font-size:22px;font-weight:700;">ThaiAgent Studio</h3><p data-template-id="project-description-3" class="mt-3 leading-relaxed" style="color:#c8d8eb;font-size:15px;line-height:1.6;">ออกแบบและพัฒนา AI Chatbot กับ AI Agent ที่เชื่อมต่อฐานความรู้ ระบบ CRM, API และ Human Handoff</p><a data-template-id="project-link-3" class="project-link mt-auto pt-6 font-semibold" href="https://thaiagentstudio.com" target="_blank" rel="noopener noreferrer" style="color:#82ecff;font-weight:700;font-size:16px;">เข้าชมผลงาน</a></article>
-        <article class="work-card rounded-2xl p-6 flex flex-col" style="background:linear-gradient(145deg,rgba(23,37,64,.95),rgba(8,18,37,.92));"><div class="flex justify-between items-start gap-4"><p data-template-id="project-tag-4" class="inline-flex rounded-full px-3 py-1 text-xs font-semibold" style="background:rgba(126,161,255,.15);color:#b9ccff;font-weight:700;font-size:16px;letter-spacing:.05rem;">WEB DEVELOPMENT</p><span class="card-number">04</span></div><h3 data-template-id="project-title-4" class="mt-5 font-semibold" style="font-size:22px;font-weight:700;">FastWeb</h3><p data-template-id="project-description-4" class="mt-3 leading-relaxed" style="color:#b8c8df;font-size:15px;line-height:1.6;">บริการพัฒนาเว็บไซต์ประสิทธิภาพสูงสำหรับธุรกิจขนาดกลางและขนาดเล็ก ที่ต้องการเว็บไซต์พร้อมเติบโต</p><a data-template-id="project-link-4" class="project-link mt-auto pt-6 font-semibold" href="https://fastweb.thaiagentstudio.com" target="_blank" rel="noopener noreferrer" style="color:#aac5ff;font-weight:700;font-size:16px;">เข้าชมผลงาน</a></article>
-        <article class="work-card rounded-2xl p-6 flex flex-col md:col-span-2 xl:col-span-1" style="background:linear-gradient(145deg,rgba(45,28,70,.95),rgba(11,18,42,.92));"><div class="flex justify-between items-start gap-4"><p data-template-id="project-tag-5" class="inline-flex rounded-full px-3 py-1 text-xs font-semibold" style="background:rgba(191,118,255,.16);color:#e0baff;font-weight:700;font-size:16px;letter-spacing:.05rem;">OMNICHAT PLATFORM</p><span class="card-number">05</span></div><h3 data-template-id="project-title-5" class="mt-5 font-semibold" style="font-size:22px;font-weight:700;">ThaiAgent Desk</h3><p data-template-id="project-description-5" class="mt-3 leading-relaxed" style="color:#b8c8df;font-size:15px;line-height:1.6;">ระบบบริหารจัดการแชทแบบ Omnichat สำหรับทีมดูแลลูกค้า ครบทุกช่องทางของธุรกิจในที่เดียว</p><a data-template-id="project-link-5" class="project-link mt-auto pt-6 font-semibold" href="https://chat.thaiagentstudio.com" target="_blank" rel="noopener noreferrer" style="color:#e0baff;font-weight:700;font-size:16px;">เข้าชมผลงาน</a></article>
-      </div></div></section>
+      <section class="w-full px-5 sm:px-8 lg:px-12 pt-12 pb-16 sm:pt-16 lg:pt-20">
+        <div class="mx-auto max-w-7xl grid lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+          <div class="lg:col-span-7">
+            <p data-i18n="hero-eyebrow" class="reveal inline-flex items-center gap-2 font-semibold uppercase tracking-widest text-xs" style="color:#75e5ff;font-weight:700;font-size:16px;letter-spacing:.12rem;">SELECTED WORK / 2026</p>
+            <h1 data-i18n="hero-title" class="hero-copy reveal delay-1 mt-5 max-w-3xl font-bold" style="color:#f7fbff;font-weight:700;font-size:32px;line-height:1.12;">งานที่ทำให้ไอเดียธุรกิจเดินหน้าได้จริง</h1>
+            <p data-i18n="hero-description" class="reveal delay-2 mt-6 max-w-2xl text-lg leading-relaxed" style="color:#bfd0e7;font-size:18px;line-height:1.6;">รวมผลงานจาก ThaiAgent Studio ตั้งแต่ AI และเว็บไซต์ ไปจนถึงระบบธุรกิจ ERP และ Workflow Automation ที่นำไปใช้งานจริง</p>
+            <div class="reveal delay-3 mt-8 flex items-center gap-3 text-sm font-medium">
+              <span class="inline-block h-2.5 w-2.5 rounded-full bg-cyan-300 shadow-[0_0_14px_rgba(66,217,255,0.95)]" aria-hidden="true"></span>
+              <span data-i18n="hero-meta" style="color:#d9e8f8;font-weight:600;font-size:16px;">7 โปรเจกต์ พร้อมให้คุณกดเข้าไปสำรวจ</span>
+            </div>
+          </div>
+          <div class="lg:col-span-5 hero-image-frame reveal delay-2">
+            <img class="w-full h-full object-cover" loading="lazy" src="https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=1280" alt="AI technology and digital network">
+          </div>
+        </div>
+      </section>
+
+      <section class="w-full px-5 sm:px-8 lg:px-12 pb-20 sm:pb-24">
+        <div class="mx-auto max-w-7xl">
+          <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10">
+            <div>
+              <p data-i18n="work-eyebrow" class="font-semibold uppercase tracking-widest text-xs" style="color:#75e5ff;font-weight:700;font-size:16px;letter-spacing:.12rem;">PORTFOLIO</p>
+              <h2 data-i18n="work-title" class="hero-copy mt-3 font-bold" style="color:#f7fbff;font-weight:700;font-size:24px;">โซลูชันและระบบที่ผมพัฒนา</h2>
+            </div>
+            <p data-i18n="work-note" class="max-w-md text-sm leading-relaxed sm:text-right" style="color:#a9b9d2;font-size:14px;line-height:1.55;">แบ่งผลงานตามทักษะและประเภทของระบบ เพื่อให้เห็นภาพชัดขึ้นว่าผมทำอะไรได้บ้าง</p>
+          </div>
+
+          <div class="solution-section">
+            <div class="mb-6">
+              <p class="section-kicker" data-i18n="section-ai-kicker">01 / AI</p>
+              <h3 data-i18n="section-ai-title" class="hero-copy mt-3 text-2xl sm:text-3xl font-bold">AI Solutions</h3>
+              <p data-i18n="section-ai-desc" class="mt-2 max-w-2xl text-sm sm:text-base leading-relaxed" style="color:#a9b9d2;">AI, Agents และเครื่องมือที่ช่วยให้ธุรกิจทำงานได้ฉลาดและรวดเร็วขึ้น</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-5">
+              <article class="work-card rounded-2xl p-6 flex flex-col" style="background:linear-gradient(145deg,rgba(13,39,63,.96),rgba(7,21,40,.91));">
+                <div class="flex justify-between items-start gap-4"><p data-i18n="project-tag-1" class="inline-flex rounded-full px-3 py-1 text-xs font-semibold" style="background:rgba(66,217,255,.14);color:#81eaff;font-weight:700;font-size:14px;letter-spacing:.05rem;">AI NEWSROOM</p><span class="card-number">01</span></div>
+                <h4 data-i18n="project-title-1" class="mt-5 font-semibold" style="font-size:22px;font-weight:700;">Agent2Day</h4>
+                <p data-i18n="project-description-1" class="mt-3 leading-relaxed" style="color:#b8c8df;font-size:15px;line-height:1.6;">เว็บไซต์ข่าว AI ที่ใช้ AI และ Automation ดูแลกระบวนการตั้งแต่การรวบรวมข้อมูลไปจนถึงการเผยแพร่</p>
+                <a data-i18n="project-link" class="project-link mt-auto pt-6 font-semibold" href="https://agent2day.thaiagentstudio.com" target="_blank" rel="noopener noreferrer" style="color:#69e3ff;font-weight:700;font-size:16px;">เข้าชมผลงาน</a>
+              </article>
+
+              <article class="work-card rounded-2xl p-6 flex flex-col" style="background:linear-gradient(145deg,rgba(29,25,63,.95),rgba(10,18,42,.92));">
+                <div class="flex justify-between items-start gap-4"><p data-i18n="project-tag-2" class="inline-flex rounded-full px-3 py-1 text-xs font-semibold" style="background:rgba(149,103,255,.17);color:#c6afff;font-weight:700;font-size:14px;letter-spacing:.05rem;">VIDEO PROMPT TOOL</p><span class="card-number">02</span></div>
+                <h4 data-i18n="project-title-2" class="mt-5 font-semibold" style="font-size:22px;font-weight:700;">CartClip AI</h4>
+                <p data-i18n="project-description-2" class="mt-3 leading-relaxed" style="color:#b8c8df;font-size:15px;line-height:1.6;">เครื่องมือที่นำข้อมูลสินค้ามาแปลงเป็น Prompt สำหรับสร้างวิดีโอ ช่วยเริ่มต้นงานคอนเทนต์ได้เร็วขึ้น</p>
+                <a data-i18n="project-link" class="project-link mt-auto pt-6 font-semibold" href="https://cartclip-ai.thaiagentstudio.com" target="_blank" rel="noopener noreferrer" style="color:#c6afff;font-weight:700;font-size:16px;">เข้าชมผลงาน</a>
+              </article>
+
+              <article class="work-card rounded-2xl p-6 flex flex-col" style="background:linear-gradient(145deg,rgba(13,47,68,.95),rgba(12,23,52,.92));">
+                <div class="flex justify-between items-start gap-4"><p data-i18n="project-tag-3" class="inline-flex rounded-full px-3 py-1 text-xs font-semibold" style="background:rgba(66,217,255,.15);color:#8deaff;font-weight:700;font-size:14px;letter-spacing:.05rem;">AI SOLUTIONS</p><span class="card-number">03</span></div>
+                <h4 data-i18n="project-title-3" class="mt-5 font-semibold" style="font-size:22px;font-weight:700;">ThaiAgent Studio</h4>
+                <p data-i18n="project-description-3" class="mt-3 leading-relaxed" style="color:#c8d8eb;font-size:15px;line-height:1.6;">ออกแบบและพัฒนา AI Chatbot กับ AI Agent ที่เชื่อมต่อฐานความรู้ ระบบ CRM, API และ Human Handoff</p>
+                <a data-i18n="project-link" class="project-link mt-auto pt-6 font-semibold" href="https://thaiagentstudio.com" target="_blank" rel="noopener noreferrer" style="color:#82ecff;font-weight:700;font-size:16px;">เข้าชมผลงาน</a>
+              </article>
+            </div>
+          </div>
+
+          <div class="solution-section">
+            <div class="mb-6">
+              <p class="section-kicker" data-i18n="section-web-kicker">02 / WEB & APPS</p>
+              <h3 data-i18n="section-web-title" class="hero-copy mt-3 text-2xl sm:text-3xl font-bold">Web & Application Solutions</h3>
+              <p data-i18n="section-web-desc" class="mt-2 max-w-2xl text-sm sm:text-base leading-relaxed" style="color:#a9b9d2;">เว็บไซต์และเว็บแอปพลิเคชันที่เน้นความเร็ว การใช้งานจริง และประสบการณ์ที่เรียบง่าย</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-5">
+              <article class="work-card rounded-2xl p-6 flex flex-col" style="background:linear-gradient(145deg,rgba(23,37,64,.95),rgba(8,18,37,.92));">
+                <div class="flex justify-between items-start gap-4"><p data-i18n="project-tag-4" class="inline-flex rounded-full px-3 py-1 text-xs font-semibold" style="background:rgba(126,161,255,.15);color:#b9ccff;font-weight:700;font-size:14px;letter-spacing:.05rem;">WEB DEVELOPMENT</p><span class="card-number">04</span></div>
+                <h4 data-i18n="project-title-4" class="mt-5 font-semibold" style="font-size:22px;font-weight:700;">FastWeb</h4>
+                <p data-i18n="project-description-4" class="mt-3 leading-relaxed" style="color:#b8c8df;font-size:15px;line-height:1.6;">บริการพัฒนาเว็บไซต์ประสิทธิภาพสูงสำหรับธุรกิจขนาดกลางและขนาดเล็ก ที่ต้องการเว็บไซต์พร้อมเติบโต</p>
+                <a data-i18n="project-link" class="project-link mt-auto pt-6 font-semibold" href="https://fastweb.thaiagentstudio.com" target="_blank" rel="noopener noreferrer" style="color:#aac5ff;font-weight:700;font-size:16px;">เข้าชมผลงาน</a>
+              </article>
+
+              <article class="work-card rounded-2xl p-6 flex flex-col" style="background:linear-gradient(145deg,rgba(45,28,70,.95),rgba(11,18,42,.92));">
+                <div class="flex justify-between items-start gap-4"><p data-i18n="project-tag-5" class="inline-flex rounded-full px-3 py-1 text-xs font-semibold" style="background:rgba(191,118,255,.16);color:#e0baff;font-weight:700;font-size:14px;letter-spacing:.05rem;">OMNICHAT PLATFORM</p><span class="card-number">05</span></div>
+                <h4 data-i18n="project-title-5" class="mt-5 font-semibold" style="font-size:22px;font-weight:700;">ThaiAgent Desk</h4>
+                <p data-i18n="project-description-5" class="mt-3 leading-relaxed" style="color:#b8c8df;font-size:15px;line-height:1.6;">ระบบบริหารจัดการแชทแบบ Omnichat สำหรับทีมดูแลลูกค้า ครบทุกช่องทางของธุรกิจในที่เดียว</p>
+                <a data-i18n="project-link" class="project-link mt-auto pt-6 font-semibold" href="https://chat.thaiagentstudio.com" target="_blank" rel="noopener noreferrer" style="color:#e0baff;font-weight:700;font-size:16px;">เข้าชมผลงาน</a>
+              </article>
+            </div>
+          </div>
+
+          <div class="solution-section">
+            <div class="mb-6">
+              <p class="section-kicker" data-i18n="section-systems-kicker">03 / SYSTEMS & AUTOMATION</p>
+              <h3 data-i18n="section-systems-title" class="hero-copy mt-3 text-2xl sm:text-3xl font-bold">Business Systems & Automation</h3>
+              <p data-i18n="section-systems-desc" class="mt-2 max-w-2xl text-sm sm:text-base leading-relaxed" style="color:#a9b9d2;">ERP, Workflow Automation และระบบ Self-hosted ที่แสดงทักษะด้านการติดตั้ง เชื่อมต่อ และนำระบบธุรกิจมาใช้งานจริง</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-5">
+              <article class="work-card rounded-2xl p-6 flex flex-col" style="background:linear-gradient(145deg,rgba(67,44,64,.96),rgba(17,20,39,.94));">
+                <div class="flex justify-between items-start gap-4"><p data-i18n="project-tag-6" class="inline-flex rounded-full px-3 py-1 text-xs font-semibold" style="background:rgba(113,75,103,.32);color:#efcfe8;font-weight:700;font-size:14px;letter-spacing:.05rem;">ERP PLATFORM</p><span class="card-number">06</span></div>
+                <div class="brand-logo-box light"><img src="https://odoocdn.com/openerp_website/static/src/img/assets/svg/odoo_logo.svg" alt="Odoo logo" loading="lazy"></div>
+                <h4 data-i18n="project-title-6" class="mt-5 font-semibold" style="font-size:22px;font-weight:700;">Odoo ERP Demo</h4>
+                <p data-i18n="project-description-6" class="mt-3 leading-relaxed" style="color:#c8d4e7;font-size:15px;line-height:1.6;">ตัวอย่างระบบ Odoo ERP สำหรับทดลองใช้งานระบบธุรกิจและโมดูลต่าง ๆ บนเซิร์ฟเวอร์ที่จัดเตรียมไว้</p>
+                <div class="credential-box"><span data-i18n="demo-access">Demo access</span><br>User: <code>demo</code><br>Password: <code>tasodoo</code></div>
+                <a data-i18n="project-link" class="project-link mt-auto pt-6 font-semibold" href="https://odoo.thaiagentstudio.com" target="_blank" rel="noopener noreferrer" style="color:#e8c7df;font-weight:700;font-size:16px;">เข้าชมผลงาน</a>
+              </article>
+
+              <article class="work-card rounded-2xl p-6 flex flex-col" style="background:linear-gradient(145deg,rgba(57,30,46,.96),rgba(11,18,34,.94));">
+                <div class="flex justify-between items-start gap-4"><p data-i18n="project-tag-7" class="inline-flex rounded-full px-3 py-1 text-xs font-semibold" style="background:rgba(234,75,113,.16);color:#ffafc2;font-weight:700;font-size:14px;letter-spacing:.05rem;">WORKFLOW AUTOMATION</p><span class="card-number">07</span></div>
+                <div class="brand-logo-box dark"><img src="https://n8n.io/brandguidelines/logo-white.svg" alt="n8n logo" loading="lazy"></div>
+                <h4 data-i18n="project-title-7" class="mt-5 font-semibold" style="font-size:22px;font-weight:700;">n8n Self-hosted</h4>
+                <p data-i18n="project-description-7" class="mt-3 leading-relaxed" style="color:#c8d4e7;font-size:15px;line-height:1.6;">ระบบ Workflow Automation แบบ Self-hosted สำหรับเชื่อมต่อ API บริการต่าง ๆ และสร้างกระบวนการ Automation ที่ทำงานต่อเนื่อง</p>
+                <a data-i18n="project-link" class="project-link mt-auto pt-6 font-semibold" href="http://n8n.thaiagentstudio.com" target="_blank" rel="noopener noreferrer" style="color:#ff9eb5;font-weight:700;font-size:16px;">เข้าชมผลงาน</a>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
-    <footer class="w-full px-5 sm:px-8 lg:px-12 pb-8"><div class="footer-line mx-auto max-w-7xl border-t pt-6 flex flex-col sm:flex-row justify-between gap-3 text-sm"><p data-template-id="footer-copy" style="color:#dce9f8;font-weight:600;font-size:16px;">ThaiAgent Studio — Built for useful intelligence.</p><p data-template-id="footer-note" style="color:#9dadc5;font-size:16px;">คลิกการ์ดที่สนใจเพื่อเยี่ยมชมเว็บไซต์</p></div></footer>
+
+    <footer class="w-full px-5 sm:px-8 lg:px-12 pb-8">
+      <div class="footer-line mx-auto max-w-7xl border-t pt-6 flex flex-col sm:flex-row justify-between gap-3 text-sm">
+        <p data-i18n="footer-copy" style="color:#dce9f8;font-weight:600;font-size:16px;">ThaiAgent Studio — Built for useful intelligence.</p>
+        <p data-i18n="footer-note" style="color:#9dadc5;font-size:16px;">เลือกหมวดที่สนใจแล้วกดเข้าชมระบบจริงได้เลย</p>
+      </div>
+    </footer>
   </div>
+
   <script>
-    const translations={en:{"hero-eyebrow":"SELECTED WORK / 2026","hero-title":"Making business ideas move forward with action","hero-description":"A collection of projects from ThaiAgent Studio, from AI-powered news media to chat systems, websites, and content creation tools for businesses.","hero-meta":"5 projects ready to explore","work-eyebrow":"PORTFOLIO","work-title":"Explore our work","work-note":"Each link opens the live website in a new tab for you to explore in detail.","project-title-1":"Agent2Day","project-description-1":"An AI news website powered by AI and automation, managing the workflow from information gathering to publishing.","project-tag-1":"AI NEWSROOM","project-link-1":"Visit website","project-title-2":"CartClip AI","project-description-2":"A tool that transforms product information into prompts for video generation, helping you start content work faster.","project-tag-2":"VIDEO PROMPT TOOL","project-link-2":"Visit website","project-title-3":"ThaiAgent Studio","project-description-3":"Design and development of AI chatbots and AI agents connected to knowledge bases, CRM systems, APIs, and human handoff.","project-tag-3":"AI SOLUTIONS","project-link-3":"Visit website","project-title-4":"FastWeb","project-description-4":"High-performance website development services for small and medium-sized businesses that want to grow.","project-tag-4":"WEB DEVELOPMENT","project-link-4":"Visit website","project-title-5":"ThaiAgent Desk","project-description-5":"An omnichannel chat management platform for business customer support teams, covering every channel in one place.","project-tag-5":"OMNICHAT PLATFORM","project-link-5":"Visit website","header-note":"AI systems · automation · digital experiences","footer-copy":"ThaiAgent Studio — Built for useful intelligence.","footer-note":"Click a card to visit the website.","brand-name":"ThaiAgent Studio"},th:{"hero-eyebrow":"SELECTED WORK / 2026","hero-title":"งานที่ทำให้ไอเดียธุรกิจเดินหน้าได้จริง","hero-description":"รวมผลงานจาก ThaiAgent Studio ตั้งแต่สื่อข่าวที่ขับเคลื่อนด้วย AI ไปจนถึงระบบแชท เว็บไซต์ และเครื่องมือช่วยสร้างคอนเทนต์สำหรับธุรกิจ","hero-meta":"5 โปรเจกต์ พร้อมให้คุณกดเข้าไปสำรวจ","work-eyebrow":"PORTFOLIO","work-title":"เลือกดูผลงานที่อยากรู้จัก","work-note":"ทุกลิงก์จะเปิดผลงานในแท็บใหม่ เพื่อให้คุณดูรายละเอียดต่อได้ทันที","project-title-1":"Agent2Day","project-description-1":"เว็บไซต์ข่าว AI ที่ใช้ AI และ Automation ดูแลกระบวนการตั้งแต่การรวบรวมข้อมูลไปจนถึงการเผยแพร่","project-tag-1":"AI NEWSROOM","project-link-1":"เข้าชมผลงาน","project-title-2":"CartClip AI","project-description-2":"เครื่องมือที่นำข้อมูลสินค้ามาแปลงเป็น Prompt สำหรับสร้างวิดีโอ ช่วยเริ่มต้นงานคอนเทนต์ได้เร็วขึ้น","project-tag-2":"VIDEO PROMPT TOOL","project-link-2":"เข้าชมผลงาน","project-title-3":"ThaiAgent Studio","project-description-3":"ออกแบบและพัฒนา AI Chatbot กับ AI Agent ที่เชื่อมต่อฐานความรู้ ระบบ CRM, API และ Human Handoff","project-tag-3":"AI SOLUTIONS","project-link-3":"เข้าชมผลงาน","project-title-4":"FastWeb","project-description-4":"บริการพัฒนาเว็บไซต์ประสิทธิภาพสูงสำหรับธุรกิจขนาดกลางและขนาดเล็ก ที่ต้องการเว็บไซต์พร้อมเติบโต","project-tag-4":"WEB DEVELOPMENT","project-link-4":"เข้าชมผลงาน","project-title-5":"ThaiAgent Desk","project-description-5":"ระบบบริหารจัดการแชทแบบ Omnichat สำหรับทีมดูแลลูกค้า ครบทุกช่องทางของธุรกิจในที่เดียว","project-tag-5":"OMNICHAT PLATFORM","project-link-5":"เข้าชมผลงาน","header-note":"AI systems · automation · digital experiences","footer-copy":"ThaiAgent Studio — Built for useful intelligence.","footer-note":"คลิกการ์ดที่สนใจเพื่อเยี่ยมชมเว็บไซต์","brand-name":"ThaiAgent Studio"}};
-    let currentLanguage="th";
-    function switchLanguage(lang){if(currentLanguage===lang)return;currentLanguage=lang;const langData=translations[lang];Object.entries(langData).forEach(([id,value])=>{document.querySelectorAll(`[data-template-id="${id}"]`).forEach(el=>{el.textContent=value;});});document.documentElement.lang=lang;document.getElementById("btn-th").classList.toggle("active",lang==="th");document.getElementById("btn-en").classList.toggle("active",lang==="en");document.getElementById("btn-th").setAttribute("aria-pressed",String(lang==="th"));document.getElementById("btn-en").setAttribute("aria-pressed",String(lang==="en"));}
-    document.addEventListener("DOMContentLoaded",function(){if(window.lucide)lucide.createIcons();document.getElementById("btn-th").addEventListener("click",()=>switchLanguage("th"));document.getElementById("btn-en").addEventListener("click",()=>switchLanguage("en"));});
+    const translations = {
+      th: {
+        "brand-name": "ThaiAgent Studio",
+        "header-note": "AI systems · automation · digital experiences",
+        "hero-eyebrow": "SELECTED WORK / 2026",
+        "hero-title": "งานที่ทำให้ไอเดียธุรกิจเดินหน้าได้จริง",
+        "hero-description": "รวมผลงานจาก ThaiAgent Studio ตั้งแต่ AI และเว็บไซต์ ไปจนถึงระบบธุรกิจ ERP และ Workflow Automation ที่นำไปใช้งานจริง",
+        "hero-meta": "7 โปรเจกต์ พร้อมให้คุณกดเข้าไปสำรวจ",
+        "work-eyebrow": "PORTFOLIO",
+        "work-title": "โซลูชันและระบบที่ผมพัฒนา",
+        "work-note": "แบ่งผลงานตามทักษะและประเภทของระบบ เพื่อให้เห็นภาพชัดขึ้นว่าผมทำอะไรได้บ้าง",
+        "section-ai-kicker": "01 / AI",
+        "section-ai-title": "AI Solutions",
+        "section-ai-desc": "AI, Agents และเครื่องมือที่ช่วยให้ธุรกิจทำงานได้ฉลาดและรวดเร็วขึ้น",
+        "section-web-kicker": "02 / WEB & APPS",
+        "section-web-title": "Web & Application Solutions",
+        "section-web-desc": "เว็บไซต์และเว็บแอปพลิเคชันที่เน้นความเร็ว การใช้งานจริง และประสบการณ์ที่เรียบง่าย",
+        "section-systems-kicker": "03 / SYSTEMS & AUTOMATION",
+        "section-systems-title": "Business Systems & Automation",
+        "section-systems-desc": "ERP, Workflow Automation และระบบ Self-hosted ที่แสดงทักษะด้านการติดตั้ง เชื่อมต่อ และนำระบบธุรกิจมาใช้งานจริง",
+        "project-tag-1": "AI NEWSROOM",
+        "project-title-1": "Agent2Day",
+        "project-description-1": "เว็บไซต์ข่าว AI ที่ใช้ AI และ Automation ดูแลกระบวนการตั้งแต่การรวบรวมข้อมูลไปจนถึงการเผยแพร่",
+        "project-tag-2": "VIDEO PROMPT TOOL",
+        "project-title-2": "CartClip AI",
+        "project-description-2": "เครื่องมือที่นำข้อมูลสินค้ามาแปลงเป็น Prompt สำหรับสร้างวิดีโอ ช่วยเริ่มต้นงานคอนเทนต์ได้เร็วขึ้น",
+        "project-tag-3": "AI SOLUTIONS",
+        "project-title-3": "ThaiAgent Studio",
+        "project-description-3": "ออกแบบและพัฒนา AI Chatbot กับ AI Agent ที่เชื่อมต่อฐานความรู้ ระบบ CRM, API และ Human Handoff",
+        "project-tag-4": "WEB DEVELOPMENT",
+        "project-title-4": "FastWeb",
+        "project-description-4": "บริการพัฒนาเว็บไซต์ประสิทธิภาพสูงสำหรับธุรกิจขนาดกลางและขนาดเล็ก ที่ต้องการเว็บไซต์พร้อมเติบโต",
+        "project-tag-5": "OMNICHAT PLATFORM",
+        "project-title-5": "ThaiAgent Desk",
+        "project-description-5": "ระบบบริหารจัดการแชทแบบ Omnichat สำหรับทีมดูแลลูกค้า ครบทุกช่องทางของธุรกิจในที่เดียว",
+        "project-tag-6": "ERP PLATFORM",
+        "project-title-6": "Odoo ERP Demo",
+        "project-description-6": "ตัวอย่างระบบ Odoo ERP สำหรับทดลองใช้งานระบบธุรกิจและโมดูลต่าง ๆ บนเซิร์ฟเวอร์ที่จัดเตรียมไว้",
+        "project-tag-7": "WORKFLOW AUTOMATION",
+        "project-title-7": "n8n Self-hosted",
+        "project-description-7": "ระบบ Workflow Automation แบบ Self-hosted สำหรับเชื่อมต่อ API บริการต่าง ๆ และสร้างกระบวนการ Automation ที่ทำงานต่อเนื่อง",
+        "demo-access": "ข้อมูลสำหรับเข้าชม Demo",
+        "project-link": "เข้าชมผลงาน",
+        "footer-copy": "ThaiAgent Studio — Built for useful intelligence.",
+        "footer-note": "เลือกหมวดที่สนใจแล้วกดเข้าชมระบบจริงได้เลย"
+      },
+      en: {
+        "brand-name": "ThaiAgent Studio",
+        "header-note": "AI systems · automation · digital experiences",
+        "hero-eyebrow": "SELECTED WORK / 2026",
+        "hero-title": "Making business ideas move forward with action",
+        "hero-description": "A collection of ThaiAgent Studio projects spanning AI, websites, ERP business systems, and workflow automation built for real-world use.",
+        "hero-meta": "7 projects ready to explore",
+        "work-eyebrow": "PORTFOLIO",
+        "work-title": "Solutions and systems I build",
+        "work-note": "Projects are grouped by skill and system type so you can quickly see the areas I work across.",
+        "section-ai-kicker": "01 / AI",
+        "section-ai-title": "AI Solutions",
+        "section-ai-desc": "AI, agents, and tools that help businesses work smarter and move faster.",
+        "section-web-kicker": "02 / WEB & APPS",
+        "section-web-title": "Web & Application Solutions",
+        "section-web-desc": "Websites and web applications focused on speed, practical use, and straightforward experiences.",
+        "section-systems-kicker": "03 / SYSTEMS & AUTOMATION",
+        "section-systems-title": "Business Systems & Automation",
+        "section-systems-desc": "ERP, workflow automation, and self-hosted systems demonstrating deployment, integration, and practical business-system skills.",
+        "project-tag-1": "AI NEWSROOM",
+        "project-title-1": "Agent2Day",
+        "project-description-1": "An AI news website powered by AI and automation, managing the workflow from information gathering to publishing.",
+        "project-tag-2": "VIDEO PROMPT TOOL",
+        "project-title-2": "CartClip AI",
+        "project-description-2": "A tool that transforms product information into prompts for video generation, helping content creation start faster.",
+        "project-tag-3": "AI SOLUTIONS",
+        "project-title-3": "ThaiAgent Studio",
+        "project-description-3": "Design and development of AI chatbots and AI agents connected to knowledge bases, CRM systems, APIs, and human handoff.",
+        "project-tag-4": "WEB DEVELOPMENT",
+        "project-title-4": "FastWeb",
+        "project-description-4": "High-performance website development for small and medium-sized businesses that want a fast, practical web presence.",
+        "project-tag-5": "OMNICHAT PLATFORM",
+        "project-title-5": "ThaiAgent Desk",
+        "project-description-5": "An omnichannel chat management platform for customer support teams, bringing business conversations together in one place.",
+        "project-tag-6": "ERP PLATFORM",
+        "project-title-6": "Odoo ERP Demo",
+        "project-description-6": "A hosted Odoo ERP environment for exploring business workflows and ERP modules in a practical demo system.",
+        "project-tag-7": "WORKFLOW AUTOMATION",
+        "project-title-7": "n8n Self-hosted",
+        "project-description-7": "A self-hosted workflow automation environment for connecting APIs, services, and persistent automation processes.",
+        "demo-access": "Demo access",
+        "project-link": "Visit website",
+        "footer-copy": "ThaiAgent Studio — Built for useful intelligence.",
+        "footer-note": "Choose a category and open any live system to explore it."
+      }
+    };
+
+    let currentLanguage = "th";
+
+    function switchLanguage(lang) {
+      if (currentLanguage === lang) return;
+      currentLanguage = lang;
+      const langData = translations[lang];
+
+      document.querySelectorAll("[data-i18n]").forEach((el) => {
+        const key = el.getAttribute("data-i18n");
+        if (langData[key] !== undefined) el.textContent = langData[key];
+      });
+
+      document.documentElement.lang = lang;
+      document.getElementById("btn-th").classList.toggle("active", lang === "th");
+      document.getElementById("btn-en").classList.toggle("active", lang === "en");
+      document.getElementById("btn-th").setAttribute("aria-pressed", String(lang === "th"));
+      document.getElementById("btn-en").setAttribute("aria-pressed", String(lang === "en"));
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      if (window.lucide) lucide.createIcons();
+      document.getElementById("btn-th").addEventListener("click", () => switchLanguage("th"));
+      document.getElementById("btn-en").addEventListener("click", () => switchLanguage("en"));
+    });
   </script>
 </body>
 </html>
