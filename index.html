@@ -3,560 +3,1418 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Portfolio ของ ThaiAgent Studio — AI solutions, web applications, business systems และ automation">
-  <title>ThaiAgent Studio — Portfolio</title>
+  <meta name="description" content="Portfolio ของ Sirichot Wipharat และ ThaiAgent Studio — ระบบ AI เว็บ ERP และ Automation ที่พัฒนา เชื่อมต่อ และ deploy ใช้งานจริง">
+  <meta name="theme-color" content="#090c11">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://portfolio.thaiagentstudio.com/">
+  <meta property="og:title" content="Sirichot Wipharat — ThaiAgent Studio Portfolio">
+  <meta property="og:description" content="ระบบ AI เว็บ ERP และ Automation ที่พัฒนา เชื่อมต่อ และ deploy ใช้งานจริง">
+  <title>Sirichot Wipharat — ThaiAgent Studio Portfolio</title>
 
-  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
-  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --navy-deep: #020712;
-      --ink: #f4f8ff;
-      --muted: #a9b9d2;
-      --cyan: #42d9ff;
-      --violet: #9567ff;
-      --border: rgba(174, 213, 255, 0.17);
+      color-scheme: dark;
+      --bg: #090c11;
+      --surface: #10151c;
+      --surface-strong: #151c25;
+      --surface-blue: #112841;
+      --ink: #f5f7fa;
+      --muted: #b6c0cc;
+      --subtle: #8f9aaa;
+      --line: #2a3441;
+      --line-strong: #465366;
+      --accent: #5ca8ff;
+      --accent-strong: #2f82df;
+      --accent-ink: #061426;
+      --success: #63d49a;
+      --focus: #9bcbff;
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --container: 1180px;
+      --header-height: 76px;
     }
 
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background: var(--bg);
+    }
 
     body {
-      width: 100%;
-      min-height: 100%;
       margin: 0;
+      min-width: 320px;
       color: var(--ink);
-      background: var(--navy-deep);
-      font-family: "DM Sans", sans-serif;
+      background: var(--bg);
+      font-family: "Anuphan", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 16px;
+      line-height: 1.65;
+      text-rendering: optimizeLegibility;
     }
 
-    .portfolio-shell {
-      width: 100%;
-      min-height: 100%;
-      overflow: hidden;
-      position: relative;
-      isolation: isolate;
+    body,
+    button,
+    a {
+      font-family: inherit;
     }
 
-    .portfolio-shell::before,
-    .portfolio-shell::after {
-      content: "";
-      position: absolute;
-      pointer-events: none;
-      z-index: -1;
-      border-radius: 999px;
-      filter: blur(12px);
+    img {
+      display: block;
+      max-width: 100%;
     }
 
-    .portfolio-shell::before {
-      width: 600px;
-      height: 600px;
-      top: -250px;
-      left: -180px;
-      background: radial-gradient(circle, rgba(66, 217, 255, 0.21) 0%, rgba(66, 217, 255, 0) 68%);
+    a {
+      color: inherit;
     }
 
-    .portfolio-shell::after {
-      width: 650px;
-      height: 650px;
-      top: 300px;
-      right: -300px;
-      background: radial-gradient(circle, rgba(149, 103, 255, 0.19) 0%, rgba(149, 103, 255, 0) 70%);
+    button {
+      font: inherit;
     }
 
-    .network-field {
-      position: absolute;
-      inset: 0;
-      z-index: -1;
-      overflow: hidden;
-      pointer-events: none;
-      opacity: 0.58;
-      background-image:
-        linear-gradient(120deg, transparent 0 47%, rgba(82, 210, 255, 0.10) 47.1% 47.35%, transparent 47.45% 100%),
-        linear-gradient(53deg, transparent 0 59%, rgba(161, 116, 255, 0.10) 59.1% 59.35%, transparent 59.45% 100%);
-      background-size: 220px 220px, 290px 290px;
-      mask-image: linear-gradient(to bottom, black, transparent 88%);
+    [hidden] {
+      display: none !important;
+    }
+
+    .skip-link {
+      position: fixed;
+      z-index: 100;
+      top: 8px;
+      left: 8px;
+      padding: 10px 14px;
+      color: var(--accent-ink);
+      background: var(--focus);
+      border-radius: var(--radius-sm);
+      transform: translateY(-160%);
+      transition: transform 180ms cubic-bezier(.16, 1, .3, 1);
+    }
+
+    .skip-link:focus {
+      transform: translateY(0);
+    }
+
+    .container {
+      width: min(calc(100% - 40px), var(--container));
+      margin-inline: auto;
+    }
+
+    .site-header {
+      position: sticky;
+      z-index: 20;
+      top: 0;
+      min-height: var(--header-height);
+      background: var(--bg);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .header-inner {
+      min-height: var(--header-height);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      min-height: 44px;
     }
 
     .brand-mark {
-      width: 39px;
-      height: 39px;
+      width: 38px;
+      height: 38px;
       display: grid;
       place-items: center;
-      border-radius: 12px;
-      color: #04111d;
-      background: linear-gradient(135deg, var(--cyan), #8ee6ff 47%, var(--violet));
-      box-shadow: 0 0 22px rgba(66, 217, 255, 0.26);
-      transform: rotate(-7deg);
-    }
-
-    .hero-copy {
-      font-family: "Outfit", sans-serif;
-      letter-spacing: -0.055em;
-      text-wrap: balance;
-    }
-
-    .hero-image-frame {
-      min-height: 350px;
-      position: relative;
-      overflow: hidden;
-      border: 1px solid rgba(137, 223, 255, 0.26);
-      border-radius: 24px;
-      background: #07182e;
-      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.38), 0 0 44px rgba(66, 217, 255, 0.11);
-    }
-
-    .hero-image-frame::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      background: linear-gradient(135deg, rgba(66, 217, 255, 0.18), transparent 37%, rgba(149, 103, 255, 0.24));
-      mix-blend-mode: screen;
-    }
-
-    .hero-image-frame img {
-      filter: saturate(1.08) contrast(1.08) brightness(0.82);
-      transition: transform 500ms ease;
-    }
-
-    .hero-image-frame:hover img { transform: scale(1.035); }
-
-    .solution-section {
-      padding-top: 2rem;
-      margin-top: 2rem;
-      border-top: 1px solid rgba(173, 215, 255, 0.12);
-    }
-
-    .solution-section:first-of-type {
-      padding-top: 0;
-      margin-top: 0;
-      border-top: 0;
-    }
-
-    .section-kicker {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.55rem;
-      color: #75e5ff;
-      font-size: 0.76rem;
+      border-radius: 9px;
+      color: var(--accent-ink);
+      background: var(--accent);
+      font-size: 14px;
       font-weight: 700;
-      letter-spacing: 0.13em;
-      text-transform: uppercase;
+      letter-spacing: -0.03em;
     }
 
-    .section-kicker::before {
-      content: "";
-      width: 22px;
-      height: 2px;
-      border-radius: 999px;
-      background: linear-gradient(90deg, var(--cyan), var(--violet));
-      box-shadow: 0 0 12px rgba(66,217,255,.55);
+    .brand-copy {
+      display: grid;
+      line-height: 1.2;
     }
 
-    .work-card {
-      min-height: 300px;
-      position: relative;
-      overflow: hidden;
-      border: 1px solid rgba(173, 215, 255, 0.17);
-      box-shadow: 0 14px 38px rgba(0, 0, 0, 0.20);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      transition: transform 240ms ease, box-shadow 240ms ease, border-color 240ms ease;
-    }
-
-    .work-card::before {
-      content: "";
-      position: absolute;
-      width: 170px;
-      height: 170px;
-      right: -82px;
-      top: -82px;
-      border-radius: 999px;
-      background: radial-gradient(circle, rgba(66, 217, 255, 0.17), transparent 68%);
-      pointer-events: none;
-    }
-
-    .work-card:hover {
-      transform: translateY(-7px);
-      border-color: rgba(86, 220, 255, 0.54);
-      box-shadow: 0 24px 50px rgba(0, 0, 0, 0.36), 0 0 30px rgba(66, 217, 255, 0.11);
-    }
-
-    .card-number {
-      font-family: "Outfit", sans-serif;
-      font-size: 3rem;
+    .brand-copy strong {
+      font-size: 15px;
       font-weight: 700;
-      line-height: 1;
-      color: rgba(172, 213, 255, 0.15);
-      letter-spacing: -0.08em;
     }
 
-    .project-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      width: fit-content;
-      text-decoration: none;
-      transition: gap 180ms ease, opacity 180ms ease, transform 180ms ease;
+    .brand-copy span {
+      color: var(--subtle);
+      font-size: 12px;
     }
 
-    .project-link:hover {
-      gap: 0.8rem;
-      opacity: 0.9;
-      transform: translateX(2px);
-    }
-
-    .brand-logo-box {
-      width: fit-content;
-      min-width: 128px;
-      height: 54px;
+    .header-actions,
+    .site-nav,
+    .lang-switcher {
       display: flex;
       align-items: center;
-      justify-content: center;
-      padding: 10px 14px;
-      border-radius: 12px;
-      border: 1px solid rgba(173, 215, 255, 0.14);
-      margin-top: 1.1rem;
     }
 
-    .brand-logo-box.light { background: rgba(255,255,255,.96); }
-    .brand-logo-box.dark { background: rgba(2,7,18,.68); }
-    .brand-logo-box img { display: block; max-width: 118px; max-height: 32px; object-fit: contain; }
-
-    .credential-box {
-      margin-top: 1rem;
-      padding: 0.85rem 1rem;
-      border-radius: 12px;
-      border: 1px solid rgba(149,103,255,.24);
-      background: rgba(149,103,255,.08);
-      color: #d8caee;
-      font-size: 0.83rem;
-      line-height: 1.55;
+    .header-actions {
+      gap: 20px;
     }
 
-    .credential-box code {
-      color: #ffffff;
-      font-family: "DM Sans", sans-serif;
-      font-weight: 700;
-      background: rgba(255,255,255,.07);
-      border-radius: 5px;
-      padding: 0.08rem 0.3rem;
+    .site-nav {
+      gap: 24px;
     }
 
-    .project-link:focus-visible,
-    a:focus-visible,
-    button:focus-visible {
-      outline: 3px solid var(--cyan);
-      outline-offset: 4px;
-      border-radius: 8px;
+    .site-nav a {
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      border-bottom: 2px solid transparent;
     }
 
-    .reveal { animation: rise-in 700ms cubic-bezier(.22, .8, .25, 1) both; }
-    .delay-1 { animation-delay: 100ms; }
-    .delay-2 { animation-delay: 180ms; }
-    .delay-3 { animation-delay: 260ms; }
+    .site-nav a:hover {
+      color: var(--ink);
+      border-bottom-color: var(--line-strong);
+    }
 
-    @keyframes rise-in {
-      from { opacity: 0; transform: translateY(18px); }
-      to { opacity: 1; transform: translateY(0); }
+    .site-nav .nav-contact {
+      color: var(--ink);
     }
 
     .lang-switcher {
-      border: 1px solid rgba(173, 215, 255, 0.19);
-      background: rgba(5, 16, 31, 0.56);
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+      padding: 3px;
+      gap: 2px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: var(--surface);
     }
 
     .lang-btn {
-      border: none;
+      min-width: 44px;
+      min-height: 44px;
+      padding: 0 10px;
       color: var(--muted);
       background: transparent;
+      border: 0;
+      border-radius: 7px;
       cursor: pointer;
-    }
-
-    .lang-btn.active {
-      color: #06101f;
-      background: linear-gradient(135deg, var(--cyan), #b4efff);
-      box-shadow: 0 2px 12px rgba(66, 217, 255, 0.25);
+      font-size: 13px;
       font-weight: 700;
     }
 
-    .lang-btn:hover:not(.active) {
-      color: #ffffff;
-      background: rgba(148, 198, 255, 0.10);
+    .lang-btn:hover {
+      color: var(--ink);
+      background: var(--surface-strong);
     }
 
-    .footer-line { border-color: rgba(173, 215, 255, 0.17); }
+    .lang-btn.active {
+      color: var(--accent-ink);
+      background: var(--accent);
+    }
+
+    main section {
+      scroll-margin-top: calc(var(--header-height) + 24px);
+    }
+
+    .hero {
+      padding: clamp(56px, 6vw, 82px) 0 clamp(72px, 8vw, 108px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(400px, .95fr);
+      align-items: center;
+      gap: clamp(44px, 7vw, 92px);
+    }
+
+    .hero-kicker {
+      margin: 0 0 20px;
+      color: var(--accent);
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .hero h1 {
+      max-width: 12ch;
+      margin: 0;
+      font-size: clamp(2.8rem, 6.1vw, 4.65rem);
+      font-weight: 700;
+      letter-spacing: -0.035em;
+      line-height: 1.04;
+      text-wrap: balance;
+    }
+
+    .hero-description {
+      max-width: 64ch;
+      margin: 28px 0 0;
+      color: var(--muted);
+      font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+      line-height: 1.8;
+      text-wrap: pretty;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 34px;
+    }
+
+    .button {
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 0 18px;
+      border: 1px solid transparent;
+      border-radius: var(--radius-sm);
+      font-size: 15px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: color 180ms cubic-bezier(.16, 1, .3, 1), background-color 180ms cubic-bezier(.16, 1, .3, 1), border-color 180ms cubic-bezier(.16, 1, .3, 1), transform 180ms cubic-bezier(.16, 1, .3, 1);
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    .button-primary {
+      color: var(--accent-ink);
+      background: var(--accent);
+    }
+
+    .button-primary:hover {
+      background: #82bdff;
+    }
+
+    .button-secondary {
+      color: var(--ink);
+      background: transparent;
+      border-color: var(--line-strong);
+    }
+
+    .button-secondary:hover {
+      background: var(--surface);
+      border-color: var(--accent);
+    }
+
+    .hero-proofline {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 18px;
+      margin: 30px 0 0;
+      padding-top: 20px;
+      color: var(--subtle);
+      border-top: 1px solid var(--line);
+      font-size: 14px;
+    }
+
+    .hero-proofline span {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .hero-proofline span::before {
+      content: "";
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    .hero-media {
+      margin: 0;
+    }
+
+    .screenshot-frame {
+      overflow: hidden;
+      aspect-ratio: 16 / 10;
+      border: 1px solid var(--line-strong);
+      border-radius: var(--radius-md);
+      background: #dfe5ec;
+    }
+
+    .screenshot-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+    }
+
+    .hero-media figcaption,
+    .project-media figcaption {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-top: 12px;
+      color: var(--subtle);
+      font-size: 13px;
+    }
+
+    .live-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      flex: 0 0 auto;
+      border-radius: 50%;
+      background: var(--success);
+    }
+
+    .owner-strip {
+      padding: 28px 0;
+      background: var(--surface);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .owner-strip-inner {
+      display: grid;
+      grid-template-columns: minmax(220px, .7fr) minmax(0, 1.3fr);
+      align-items: center;
+      gap: 28px;
+    }
+
+    .owner-name {
+      margin: 0;
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 1.3;
+    }
+
+    .owner-role {
+      margin: 4px 0 0;
+      color: var(--subtle);
+      font-size: 14px;
+    }
+
+    .owner-capabilities {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 8px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .owner-capabilities li,
+    .tag {
+      padding: 7px 10px;
+      color: var(--muted);
+      background: var(--surface-strong);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .work-section {
+      padding: clamp(80px, 10vw, 132px) 0;
+    }
+
+    .section-header {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(280px, 470px);
+      align-items: end;
+      gap: 40px;
+      margin-bottom: 30px;
+    }
+
+    .section-header h2,
+    .project-index-header h2,
+    .contact-copy h2 {
+      margin: 0;
+      font-size: clamp(2.2rem, 4.8vw, 4.4rem);
+      line-height: 1.08;
+      letter-spacing: -0.032em;
+      text-wrap: balance;
+    }
+
+    .section-header p,
+    .project-index-header p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.8;
+      text-wrap: pretty;
+    }
+
+    .featured-projects {
+      border-top: 1px solid var(--line-strong);
+    }
+
+    .project-feature {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(360px, .9fr);
+      align-items: center;
+      gap: clamp(40px, 7vw, 88px);
+      padding: clamp(60px, 8vw, 96px) 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .project-feature:nth-child(even) .project-media {
+      order: 2;
+    }
+
+    .project-media {
+      margin: 0;
+    }
+
+    .project-status {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 14px;
+      color: var(--subtle);
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .project-status .live-label {
+      color: var(--success);
+    }
+
+    .project-copy h3 {
+      margin: 0;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: 1.1;
+      letter-spacing: -0.028em;
+    }
+
+    .project-summary {
+      max-width: 62ch;
+      margin: 18px 0 0;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.8;
+      text-wrap: pretty;
+    }
+
+    .project-facts {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin: 28px 0 0;
+    }
+
+    .project-facts div {
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+    }
+
+    .project-facts dt {
+      color: var(--subtle);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .project-facts dd {
+      margin: 6px 0 0;
+      color: var(--ink);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 24px;
+    }
+
+    .project-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .project-index {
+      padding: clamp(80px, 10vw, 120px) 0;
+      background: var(--surface);
+      border-block: 1px solid var(--line);
+    }
+
+    .project-index-header {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(280px, 460px);
+      align-items: end;
+      gap: 40px;
+      margin-bottom: 36px;
+    }
+
+    .project-list {
+      border-top: 1px solid var(--line-strong);
+    }
+
+    .project-row {
+      display: grid;
+      grid-template-columns: 240px minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 28px;
+      padding: 30px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .project-thumb {
+      overflow: hidden;
+      min-height: 138px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      background: var(--surface-strong);
+    }
+
+    .project-thumb img {
+      width: 100%;
+      height: 138px;
+      object-fit: cover;
+      object-position: top;
+    }
+
+    .project-row-copy h3 {
+      margin: 0;
+      font-size: 24px;
+      line-height: 1.25;
+      letter-spacing: -0.02em;
+    }
+
+    .project-row-copy p {
+      max-width: 64ch;
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    .project-row-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px 14px;
+      margin-top: 12px;
+      color: var(--subtle);
+      font-size: 13px;
+    }
+
+    .project-row-action {
+      min-width: 180px;
+      justify-self: end;
+    }
+
+    .credentials {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .credential {
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0 10px;
+      color: var(--muted);
+      background: var(--bg);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      font-size: 13px;
+    }
+
+    .credential code {
+      color: var(--ink);
+      font-family: inherit;
+      font-weight: 700;
+    }
+
+    .copy-btn {
+      min-width: 44px;
+      min-height: 44px;
+      padding: 0 12px;
+      color: var(--accent);
+      background: transparent;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .copy-btn:hover {
+      color: var(--ink);
+      border-color: var(--accent);
+    }
+
+    .contact-section {
+      padding: clamp(80px, 10vw, 126px) 0;
+      background: var(--surface-blue);
+      border-bottom: 1px solid var(--line-strong);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, .8fr) minmax(420px, 1.2fr);
+      gap: clamp(40px, 8vw, 100px);
+      align-items: start;
+    }
+
+    .contact-label {
+      margin: 0 0 16px;
+      color: #9dccff;
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .contact-copy p {
+      max-width: 54ch;
+      margin: 20px 0 0;
+      color: #d5e7f8;
+      font-size: 17px;
+      line-height: 1.8;
+    }
+
+    .contact-owner {
+      margin-top: 30px;
+      padding-top: 20px;
+      border-top: 1px solid #355679;
+    }
+
+    .contact-owner strong {
+      display: block;
+      color: #ffffff;
+      font-size: 20px;
+    }
+
+    .contact-owner span {
+      color: #bfd8f1;
+      font-size: 14px;
+    }
+
+    .contact-links {
+      margin: 0;
+      font-style: normal;
+      border-top: 1px solid #4c6f93;
+    }
+
+    .contact-link {
+      min-height: 72px;
+      display: grid;
+      grid-template-columns: 90px minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 16px;
+      color: #ffffff;
+      border-bottom: 1px solid #355679;
+      text-decoration: none;
+      transition: background-color 180ms cubic-bezier(.16, 1, .3, 1);
+    }
+
+    .contact-link:hover {
+      background: #173554;
+    }
+
+    .contact-arrow {
+      transition: transform 180ms cubic-bezier(.16, 1, .3, 1);
+    }
+
+    .contact-link:hover .contact-arrow {
+      transform: translateX(4px);
+    }
+
+    .contact-kind {
+      color: #9dccff;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .contact-value {
+      margin: 0;
+      overflow-wrap: anywhere;
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .contact-arrow {
+      color: #9dccff;
+      font-size: 18px;
+    }
+
+    .site-footer {
+      padding: 28px 0;
+      color: var(--subtle);
+      background: var(--bg);
+      font-size: 13px;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .footer-inner p {
+      margin: 0;
+    }
+
+    .footer-inner a {
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      color: var(--muted);
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .footer-inner a:hover {
+      color: var(--ink);
+    }
+
+    :focus-visible {
+      outline: 3px solid var(--focus);
+      outline-offset: 3px;
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .project-feature,
+      .section-header,
+      .project-index-header,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-grid {
+        gap: 46px;
+      }
+
+      .hero h1 {
+        max-width: 14ch;
+      }
+
+      .owner-strip-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .owner-capabilities {
+        justify-content: flex-start;
+      }
+
+      .section-header,
+      .project-index-header {
+        gap: 18px;
+      }
+
+      .project-feature:nth-child(even) .project-media {
+        order: 0;
+      }
+
+      .project-row {
+        grid-template-columns: 190px minmax(0, 1fr);
+      }
+
+      .project-row-action {
+        grid-column: 2;
+        justify-self: start;
+      }
+
+      .contact-grid {
+        gap: 48px;
+      }
+    }
+
+    @media (max-width: 760px) {
+      :root {
+        --header-height: 68px;
+      }
+
+      .container {
+        width: min(calc(100% - 28px), var(--container));
+      }
+
+      .brand-copy span,
+      .site-nav a:not(.nav-contact) {
+        display: none;
+      }
+
+      .header-actions {
+        gap: 10px;
+      }
+
+      .site-nav {
+        gap: 8px;
+      }
+
+      .site-nav .nav-contact {
+        padding-inline: 8px;
+        font-size: 13px;
+      }
+
+      .hero {
+        padding-top: 58px;
+      }
+
+      .hero h1 {
+        font-size: clamp(2.55rem, 12.5vw, 4rem);
+        line-height: 1.08;
+      }
+
+      .hero-proofline {
+        display: grid;
+        gap: 8px;
+      }
+
+      .owner-capabilities {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .owner-capabilities li {
+        text-align: center;
+      }
+
+      .project-facts {
+        grid-template-columns: 1fr;
+      }
+
+      .project-row {
+        grid-template-columns: 1fr;
+        gap: 18px;
+        padding: 26px 0;
+      }
+
+      .project-thumb {
+        min-height: 180px;
+      }
+
+      .project-thumb img {
+        height: 180px;
+      }
+
+      .project-row-action {
+        grid-column: auto;
+        justify-self: stretch;
+      }
+
+      .project-row-action .button {
+        width: 100%;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-link {
+        grid-template-columns: 70px minmax(0, 1fr) auto;
+      }
+
+      .footer-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 430px) {
+      .brand-copy strong {
+        max-width: 94px;
+        font-size: 13px;
+      }
+
+      .site-nav .nav-contact {
+        display: none;
+      }
+
+      .hero-actions,
+      .project-actions {
+        display: grid;
+      }
+
+      .button {
+        width: 100%;
+      }
+
+      .owner-capabilities {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-link {
+        min-height: 82px;
+        grid-template-columns: 1fr auto;
+        gap: 3px 12px;
+        padding-block: 12px;
+      }
+
+      .contact-kind {
+        grid-column: 1;
+      }
+
+      .contact-value {
+        grid-column: 1;
+      }
+
+      .contact-arrow {
+        grid-column: 2;
+        grid-row: 1 / span 2;
+      }
+    }
 
     @media (prefers-reduced-motion: reduce) {
-      .reveal { animation: none; }
-      .work-card, .project-link, .hero-image-frame img { transition: none; }
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+      }
     }
   </style>
 </head>
 
-<body style="background: radial-gradient(circle at 77% 18%, rgb(19, 40, 80) 0%, rgb(7, 19, 38) 40%, rgb(2, 7, 18) 100%);">
-  <div class="portfolio-shell">
-    <div class="network-field" aria-hidden="true"></div>
+<body>
+  <a class="skip-link" href="#main-content" data-copy data-th="ข้ามไปยังเนื้อหาหลัก" data-en="Skip to main content">ข้ามไปยังเนื้อหาหลัก</a>
 
-    <header class="w-full px-5 sm:px-8 lg:px-12 pt-6">
-      <div class="mx-auto max-w-7xl flex items-center justify-between gap-5">
-        <div class="flex items-center gap-3">
-          <div class="brand-mark" aria-hidden="true"><i data-lucide="sparkles" style="width:20px;height:20px"></i></div>
-          <p data-i18n="brand-name" class="font-semibold tracking-tight" style="color:#f4f8ff;font-weight:700;font-size:18px;">ThaiAgent Studio</p>
-        </div>
-        <div class="flex items-center gap-4">
-          <div class="lang-switcher flex gap-1 rounded-full p-1">
-            <button id="btn-th" class="lang-btn active px-3 py-1.5 rounded-full text-xs font-semibold transition-all" aria-pressed="true">TH</button>
-            <button id="btn-en" class="lang-btn px-3 py-1.5 rounded-full text-xs font-semibold transition-all" aria-pressed="false">EN</button>
-          </div>
-          <p data-i18n="header-note" class="hidden sm:block text-sm text-right" style="color:#a9b9d2;font-size:14px;">AI systems · automation · digital experiences</p>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#top" aria-label="ThaiAgent Studio portfolio home">
+        <span class="brand-mark" aria-hidden="true">TAS</span>
+        <span class="brand-copy">
+          <strong>ThaiAgent Studio</strong>
+          <span>Sirichot Wipharat</span>
+        </span>
+      </a>
+
+      <div class="header-actions">
+        <nav class="site-nav" aria-label="Primary navigation">
+          <a href="#work" data-copy data-th="ผลงาน" data-en="Work">ผลงาน</a>
+          <a href="#systems" data-copy data-th="ระบบทั้งหมด" data-en="All systems">ระบบทั้งหมด</a>
+          <a class="nav-contact" href="#contact" data-copy data-th="ติดต่อ" data-en="Contact">ติดต่อ</a>
+        </nav>
+
+        <div class="lang-switcher" aria-label="Language">
+          <button id="btn-th" class="lang-btn active" type="button" aria-pressed="true" aria-label="เปลี่ยนเป็นภาษาไทย">TH</button>
+          <button id="btn-en" class="lang-btn" type="button" aria-pressed="false" aria-label="Switch to English">EN</button>
         </div>
       </div>
-    </header>
+    </div>
+  </header>
 
-    <main>
-      <section class="w-full px-5 sm:px-8 lg:px-12 pt-12 pb-16 sm:pt-16 lg:pt-20">
-        <div class="mx-auto max-w-7xl grid lg:grid-cols-12 gap-10 lg:gap-14 items-center">
-          <div class="lg:col-span-7">
-            <p data-i18n="hero-eyebrow" class="reveal inline-flex items-center gap-2 font-semibold uppercase tracking-widest text-xs" style="color:#75e5ff;font-weight:700;font-size:16px;letter-spacing:.12rem;">SELECTED WORK / 2026</p>
-            <h1 data-i18n="hero-title" class="hero-copy reveal delay-1 mt-5 max-w-3xl font-bold" style="color:#f7fbff;font-weight:700;font-size:32px;line-height:1.12;">งานที่ทำให้ไอเดียธุรกิจเดินหน้าได้จริง</h1>
-            <p data-i18n="hero-description" class="reveal delay-2 mt-6 max-w-2xl text-lg leading-relaxed" style="color:#bfd0e7;font-size:18px;line-height:1.6;">รวมผลงานจาก ThaiAgent Studio ตั้งแต่ AI และเว็บไซต์ ไปจนถึงระบบธุรกิจ ERP และ Workflow Automation ที่นำไปใช้งานจริง</p>
-            <div class="reveal delay-3 mt-8 flex items-center gap-3 text-sm font-medium">
-              <span class="inline-block h-2.5 w-2.5 rounded-full bg-cyan-300 shadow-[0_0_14px_rgba(66,217,255,0.95)]" aria-hidden="true"></span>
-              <span data-i18n="hero-meta" style="color:#d9e8f8;font-weight:600;font-size:16px;">7 โปรเจกต์ พร้อมให้คุณกดเข้าไปสำรวจ</span>
-            </div>
+  <main id="main-content">
+    <section id="top" class="hero" aria-labelledby="hero-title">
+      <div class="container hero-grid">
+        <div>
+          <p class="hero-kicker" data-copy data-th="ThaiAgent Studio · Portfolio 2026" data-en="ThaiAgent Studio · Portfolio 2026">ThaiAgent Studio · Portfolio 2026</p>
+          <h1 id="hero-title" data-copy data-th="ระบบที่ผมพัฒนา เชื่อมต่อ และนำขึ้นใช้งานจริง" data-en="Systems I built, integrated, and deployed">ระบบที่ผมพัฒนา เชื่อมต่อ และนำขึ้นใช้งานจริง</h1>
+          <p class="hero-description" data-copy data-th="สำรวจ 7 ผลงานด้าน AI เว็บ ERP และ Automation พร้อมบทบาทของผม ขอบเขตระบบ สถานะ และลิงก์ที่เปิดดูหรือทดลองได้ทันที" data-en="Explore seven live AI, web, ERP, and automation projects—with my role, system scope, status, and a working destination for each.">สำรวจ 7 ผลงานด้าน AI เว็บ ERP และ Automation พร้อมบทบาทของผม ขอบเขตระบบ สถานะ และลิงก์ที่เปิดดูหรือทดลองได้ทันที</p>
+
+          <div class="hero-actions">
+            <a class="button button-primary" href="#work" data-copy data-th="ดูระบบที่เปิดใช้งาน" data-en="Explore live systems">ดูระบบที่เปิดใช้งาน</a>
+            <a class="button button-secondary" href="#contact" data-copy data-th="ติดต่อร่วมงาน" data-en="Contact me">ติดต่อร่วมงาน</a>
           </div>
-          <div class="lg:col-span-5 hero-image-frame reveal delay-2">
-            <img class="w-full h-full object-cover" loading="lazy" src="https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=1280" alt="AI technology and digital network">
-          </div>
+
+          <p class="hero-proofline" aria-label="Portfolio scope">
+            <span data-copy data-th="7 โปรเจกต์" data-en="7 projects">7 โปรเจกต์</span>
+            <span data-copy data-th="AI · Web · ERP · Automation" data-en="AI · Web · ERP · Automation">AI · Web · ERP · Automation</span>
+            <span data-copy data-th="ระบบออนไลน์ตรวจสอบได้" data-en="Verifiable live systems">ระบบออนไลน์ตรวจสอบได้</span>
+          </p>
         </div>
-      </section>
 
-      <section class="w-full px-5 sm:px-8 lg:px-12 pb-20 sm:pb-24">
-        <div class="mx-auto max-w-7xl">
-          <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10">
-            <div>
-              <p data-i18n="work-eyebrow" class="font-semibold uppercase tracking-widest text-xs" style="color:#75e5ff;font-weight:700;font-size:16px;letter-spacing:.12rem;">PORTFOLIO</p>
-              <h2 data-i18n="work-title" class="hero-copy mt-3 font-bold" style="color:#f7fbff;font-weight:700;font-size:24px;">โซลูชันและระบบที่ผมพัฒนา</h2>
-            </div>
-            <p data-i18n="work-note" class="max-w-md text-sm leading-relaxed sm:text-right" style="color:#a9b9d2;font-size:14px;line-height:1.55;">แบ่งผลงานตามทักษะและประเภทของระบบ เพื่อให้เห็นภาพชัดขึ้นว่าผมทำอะไรได้บ้าง</p>
+        <figure class="hero-media">
+          <div class="screenshot-frame">
+            <img src="assets/agent2day.png" width="1425" height="800" fetchpriority="high" alt="หน้าหลัก Agent2Day แสดงข่าว AI และรายการบทความที่เผยแพร่แล้ว" data-alt-th="หน้าหลัก Agent2Day แสดงข่าว AI และรายการบทความที่เผยแพร่แล้ว" data-alt-en="Agent2Day homepage showing published AI news and article listings">
           </div>
-
-          <div class="solution-section">
-            <div class="mb-6">
-              <p class="section-kicker" data-i18n="section-ai-kicker">01 / AI</p>
-              <h3 data-i18n="section-ai-title" class="hero-copy mt-3 text-2xl sm:text-3xl font-bold">AI Solutions</h3>
-              <p data-i18n="section-ai-desc" class="mt-2 max-w-2xl text-sm sm:text-base leading-relaxed" style="color:#a9b9d2;">AI, Agents และเครื่องมือที่ช่วยให้ธุรกิจทำงานได้ฉลาดและรวดเร็วขึ้น</p>
-            </div>
-
-            <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-5">
-              <article class="work-card rounded-2xl p-6 flex flex-col" style="background:linear-gradient(145deg,rgba(13,39,63,.96),rgba(7,21,40,.91));">
-                <div class="flex justify-between items-start gap-4"><p data-i18n="project-tag-1" class="inline-flex rounded-full px-3 py-1 text-xs font-semibold" style="background:rgba(66,217,255,.14);color:#81eaff;font-weight:700;font-size:14px;letter-spacing:.05rem;">AI NEWSROOM</p><span class="card-number">01</span></div>
-                <h4 data-i18n="project-title-1" class="mt-5 font-semibold" style="font-size:22px;font-weight:700;">Agent2Day</h4>
-                <p data-i18n="project-description-1" class="mt-3 leading-relaxed" style="color:#b8c8df;font-size:15px;line-height:1.6;">เว็บไซต์ข่าว AI ที่ใช้ AI และ Automation ดูแลกระบวนการตั้งแต่การรวบรวมข้อมูลไปจนถึงการเผยแพร่</p>
-                <a data-i18n="project-link" class="project-link mt-auto pt-6 font-semibold" href="https://agent2day.thaiagentstudio.com" target="_blank" rel="noopener noreferrer" style="color:#69e3ff;font-weight:700;font-size:16px;">เข้าชมผลงาน</a>
-              </article>
-
-              <article class="work-card rounded-2xl p-6 flex flex-col" style="background:linear-gradient(145deg,rgba(29,25,63,.95),rgba(10,18,42,.92));">
-                <div class="flex justify-between items-start gap-4"><p data-i18n="project-tag-2" class="inline-flex rounded-full px-3 py-1 text-xs font-semibold" style="background:rgba(149,103,255,.17);color:#c6afff;font-weight:700;font-size:14px;letter-spacing:.05rem;">VIDEO PROMPT TOOL</p><span class="card-number">02</span></div>
-                <h4 data-i18n="project-title-2" class="mt-5 font-semibold" style="font-size:22px;font-weight:700;">CartClip AI</h4>
-                <p data-i18n="project-description-2" class="mt-3 leading-relaxed" style="color:#b8c8df;font-size:15px;line-height:1.6;">เครื่องมือที่นำข้อมูลสินค้ามาแปลงเป็น Prompt สำหรับสร้างวิดีโอ ช่วยเริ่มต้นงานคอนเทนต์ได้เร็วขึ้น</p>
-                <a data-i18n="project-link" class="project-link mt-auto pt-6 font-semibold" href="https://cartclip-ai.thaiagentstudio.com" target="_blank" rel="noopener noreferrer" style="color:#c6afff;font-weight:700;font-size:16px;">เข้าชมผลงาน</a>
-              </article>
-
-              <article class="work-card rounded-2xl p-6 flex flex-col" style="background:linear-gradient(145deg,rgba(13,47,68,.95),rgba(12,23,52,.92));">
-                <div class="flex justify-between items-start gap-4"><p data-i18n="project-tag-3" class="inline-flex rounded-full px-3 py-1 text-xs font-semibold" style="background:rgba(66,217,255,.15);color:#8deaff;font-weight:700;font-size:14px;letter-spacing:.05rem;">AI SOLUTIONS</p><span class="card-number">03</span></div>
-                <h4 data-i18n="project-title-3" class="mt-5 font-semibold" style="font-size:22px;font-weight:700;">ThaiAgent Studio</h4>
-                <p data-i18n="project-description-3" class="mt-3 leading-relaxed" style="color:#c8d8eb;font-size:15px;line-height:1.6;">ออกแบบและพัฒนา AI Chatbot กับ AI Agent ที่เชื่อมต่อฐานความรู้ ระบบ CRM, API และ Human Handoff</p>
-                <a data-i18n="project-link" class="project-link mt-auto pt-6 font-semibold" href="https://thaiagentstudio.com" target="_blank" rel="noopener noreferrer" style="color:#82ecff;font-weight:700;font-size:16px;">เข้าชมผลงาน</a>
-              </article>
-            </div>
-          </div>
-
-          <div class="solution-section">
-            <div class="mb-6">
-              <p class="section-kicker" data-i18n="section-web-kicker">02 / WEB & APPS</p>
-              <h3 data-i18n="section-web-title" class="hero-copy mt-3 text-2xl sm:text-3xl font-bold">Web & Application Solutions</h3>
-              <p data-i18n="section-web-desc" class="mt-2 max-w-2xl text-sm sm:text-base leading-relaxed" style="color:#a9b9d2;">เว็บไซต์และเว็บแอปพลิเคชันที่เน้นความเร็ว การใช้งานจริง และประสบการณ์ที่เรียบง่าย</p>
-            </div>
-
-            <div class="grid md:grid-cols-2 gap-5">
-              <article class="work-card rounded-2xl p-6 flex flex-col" style="background:linear-gradient(145deg,rgba(23,37,64,.95),rgba(8,18,37,.92));">
-                <div class="flex justify-between items-start gap-4"><p data-i18n="project-tag-4" class="inline-flex rounded-full px-3 py-1 text-xs font-semibold" style="background:rgba(126,161,255,.15);color:#b9ccff;font-weight:700;font-size:14px;letter-spacing:.05rem;">WEB DEVELOPMENT</p><span class="card-number">04</span></div>
-                <h4 data-i18n="project-title-4" class="mt-5 font-semibold" style="font-size:22px;font-weight:700;">FastWeb</h4>
-                <p data-i18n="project-description-4" class="mt-3 leading-relaxed" style="color:#b8c8df;font-size:15px;line-height:1.6;">บริการพัฒนาเว็บไซต์ประสิทธิภาพสูงสำหรับธุรกิจขนาดกลางและขนาดเล็ก ที่ต้องการเว็บไซต์พร้อมเติบโต</p>
-                <a data-i18n="project-link" class="project-link mt-auto pt-6 font-semibold" href="https://fastweb.thaiagentstudio.com" target="_blank" rel="noopener noreferrer" style="color:#aac5ff;font-weight:700;font-size:16px;">เข้าชมผลงาน</a>
-              </article>
-
-              <article class="work-card rounded-2xl p-6 flex flex-col" style="background:linear-gradient(145deg,rgba(45,28,70,.95),rgba(11,18,42,.92));">
-                <div class="flex justify-between items-start gap-4"><p data-i18n="project-tag-5" class="inline-flex rounded-full px-3 py-1 text-xs font-semibold" style="background:rgba(191,118,255,.16);color:#e0baff;font-weight:700;font-size:14px;letter-spacing:.05rem;">OMNICHAT PLATFORM</p><span class="card-number">05</span></div>
-                <h4 data-i18n="project-title-5" class="mt-5 font-semibold" style="font-size:22px;font-weight:700;">ThaiAgent Desk</h4>
-                <p data-i18n="project-description-5" class="mt-3 leading-relaxed" style="color:#b8c8df;font-size:15px;line-height:1.6;">ระบบบริหารจัดการแชทแบบ Omnichat สำหรับทีมดูแลลูกค้า ครบทุกช่องทางของธุรกิจในที่เดียว</p>
-                <a data-i18n="project-link" class="project-link mt-auto pt-6 font-semibold" href="https://chat.thaiagentstudio.com" target="_blank" rel="noopener noreferrer" style="color:#e0baff;font-weight:700;font-size:16px;">เข้าชมผลงาน</a>
-              </article>
-            </div>
-          </div>
-
-          <div class="solution-section">
-            <div class="mb-6">
-              <p class="section-kicker" data-i18n="section-systems-kicker">03 / SYSTEMS & AUTOMATION</p>
-              <h3 data-i18n="section-systems-title" class="hero-copy mt-3 text-2xl sm:text-3xl font-bold">Business Systems & Automation</h3>
-              <p data-i18n="section-systems-desc" class="mt-2 max-w-2xl text-sm sm:text-base leading-relaxed" style="color:#a9b9d2;">ERP, Workflow Automation และระบบ Self-hosted ที่แสดงทักษะด้านการติดตั้ง เชื่อมต่อ และนำระบบธุรกิจมาใช้งานจริง</p>
-            </div>
-
-            <div class="grid md:grid-cols-2 gap-5">
-              <article class="work-card rounded-2xl p-6 flex flex-col" style="background:linear-gradient(145deg,rgba(67,44,64,.96),rgba(17,20,39,.94));">
-                <div class="flex justify-between items-start gap-4"><p data-i18n="project-tag-6" class="inline-flex rounded-full px-3 py-1 text-xs font-semibold" style="background:rgba(113,75,103,.32);color:#efcfe8;font-weight:700;font-size:14px;letter-spacing:.05rem;">ERP PLATFORM</p><span class="card-number">06</span></div>
-                <div class="brand-logo-box light"><img src="https://odoocdn.com/openerp_website/static/src/img/assets/svg/odoo_logo.svg" alt="Odoo logo" loading="lazy"></div>
-                <h4 data-i18n="project-title-6" class="mt-5 font-semibold" style="font-size:22px;font-weight:700;">Odoo ERP Demo</h4>
-                <p data-i18n="project-description-6" class="mt-3 leading-relaxed" style="color:#c8d4e7;font-size:15px;line-height:1.6;">ตัวอย่างระบบ Odoo ERP สำหรับทดลองใช้งานระบบธุรกิจและโมดูลต่าง ๆ บนเซิร์ฟเวอร์ที่จัดเตรียมไว้</p>
-                <div class="credential-box"><span data-i18n="demo-access">Demo access</span><br>User: <code>demo</code><br>Password: <code>tasodoo</code></div>
-                <a data-i18n="project-link" class="project-link mt-auto pt-6 font-semibold" href="https://odoo.thaiagentstudio.com" target="_blank" rel="noopener noreferrer" style="color:#e8c7df;font-weight:700;font-size:16px;">เข้าชมผลงาน</a>
-              </article>
-
-              <article class="work-card rounded-2xl p-6 flex flex-col" style="background:linear-gradient(145deg,rgba(57,30,46,.96),rgba(11,18,34,.94));">
-                <div class="flex justify-between items-start gap-4"><p data-i18n="project-tag-7" class="inline-flex rounded-full px-3 py-1 text-xs font-semibold" style="background:rgba(234,75,113,.16);color:#ffafc2;font-weight:700;font-size:14px;letter-spacing:.05rem;">WORKFLOW AUTOMATION</p><span class="card-number">07</span></div>
-                <div class="brand-logo-box dark"><img src="https://n8n.io/brandguidelines/logo-white.svg" alt="n8n logo" loading="lazy"></div>
-                <h4 data-i18n="project-title-7" class="mt-5 font-semibold" style="font-size:22px;font-weight:700;">n8n Self-hosted</h4>
-                <p data-i18n="project-description-7" class="mt-3 leading-relaxed" style="color:#c8d4e7;font-size:15px;line-height:1.6;">ระบบ Workflow Automation แบบ Self-hosted สำหรับเชื่อมต่อ API บริการต่าง ๆ และสร้างกระบวนการ Automation ที่ทำงานต่อเนื่อง</p>
-                <a data-i18n="project-link" class="project-link mt-auto pt-6 font-semibold" href="http://n8n.thaiagentstudio.com" target="_blank" rel="noopener noreferrer" style="color:#ff9eb5;font-weight:700;font-size:16px;">เข้าชมผลงาน</a>
-              </article>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <footer class="w-full px-5 sm:px-8 lg:px-12 pb-8">
-      <div class="footer-line mx-auto max-w-7xl border-t pt-6 flex flex-col sm:flex-row justify-between gap-3 text-sm">
-        <p data-i18n="footer-copy" style="color:#dce9f8;font-weight:600;font-size:16px;">ThaiAgent Studio — Built for useful intelligence.</p>
-        <p data-i18n="footer-note" style="color:#9dadc5;font-size:16px;">เลือกหมวดที่สนใจแล้วกดเข้าชมระบบจริงได้เลย</p>
+          <figcaption>
+            <span>Agent2Day</span>
+            <span class="live-label"><span class="status-dot" aria-hidden="true"></span><span data-copy data-th="ภาพจากระบบจริง" data-en="Live system capture">ภาพจากระบบจริง</span></span>
+          </figcaption>
+        </figure>
       </div>
-    </footer>
-  </div>
+    </section>
+
+    <aside class="owner-strip" aria-label="Owner and capabilities">
+      <div class="container owner-strip-inner">
+        <div>
+          <p class="owner-name">Sirichot Wipharat</p>
+          <p class="owner-role" data-copy data-th="เจ้าของ Portfolio · ThaiAgent Studio" data-en="Portfolio owner · ThaiAgent Studio">เจ้าของ Portfolio · ThaiAgent Studio</p>
+        </div>
+        <ul class="owner-capabilities">
+          <li data-copy data-th="Product & System Design" data-en="Product & System Design">Product & System Design</li>
+          <li data-copy data-th="Application Development" data-en="Application Development">Application Development</li>
+          <li data-copy data-th="API & Business Integration" data-en="API & Business Integration">API & Business Integration</li>
+          <li data-copy data-th="Deployment & Self-hosting" data-en="Deployment & Self-hosting">Deployment & Self-hosting</li>
+        </ul>
+      </div>
+    </aside>
+
+    <section id="work" class="work-section" aria-labelledby="work-title">
+      <div class="container">
+        <header class="section-header">
+          <h2 id="work-title" data-copy data-th="ระบบหลักที่เปิดให้ตรวจสอบได้" data-en="Flagship systems you can inspect">ระบบหลักที่เปิดให้ตรวจสอบได้</h2>
+          <p data-copy data-th="แต่ละระบบแสดงสิ่งที่ผมรับผิดชอบ ขอบเขตการทำงาน และปลายทางจริง เพื่อให้ประเมินจากของที่ใช้งานได้ ไม่ใช่จากคำโฆษณา" data-en="Each system shows my responsibility, system scope, and a real destination—so the work can be assessed from what runs, not from marketing claims.">แต่ละระบบแสดงสิ่งที่ผมรับผิดชอบ ขอบเขตการทำงาน และปลายทางจริง เพื่อให้ประเมินจากของที่ใช้งานได้ ไม่ใช่จากคำโฆษณา</p>
+        </header>
+
+        <div class="featured-projects">
+          <article class="project-feature">
+            <figure class="project-media">
+              <div class="screenshot-frame">
+                <img src="assets/agent2day.png" width="1425" height="800" loading="lazy" alt="Agent2Day ระบบข่าว AI ภาษาไทยที่เผยแพร่บทความจาก workflow อัตโนมัติ" data-alt-th="Agent2Day ระบบข่าว AI ภาษาไทยที่เผยแพร่บทความจาก workflow อัตโนมัติ" data-alt-en="Agent2Day Thai AI news platform publishing articles from an automated workflow">
+              </div>
+              <figcaption><span>agent2day.thaiagentstudio.com</span><span data-copy data-th="ระบบใช้งานจริง" data-en="Live production system">ระบบใช้งานจริง</span></figcaption>
+            </figure>
+
+            <div class="project-copy">
+              <div class="project-status">
+                <span class="live-label"><span class="status-dot" aria-hidden="true"></span><span data-copy data-th="ออนไลน์" data-en="Online">ออนไลน์</span></span>
+                <span data-copy data-th="AI Publishing System" data-en="AI Publishing System">AI Publishing System</span>
+              </div>
+              <h3>Agent2Day</h3>
+              <p class="project-summary" data-copy data-th="ผมพัฒนาและ deploy ระบบข่าว AI ที่ดูแลกระบวนการตั้งแต่รวบรวมข้อมูล เรียบเรียงเนื้อหา อ้างอิงแหล่งข่าว ไปจนถึงเผยแพร่บนเว็บไซต์ภาษาไทย" data-en="I built and deployed an AI-news system covering source collection, content preparation, source attribution, and publishing to a Thai-language website.">ผมพัฒนาและ deploy ระบบข่าว AI ที่ดูแลกระบวนการตั้งแต่รวบรวมข้อมูล เรียบเรียงเนื้อหา อ้างอิงแหล่งข่าว ไปจนถึงเผยแพร่บนเว็บไซต์ภาษาไทย</p>
+
+              <dl class="project-facts">
+                <div>
+                  <dt data-copy data-th="บทบาท" data-en="Role">บทบาท</dt>
+                  <dd data-copy data-th="Product design · Web development · Deployment" data-en="Product design · Web development · Deployment">Product design · Web development · Deployment</dd>
+                </div>
+                <div>
+                  <dt data-copy data-th="ขอบเขตระบบ" data-en="System scope">ขอบเขตระบบ</dt>
+                  <dd data-copy data-th="รวบรวมข่าว · จัดการเนื้อหา · เผยแพร่อัตโนมัติ" data-en="News collection · Content workflow · Automated publishing">รวบรวมข่าว · จัดการเนื้อหา · เผยแพร่อัตโนมัติ</dd>
+                </div>
+                <div>
+                  <dt data-copy data-th="หลักฐาน" data-en="Evidence">หลักฐาน</dt>
+                  <dd data-copy data-th="มีบทความเผยแพร่ 327 รายการในระบบจริง" data-en="327 published articles visible in the live system">มีบทความเผยแพร่ 327 รายการในระบบจริง</dd>
+                </div>
+              </dl>
+
+              <div class="tags" aria-label="Agent2Day capabilities">
+                <span class="tag">AI workflow</span>
+                <span class="tag">Publishing</span>
+                <span class="tag">Web deployment</span>
+              </div>
+
+              <div class="project-actions">
+                <a class="button button-primary" href="https://agent2day.thaiagentstudio.com" target="_blank" rel="noopener noreferrer" data-copy data-th="เปิด Agent2Day เวอร์ชันใช้งานจริง ↗" data-en="Open live Agent2Day ↗" data-aria-th="เปิด Agent2Day เวอร์ชันใช้งานจริงในแท็บใหม่" data-aria-en="Open live Agent2Day in a new tab">เปิด Agent2Day เวอร์ชันใช้งานจริง ↗</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-feature">
+            <figure class="project-media">
+              <div class="screenshot-frame">
+                <img src="assets/cartclip.png" width="1425" height="800" loading="lazy" alt="หน้าสร้าง Prompt ของ CartClip AI พร้อมขั้นตอนการทำงานสี่ขั้น" data-alt-th="หน้าสร้าง Prompt ของ CartClip AI พร้อมขั้นตอนการทำงานสี่ขั้น" data-alt-en="CartClip AI prompt generator showing its four-step workflow">
+              </div>
+              <figcaption><span>cartclip-ai.thaiagentstudio.com</span><span data-copy data-th="เว็บแอปใช้งานจริง" data-en="Live web application">เว็บแอปใช้งานจริง</span></figcaption>
+            </figure>
+
+            <div class="project-copy">
+              <div class="project-status">
+                <span class="live-label"><span class="status-dot" aria-hidden="true"></span><span data-copy data-th="ออนไลน์" data-en="Online">ออนไลน์</span></span>
+                <span data-copy data-th="Commerce Content Tool" data-en="Commerce Content Tool">Commerce Content Tool</span>
+              </div>
+              <h3>CartClip AI</h3>
+              <p class="project-summary" data-copy data-th="เครื่องมือที่รับภาพหรือข้อมูลสินค้า แล้วจัดโครงสร้างเป็น Video Prompt ผ่าน workflow สี่ขั้น เพื่อให้ทีมคอนเทนต์เริ่มงานจากข้อมูลชุดเดียวกัน" data-en="A tool that turns product images and information into structured video prompts through a four-step workflow, giving content teams a consistent starting point.">เครื่องมือที่รับภาพหรือข้อมูลสินค้า แล้วจัดโครงสร้างเป็น Video Prompt ผ่าน workflow สี่ขั้น เพื่อให้ทีมคอนเทนต์เริ่มงานจากข้อมูลชุดเดียวกัน</p>
+
+              <dl class="project-facts">
+                <div>
+                  <dt data-copy data-th="บทบาท" data-en="Role">บทบาท</dt>
+                  <dd data-copy data-th="Product design · Application development · Deployment" data-en="Product design · Application development · Deployment">Product design · Application development · Deployment</dd>
+                </div>
+                <div>
+                  <dt data-copy data-th="ขอบเขตระบบ" data-en="System scope">ขอบเขตระบบ</dt>
+                  <dd data-copy data-th="Product input · Prompt workflow · Credit control" data-en="Product input · Prompt workflow · Credit control">Product input · Prompt workflow · Credit control</dd>
+                </div>
+                <div>
+                  <dt data-copy data-th="สิ่งที่ทดลองได้" data-en="What to test">สิ่งที่ทดลองได้</dt>
+                  <dd data-copy data-th="เส้นทางสร้าง Prompt ตั้งแต่แคปภาพจนถึงผลลัพธ์" data-en="The prompt-generation flow from product capture to output">เส้นทางสร้าง Prompt ตั้งแต่แคปภาพจนถึงผลลัพธ์</dd>
+                </div>
+              </dl>
+
+              <div class="tags" aria-label="CartClip AI capabilities">
+                <span class="tag">Prompt workflow</span>
+                <span class="tag">Commerce tooling</span>
+                <span class="tag">Application UX</span>
+              </div>
+
+              <div class="project-actions">
+                <a class="button button-primary" href="https://cartclip-ai.thaiagentstudio.com" target="_blank" rel="noopener noreferrer" data-copy data-th="ทดลอง CartClip AI ↗" data-en="Try CartClip AI ↗" data-aria-th="ทดลอง CartClip AI ในแท็บใหม่" data-aria-en="Try CartClip AI in a new tab">ทดลอง CartClip AI ↗</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-feature">
+            <figure class="project-media">
+              <div class="screenshot-frame">
+                <img src="assets/thaiagent-desk.png" width="1425" height="800" loading="lazy" alt="ThaiAgent Desk แสดง inbox ลูกค้า รายการสนทนา และเมนูจัดการระบบ" data-alt-th="ThaiAgent Desk แสดง inbox ลูกค้า รายการสนทนา และเมนูจัดการระบบ" data-alt-en="ThaiAgent Desk showing a customer inbox, conversation list, and management navigation">
+              </div>
+              <figcaption><span>chat.thaiagentstudio.com</span><span data-copy data-th="ระบบ Helpdesk ออนไลน์" data-en="Live helpdesk system">ระบบ Helpdesk ออนไลน์</span></figcaption>
+            </figure>
+
+            <div class="project-copy">
+              <div class="project-status">
+                <span class="live-label"><span class="status-dot" aria-hidden="true"></span><span data-copy data-th="ออนไลน์" data-en="Online">ออนไลน์</span></span>
+                <span data-copy data-th="Customer Support Platform" data-en="Customer Support Platform">Customer Support Platform</span>
+              </div>
+              <h3>ThaiAgent Desk</h3>
+              <p class="project-summary" data-copy data-th="ระบบ helpdesk ที่รวมบทสนทนาจากช่องทางที่เชื่อมต่อไว้ใน inbox เดียว พร้อม Leads, Contacts, Analytics, Simulator และเครื่องมือสำหรับผู้ดูแลระบบ" data-en="A helpdesk that brings connected customer conversations into one inbox, with leads, contacts, analytics, a simulator, and administration tools.">ระบบ helpdesk ที่รวมบทสนทนาจากช่องทางที่เชื่อมต่อไว้ใน inbox เดียว พร้อม Leads, Contacts, Analytics, Simulator และเครื่องมือสำหรับผู้ดูแลระบบ</p>
+
+              <dl class="project-facts">
+                <div>
+                  <dt data-copy data-th="บทบาท" data-en="Role">บทบาท</dt>
+                  <dd data-copy data-th="Product design · Application development · Deployment" data-en="Product design · Application development · Deployment">Product design · Application development · Deployment</dd>
+                </div>
+                <div>
+                  <dt data-copy data-th="ขอบเขตระบบ" data-en="System scope">ขอบเขตระบบ</dt>
+                  <dd data-copy data-th="Unified inbox · Contacts · Leads · Analytics" data-en="Unified inbox · Contacts · Leads · Analytics">Unified inbox · Contacts · Leads · Analytics</dd>
+                </div>
+                <div>
+                  <dt data-copy data-th="สิ่งที่ตรวจสอบได้" data-en="Verifiable proof">สิ่งที่ตรวจสอบได้</dt>
+                  <dd data-copy data-th="หน้าจอระบบจริงและเส้นทางจัดการบทสนทนา" data-en="A working interface and live conversation-management flow">หน้าจอระบบจริงและเส้นทางจัดการบทสนทนา</dd>
+                </div>
+              </dl>
+
+              <div class="tags" aria-label="ThaiAgent Desk capabilities">
+                <span class="tag">Helpdesk</span>
+                <span class="tag">Customer operations</span>
+                <span class="tag">System UX</span>
+              </div>
+
+              <div class="project-actions">
+                <a class="button button-primary" href="https://chat.thaiagentstudio.com" target="_blank" rel="noopener noreferrer" data-copy data-th="เปิด ThaiAgent Desk ↗" data-en="Open ThaiAgent Desk ↗" data-aria-th="เปิด ThaiAgent Desk ในแท็บใหม่" data-aria-en="Open ThaiAgent Desk in a new tab">เปิด ThaiAgent Desk ↗</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="systems" class="project-index" aria-labelledby="systems-title">
+      <div class="container">
+        <header class="project-index-header">
+          <h2 id="systems-title" data-copy data-th="Project index" data-en="Project index">Project index</h2>
+          <p data-copy data-th="ระบบและบริการอีก 4 รายการที่แสดงทักษะด้าน AI integration, web delivery, ERP และ self-hosted automation" data-en="Four additional systems and services demonstrating AI integration, web delivery, ERP, and self-hosted automation.">ระบบและบริการอีก 4 รายการที่แสดงทักษะด้าน AI integration, web delivery, ERP และ self-hosted automation</p>
+        </header>
+
+        <div class="project-list">
+          <article class="project-row">
+            <div class="project-thumb">
+              <img src="assets/thaiagentstudio.png" width="1425" height="800" loading="lazy" alt="หน้าเว็บไซต์ ThaiAgent Studio แสดงบริการ AI Chatbot และ AI Agent" data-alt-th="หน้าเว็บไซต์ ThaiAgent Studio แสดงบริการ AI Chatbot และ AI Agent" data-alt-en="ThaiAgent Studio website presenting AI chatbot and AI agent services">
+            </div>
+            <div class="project-row-copy">
+              <div class="project-status"><span class="live-label"><span class="status-dot" aria-hidden="true"></span><span data-copy data-th="ออนไลน์" data-en="Online">ออนไลน์</span></span><span>AI Integration</span></div>
+              <h3>ThaiAgent Studio</h3>
+              <p data-copy data-th="ออกแบบและพัฒนา AI Chatbot กับ AI Agent ที่เชื่อมต่อฐานความรู้ CRM, API และ human handoff สำหรับการใช้งานในองค์กร" data-en="AI chatbot and AI agent design connected to organizational knowledge bases, CRM systems, APIs, and human handoff.">ออกแบบและพัฒนา AI Chatbot กับ AI Agent ที่เชื่อมต่อฐานความรู้ CRM, API และ human handoff สำหรับการใช้งานในองค์กร</p>
+              <div class="project-row-meta"><span data-copy data-th="บทบาท: Solution design · Integration · Deployment" data-en="Role: Solution design · Integration · Deployment">บทบาท: Solution design · Integration · Deployment</span></div>
+            </div>
+            <div class="project-row-action">
+              <a class="button button-secondary" href="https://thaiagentstudio.com" target="_blank" rel="noopener noreferrer" data-copy data-th="ดู ThaiAgent Studio ↗" data-en="View ThaiAgent Studio ↗" data-aria-th="ดูเว็บไซต์ ThaiAgent Studio ในแท็บใหม่" data-aria-en="View ThaiAgent Studio in a new tab">ดู ThaiAgent Studio ↗</a>
+            </div>
+          </article>
+
+          <article class="project-row">
+            <div class="project-thumb">
+              <img src="assets/fastweb.png" width="1425" height="800" loading="lazy" alt="หน้าเว็บไซต์ FastWeb แสดงบริการพัฒนาเว็บไซต์หน้าเดียวสำหรับ SME" data-alt-th="หน้าเว็บไซต์ FastWeb แสดงบริการพัฒนาเว็บไซต์หน้าเดียวสำหรับ SME" data-alt-en="FastWeb website presenting single-page website delivery for SMEs">
+            </div>
+            <div class="project-row-copy">
+              <div class="project-status"><span class="live-label"><span class="status-dot" aria-hidden="true"></span><span data-copy data-th="ออนไลน์" data-en="Online">ออนไลน์</span></span><span>Web Delivery</span></div>
+              <h3>FastWeb</h3>
+              <p data-copy data-th="บริการพัฒนาและ deploy เว็บไซต์หน้าเดียวสำหรับ SME โดยเน้นความเร็ว ขอบเขตชัดเจน และพร้อมใช้งานโดยไม่เพิ่มระบบที่ไม่จำเป็น" data-en="Single-page website development and deployment for SMEs, focused on speed, clear scope, and practical delivery without unnecessary system complexity.">บริการพัฒนาและ deploy เว็บไซต์หน้าเดียวสำหรับ SME โดยเน้นความเร็ว ขอบเขตชัดเจน และพร้อมใช้งานโดยไม่เพิ่มระบบที่ไม่จำเป็น</p>
+              <div class="project-row-meta"><span data-copy data-th="บทบาท: Web design · Development · Deployment" data-en="Role: Web design · Development · Deployment">บทบาท: Web design · Development · Deployment</span></div>
+            </div>
+            <div class="project-row-action">
+              <a class="button button-secondary" href="https://fastweb.thaiagentstudio.com" target="_blank" rel="noopener noreferrer" data-copy data-th="ดูบริการ FastWeb ↗" data-en="View FastWeb ↗" data-aria-th="ดูบริการ FastWeb ในแท็บใหม่" data-aria-en="View FastWeb in a new tab">ดูบริการ FastWeb ↗</a>
+            </div>
+          </article>
+
+          <article class="project-row">
+            <div class="project-thumb">
+              <img src="assets/odoo.png" width="1425" height="800" loading="lazy" alt="หน้าเข้าสู่ระบบ Odoo ERP Demo ที่ติดตั้งสำหรับทดลอง workflow ธุรกิจ" data-alt-th="หน้าเข้าสู่ระบบ Odoo ERP Demo ที่ติดตั้งสำหรับทดลอง workflow ธุรกิจ" data-alt-en="Odoo ERP demo login deployed for exploring business workflows">
+            </div>
+            <div class="project-row-copy">
+              <div class="project-status"><span class="live-label"><span class="status-dot" aria-hidden="true"></span><span data-copy data-th="Demo ออนไลน์" data-en="Online demo">Demo ออนไลน์</span></span><span>ERP Deployment</span></div>
+              <h3>Odoo ERP Demo</h3>
+              <p data-copy data-th="Odoo ERP environment ที่ติดตั้งบนเซิร์ฟเวอร์เพื่อให้ทดลอง workflow และโมดูลธุรกิจ โดยมีบัญชี demo สำหรับเข้าดูระบบ" data-en="A hosted Odoo ERP environment for exploring business workflows and modules, with a public demo account for inspection.">Odoo ERP environment ที่ติดตั้งบนเซิร์ฟเวอร์เพื่อให้ทดลอง workflow และโมดูลธุรกิจ โดยมีบัญชี demo สำหรับเข้าดูระบบ</p>
+              <div class="project-row-meta"><span data-copy data-th="บทบาท: Installation · Configuration · Hosting" data-en="Role: Installation · Configuration · Hosting">บทบาท: Installation · Configuration · Hosting</span></div>
+              <div class="credentials" aria-label="Odoo demo credentials">
+                <span class="credential"><span data-copy data-th="ผู้ใช้" data-en="User">ผู้ใช้</span> <code>demo</code></span>
+                <button class="copy-btn" type="button" data-copy-value="demo" data-copy data-th="คัดลอก" data-en="Copy" data-label-th="คัดลอกชื่อผู้ใช้ demo" data-label-en="Copy demo username">คัดลอก</button>
+                <span class="credential"><span data-copy data-th="รหัสผ่าน" data-en="Password">รหัสผ่าน</span> <code>tasodoo</code></span>
+                <button class="copy-btn" type="button" data-copy-value="tasodoo" data-copy data-th="คัดลอก" data-en="Copy" data-label-th="คัดลอกรหัสผ่าน Odoo demo" data-label-en="Copy Odoo demo password">คัดลอก</button>
+              </div>
+            </div>
+            <div class="project-row-action">
+              <a class="button button-secondary" href="https://odoo.thaiagentstudio.com" target="_blank" rel="noopener noreferrer" data-copy data-th="ทดลอง Odoo ERP ↗" data-en="Try Odoo ERP demo ↗" data-aria-th="ทดลอง Odoo ERP Demo ในแท็บใหม่" data-aria-en="Try the Odoo ERP demo in a new tab">ทดลอง Odoo ERP ↗</a>
+            </div>
+          </article>
+
+          <article class="project-row">
+            <div class="project-thumb">
+              <img src="assets/n8n.png" width="1425" height="800" loading="lazy" alt="n8n self-hosted dashboard แสดงสถานะ production executions และรายการ workflow" data-alt-th="n8n self-hosted dashboard แสดงสถานะ production executions และรายการ workflow" data-alt-en="Self-hosted n8n dashboard showing production execution status and workflow listings">
+            </div>
+            <div class="project-row-copy">
+              <div class="project-status"><span class="live-label"><span class="status-dot" aria-hidden="true"></span><span data-copy data-th="HTTPS ออนไลน์" data-en="Online over HTTPS">HTTPS ออนไลน์</span></span><span>Workflow Automation</span></div>
+              <h3>n8n Self-hosted</h3>
+              <p data-copy data-th="n8n environment แบบ self-hosted สำหรับเชื่อมต่อ API และรัน production workflows อย่างต่อเนื่อง พร้อมหน้าติดตาม executions และสถานะการทำงาน" data-en="A self-hosted n8n environment for connecting APIs and running continuous production workflows, with execution and status monitoring.">n8n environment แบบ self-hosted สำหรับเชื่อมต่อ API และรัน production workflows อย่างต่อเนื่อง พร้อมหน้าติดตาม executions และสถานะการทำงาน</p>
+              <div class="project-row-meta"><span data-copy data-th="บทบาท: Self-hosting · API integration · Workflow operations" data-en="Role: Self-hosting · API integration · Workflow operations">บทบาท: Self-hosting · API integration · Workflow operations</span></div>
+            </div>
+            <div class="project-row-action">
+              <a class="button button-secondary" href="https://n8n.thaiagentstudio.com" target="_blank" rel="noopener noreferrer" data-copy data-th="เปิด n8n environment ↗" data-en="Open n8n environment ↗" data-aria-th="เปิด n8n self-hosted environment ในแท็บใหม่" data-aria-en="Open the self-hosted n8n environment in a new tab">เปิด n8n environment ↗</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact-section" aria-labelledby="contact-title">
+      <div class="container contact-grid">
+        <div class="contact-copy">
+          <p class="contact-label" data-copy data-th="ติดต่อร่วมงาน" data-en="Work with me">ติดต่อร่วมงาน</p>
+          <h2 id="contact-title" data-copy data-th="ต้องการคนที่พัฒนาและนำระบบขึ้นใช้งานได้จริง?" data-en="Need someone who can build and deploy the system?">ต้องการคนที่พัฒนาและนำระบบขึ้นใช้งานได้จริง?</h2>
+          <p data-copy data-th="ติดต่อผมเพื่อพูดคุยงานพัฒนา AI, Web Application, ERP integration, workflow automation และการ deploy ระบบสำหรับทีมของคุณ" data-en="Contact me to discuss AI development, web applications, ERP integration, workflow automation, and system deployment for your team.">ติดต่อผมเพื่อพูดคุยงานพัฒนา AI, Web Application, ERP integration, workflow automation และการ deploy ระบบสำหรับทีมของคุณ</p>
+          <div class="contact-owner">
+            <strong>Sirichot Wipharat</strong>
+            <span data-copy data-th="Owner · ThaiAgent Studio" data-en="Owner · ThaiAgent Studio">Owner · ThaiAgent Studio</span>
+          </div>
+        </div>
+
+        <address class="contact-links">
+          <a class="contact-link" href="tel:+66639585341">
+            <span class="contact-kind" data-copy data-th="โทรศัพท์" data-en="Phone">โทรศัพท์</span>
+            <span class="contact-value">063-958-5341</span>
+            <span class="contact-arrow" aria-hidden="true">→</span>
+          </a>
+          <a class="contact-link" href="https://line.me/ti/p/~keng-night" target="_blank" rel="noopener noreferrer" data-aria-th="เพิ่ม LINE keng-night ในแท็บใหม่" data-aria-en="Open LINE contact keng-night in a new tab">
+            <span class="contact-kind">LINE</span>
+            <span class="contact-value">keng-night</span>
+            <span class="contact-arrow" aria-hidden="true">↗</span>
+          </a>
+          <a class="contact-link" href="mailto:sirichot.wip@gmail.com">
+            <span class="contact-kind">Email</span>
+            <span class="contact-value">sirichot.wip@gmail.com</span>
+            <span class="contact-arrow" aria-hidden="true">→</span>
+          </a>
+          <a class="contact-link" href="https://www.linkedin.com/in/sirichot-wipharat-122513411" target="_blank" rel="noopener noreferrer" data-aria-th="เปิด LinkedIn ของ Sirichot Wipharat ในแท็บใหม่" data-aria-en="Open Sirichot Wipharat on LinkedIn in a new tab">
+            <span class="contact-kind">LinkedIn</span>
+            <span class="contact-value">sirichot-wipharat</span>
+            <span class="contact-arrow" aria-hidden="true">↗</span>
+          </a>
+        </address>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© 2026 Sirichot Wipharat · ThaiAgent Studio</p>
+      <a href="#top" data-copy data-th="กลับขึ้นด้านบน ↑" data-en="Back to top ↑">กลับขึ้นด้านบน ↑</a>
+    </div>
+  </footer>
+
+  <div id="copy-status" aria-live="polite" hidden></div>
 
   <script>
-    const translations = {
+    const pageMetadata = {
       th: {
-        "brand-name": "ThaiAgent Studio",
-        "header-note": "AI systems · automation · digital experiences",
-        "hero-eyebrow": "SELECTED WORK / 2026",
-        "hero-title": "งานที่ทำให้ไอเดียธุรกิจเดินหน้าได้จริง",
-        "hero-description": "รวมผลงานจาก ThaiAgent Studio ตั้งแต่ AI และเว็บไซต์ ไปจนถึงระบบธุรกิจ ERP และ Workflow Automation ที่นำไปใช้งานจริง",
-        "hero-meta": "7 โปรเจกต์ พร้อมให้คุณกดเข้าไปสำรวจ",
-        "work-eyebrow": "PORTFOLIO",
-        "work-title": "โซลูชันและระบบที่ผมพัฒนา",
-        "work-note": "แบ่งผลงานตามทักษะและประเภทของระบบ เพื่อให้เห็นภาพชัดขึ้นว่าผมทำอะไรได้บ้าง",
-        "section-ai-kicker": "01 / AI",
-        "section-ai-title": "AI Solutions",
-        "section-ai-desc": "AI, Agents และเครื่องมือที่ช่วยให้ธุรกิจทำงานได้ฉลาดและรวดเร็วขึ้น",
-        "section-web-kicker": "02 / WEB & APPS",
-        "section-web-title": "Web & Application Solutions",
-        "section-web-desc": "เว็บไซต์และเว็บแอปพลิเคชันที่เน้นความเร็ว การใช้งานจริง และประสบการณ์ที่เรียบง่าย",
-        "section-systems-kicker": "03 / SYSTEMS & AUTOMATION",
-        "section-systems-title": "Business Systems & Automation",
-        "section-systems-desc": "ERP, Workflow Automation และระบบ Self-hosted ที่แสดงทักษะด้านการติดตั้ง เชื่อมต่อ และนำระบบธุรกิจมาใช้งานจริง",
-        "project-tag-1": "AI NEWSROOM",
-        "project-title-1": "Agent2Day",
-        "project-description-1": "เว็บไซต์ข่าว AI ที่ใช้ AI และ Automation ดูแลกระบวนการตั้งแต่การรวบรวมข้อมูลไปจนถึงการเผยแพร่",
-        "project-tag-2": "VIDEO PROMPT TOOL",
-        "project-title-2": "CartClip AI",
-        "project-description-2": "เครื่องมือที่นำข้อมูลสินค้ามาแปลงเป็น Prompt สำหรับสร้างวิดีโอ ช่วยเริ่มต้นงานคอนเทนต์ได้เร็วขึ้น",
-        "project-tag-3": "AI SOLUTIONS",
-        "project-title-3": "ThaiAgent Studio",
-        "project-description-3": "ออกแบบและพัฒนา AI Chatbot กับ AI Agent ที่เชื่อมต่อฐานความรู้ ระบบ CRM, API และ Human Handoff",
-        "project-tag-4": "WEB DEVELOPMENT",
-        "project-title-4": "FastWeb",
-        "project-description-4": "บริการพัฒนาเว็บไซต์ประสิทธิภาพสูงสำหรับธุรกิจขนาดกลางและขนาดเล็ก ที่ต้องการเว็บไซต์พร้อมเติบโต",
-        "project-tag-5": "OMNICHAT PLATFORM",
-        "project-title-5": "ThaiAgent Desk",
-        "project-description-5": "ระบบบริหารจัดการแชทแบบ Omnichat สำหรับทีมดูแลลูกค้า ครบทุกช่องทางของธุรกิจในที่เดียว",
-        "project-tag-6": "ERP PLATFORM",
-        "project-title-6": "Odoo ERP Demo",
-        "project-description-6": "ตัวอย่างระบบ Odoo ERP สำหรับทดลองใช้งานระบบธุรกิจและโมดูลต่าง ๆ บนเซิร์ฟเวอร์ที่จัดเตรียมไว้",
-        "project-tag-7": "WORKFLOW AUTOMATION",
-        "project-title-7": "n8n Self-hosted",
-        "project-description-7": "ระบบ Workflow Automation แบบ Self-hosted สำหรับเชื่อมต่อ API บริการต่าง ๆ และสร้างกระบวนการ Automation ที่ทำงานต่อเนื่อง",
-        "demo-access": "ข้อมูลสำหรับเข้าชม Demo",
-        "project-link": "เข้าชมผลงาน",
-        "footer-copy": "ThaiAgent Studio — Built for useful intelligence.",
-        "footer-note": "เลือกหมวดที่สนใจแล้วกดเข้าชมระบบจริงได้เลย"
+        title: "Sirichot Wipharat — ThaiAgent Studio Portfolio",
+        description: "Portfolio ของ Sirichot Wipharat และ ThaiAgent Studio — ระบบ AI เว็บ ERP และ Automation ที่พัฒนา เชื่อมต่อ และ deploy ใช้งานจริง"
       },
       en: {
-        "brand-name": "ThaiAgent Studio",
-        "header-note": "AI systems · automation · digital experiences",
-        "hero-eyebrow": "SELECTED WORK / 2026",
-        "hero-title": "Making business ideas move forward with action",
-        "hero-description": "A collection of ThaiAgent Studio projects spanning AI, websites, ERP business systems, and workflow automation built for real-world use.",
-        "hero-meta": "7 projects ready to explore",
-        "work-eyebrow": "PORTFOLIO",
-        "work-title": "Solutions and systems I build",
-        "work-note": "Projects are grouped by skill and system type so you can quickly see the areas I work across.",
-        "section-ai-kicker": "01 / AI",
-        "section-ai-title": "AI Solutions",
-        "section-ai-desc": "AI, agents, and tools that help businesses work smarter and move faster.",
-        "section-web-kicker": "02 / WEB & APPS",
-        "section-web-title": "Web & Application Solutions",
-        "section-web-desc": "Websites and web applications focused on speed, practical use, and straightforward experiences.",
-        "section-systems-kicker": "03 / SYSTEMS & AUTOMATION",
-        "section-systems-title": "Business Systems & Automation",
-        "section-systems-desc": "ERP, workflow automation, and self-hosted systems demonstrating deployment, integration, and practical business-system skills.",
-        "project-tag-1": "AI NEWSROOM",
-        "project-title-1": "Agent2Day",
-        "project-description-1": "An AI news website powered by AI and automation, managing the workflow from information gathering to publishing.",
-        "project-tag-2": "VIDEO PROMPT TOOL",
-        "project-title-2": "CartClip AI",
-        "project-description-2": "A tool that transforms product information into prompts for video generation, helping content creation start faster.",
-        "project-tag-3": "AI SOLUTIONS",
-        "project-title-3": "ThaiAgent Studio",
-        "project-description-3": "Design and development of AI chatbots and AI agents connected to knowledge bases, CRM systems, APIs, and human handoff.",
-        "project-tag-4": "WEB DEVELOPMENT",
-        "project-title-4": "FastWeb",
-        "project-description-4": "High-performance website development for small and medium-sized businesses that want a fast, practical web presence.",
-        "project-tag-5": "OMNICHAT PLATFORM",
-        "project-title-5": "ThaiAgent Desk",
-        "project-description-5": "An omnichannel chat management platform for customer support teams, bringing business conversations together in one place.",
-        "project-tag-6": "ERP PLATFORM",
-        "project-title-6": "Odoo ERP Demo",
-        "project-description-6": "A hosted Odoo ERP environment for exploring business workflows and ERP modules in a practical demo system.",
-        "project-tag-7": "WORKFLOW AUTOMATION",
-        "project-title-7": "n8n Self-hosted",
-        "project-description-7": "A self-hosted workflow automation environment for connecting APIs, services, and persistent automation processes.",
-        "demo-access": "Demo access",
-        "project-link": "Visit website",
-        "footer-copy": "ThaiAgent Studio — Built for useful intelligence.",
-        "footer-note": "Choose a category and open any live system to explore it."
+        title: "Sirichot Wipharat — ThaiAgent Studio Portfolio",
+        description: "Live AI, web, ERP, and automation systems built, integrated, and deployed by Sirichot Wipharat under ThaiAgent Studio."
       }
     };
 
     let currentLanguage = "th";
 
-    function switchLanguage(lang) {
-      if (currentLanguage === lang) return;
+    function applyLanguage(language, persist = true) {
+      const lang = language === "en" ? "en" : "th";
       currentLanguage = lang;
-      const langData = translations[lang];
 
-      document.querySelectorAll("[data-i18n]").forEach((el) => {
-        const key = el.getAttribute("data-i18n");
-        if (langData[key] !== undefined) el.textContent = langData[key];
+      document.querySelectorAll("[data-copy]").forEach((element) => {
+        const value = lang === "th" ? element.dataset.th : element.dataset.en;
+        if (value !== undefined) element.textContent = value;
+      });
+
+      document.querySelectorAll("[data-alt-th][data-alt-en]").forEach((image) => {
+        image.alt = lang === "th" ? image.dataset.altTh : image.dataset.altEn;
+      });
+
+      document.querySelectorAll("[data-aria-th][data-aria-en]").forEach((element) => {
+        element.setAttribute("aria-label", lang === "th" ? element.dataset.ariaTh : element.dataset.ariaEn);
+      });
+
+      document.querySelectorAll("[data-label-th][data-label-en]").forEach((element) => {
+        element.setAttribute("aria-label", lang === "th" ? element.dataset.labelTh : element.dataset.labelEn);
       });
 
       document.documentElement.lang = lang;
-      document.getElementById("btn-th").classList.toggle("active", lang === "th");
-      document.getElementById("btn-en").classList.toggle("active", lang === "en");
-      document.getElementById("btn-th").setAttribute("aria-pressed", String(lang === "th"));
-      document.getElementById("btn-en").setAttribute("aria-pressed", String(lang === "en"));
+      document.title = pageMetadata[lang].title;
+      document.querySelector('meta[name="description"]').setAttribute("content", pageMetadata[lang].description);
+      document.querySelector('meta[property="og:description"]').setAttribute("content", pageMetadata[lang].description);
+
+      const thaiButton = document.getElementById("btn-th");
+      const englishButton = document.getElementById("btn-en");
+      thaiButton.classList.toggle("active", lang === "th");
+      englishButton.classList.toggle("active", lang === "en");
+      thaiButton.setAttribute("aria-pressed", String(lang === "th"));
+      englishButton.setAttribute("aria-pressed", String(lang === "en"));
+
+      if (persist) localStorage.setItem("tas-language", lang);
+    }
+
+    async function copyCredential(button) {
+      const value = button.dataset.copyValue;
+      const originalText = currentLanguage === "th" ? button.dataset.th : button.dataset.en;
+      const successText = currentLanguage === "th" ? "คัดลอกแล้ว" : "Copied";
+      const status = document.getElementById("copy-status");
+
+      try {
+        await navigator.clipboard.writeText(value);
+        button.textContent = successText;
+        status.hidden = false;
+        status.textContent = currentLanguage === "th" ? "คัดลอกข้อมูลแล้ว" : "Credential copied";
+        window.setTimeout(() => {
+          button.textContent = originalText;
+          status.hidden = true;
+        }, 1600);
+      } catch {
+        status.hidden = false;
+        status.textContent = currentLanguage === "th" ? "ไม่สามารถคัดลอกอัตโนมัติได้ กรุณาเลือกข้อความ" : "Automatic copy failed. Select the text manually.";
+      }
     }
 
     document.addEventListener("DOMContentLoaded", () => {
-      if (window.lucide) lucide.createIcons();
-      document.getElementById("btn-th").addEventListener("click", () => switchLanguage("th"));
-      document.getElementById("btn-en").addEventListener("click", () => switchLanguage("en"));
+      const savedLanguage = localStorage.getItem("tas-language");
+      const browserLanguage = navigator.language.toLowerCase().startsWith("th") ? "th" : "en";
+      applyLanguage(savedLanguage || browserLanguage, false);
+
+      document.getElementById("btn-th").addEventListener("click", () => applyLanguage("th"));
+      document.getElementById("btn-en").addEventListener("click", () => applyLanguage("en"));
+
+      document.querySelectorAll("[data-copy-value]").forEach((button) => {
+        button.addEventListener("click", () => copyCredential(button));
+      });
     });
   </script>
 </body>
