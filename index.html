@@ -2,13 +2,19 @@
 <html lang="th">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="description" content="Portfolio ของ Sirichot Wipharat และ ThaiAgent Studio — ระบบ AI เว็บ ERP และ Automation ที่พัฒนา เชื่อมต่อ และ deploy ใช้งานจริง">
   <meta name="theme-color" content="#090c11">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://portfolio.thaiagentstudio.com/">
   <meta property="og:title" content="Sirichot Wipharat — ThaiAgent Studio Portfolio">
   <meta property="og:description" content="ระบบ AI เว็บ ERP และ Automation ที่พัฒนา เชื่อมต่อ และ deploy ใช้งานจริง">
+  <meta property="og:image" content="https://portfolio.thaiagentstudio.com/assets/agent2day.png">
+  <meta property="og:image:alt" content="Agent2Day ระบบจริงที่พัฒนาและ deploy โดย Sirichot Wipharat">
+  <meta property="og:site_name" content="ThaiAgent Studio Portfolio">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://portfolio.thaiagentstudio.com/">
+  <link rel="icon" type="image/png" href="assets/thaiagentstudio-logo.png">
   <title>Sirichot Wipharat — ThaiAgent Studio Portfolio</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -36,6 +42,14 @@
       --radius-md: 12px;
       --container: 1180px;
       --header-height: 76px;
+      --font-sans: "Anuphan", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --space-xs: 8px;
+      --space-sm: 12px;
+      --space-md: 16px;
+      --space-lg: 24px;
+      --space-xl: 32px;
+      --space-2xl: 48px;
+      --space-3xl: 64px;
     }
 
     * {
@@ -45,6 +59,8 @@
     html {
       scroll-behavior: smooth;
       background: var(--bg);
+      font-family: var(--font-sans);
+      font-kerning: normal;
     }
 
     body {
@@ -52,16 +68,25 @@
       min-width: 320px;
       color: var(--ink);
       background: var(--bg);
-      font-family: "Anuphan", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      font-size: 16px;
+      font-family: inherit;
+      font-size: 1rem;
       line-height: 1.65;
       text-rendering: optimizeLegibility;
     }
 
-    body,
     button,
     a {
       font-family: inherit;
+    }
+
+    h1,
+    h2,
+    h3 {
+      text-wrap: balance;
+    }
+
+    p {
+      text-wrap: pretty;
     }
 
     img {
@@ -131,14 +156,9 @@
     .brand-mark {
       width: 38px;
       height: 38px;
-      display: grid;
-      place-items: center;
+      display: block;
       border-radius: 9px;
-      color: var(--accent-ink);
-      background: var(--accent);
-      font-size: 14px;
-      font-weight: 700;
-      letter-spacing: -0.03em;
+      object-fit: cover;
     }
 
     .brand-copy {
@@ -187,8 +207,82 @@
       border-bottom-color: var(--line-strong);
     }
 
+    .site-nav a[aria-current="location"] {
+      color: var(--ink);
+      border-bottom-color: var(--accent);
+    }
+
     .site-nav .nav-contact {
       color: var(--ink);
+    }
+
+    .mobile-nav {
+      position: relative;
+      display: none;
+    }
+
+    .mobile-nav summary {
+      min-width: 52px;
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 0 10px;
+      color: var(--ink);
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: .8125rem;
+      font-weight: 700;
+      list-style: none;
+    }
+
+    .mobile-nav summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .mobile-nav summary::after {
+      content: "+";
+      color: var(--accent);
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .mobile-nav[open] summary::after {
+      content: "−";
+    }
+
+    .mobile-nav-panel {
+      position: absolute;
+      top: calc(100% + 10px);
+      right: 0;
+      width: min(280px, calc(100vw - 28px));
+      padding: 6px;
+      background: var(--surface-strong);
+      border: 1px solid var(--line-strong);
+      border-radius: var(--radius-md);
+    }
+
+    .mobile-nav-panel a {
+      min-height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 0 12px;
+      color: var(--muted);
+      text-decoration: none;
+      border-radius: var(--radius-sm);
+      font-size: .9375rem;
+      font-weight: 600;
+    }
+
+    .mobile-nav-panel a:hover,
+    .mobile-nav-panel a[aria-current="location"] {
+      color: var(--ink);
+      background: var(--bg);
     }
 
     .lang-switcher {
@@ -222,7 +316,8 @@
       background: var(--accent);
     }
 
-    main section {
+    main section,
+    .project-row {
       scroll-margin-top: calc(var(--header-height) + 24px);
     }
 
@@ -417,8 +512,7 @@
       list-style: none;
     }
 
-    .owner-capabilities li,
-    .tag {
+    .owner-capabilities li {
       padding: 7px 10px;
       color: var(--muted);
       background: var(--surface-strong);
@@ -426,6 +520,78 @@
       border-radius: 999px;
       font-size: 13px;
       font-weight: 600;
+    }
+
+    .quick-start {
+      padding: clamp(56px, 7vw, 84px) 0;
+      background: var(--surface-strong);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .quick-start-header {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(280px, 470px);
+      align-items: end;
+      gap: 40px;
+      margin-bottom: 28px;
+    }
+
+    .quick-start-header h2 {
+      margin: 0;
+      font-size: clamp(1.8rem, 3.8vw, 3.2rem);
+      line-height: 1.12;
+      letter-spacing: -0.025em;
+    }
+
+    .quick-start-header p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.75;
+    }
+
+    .quick-start-list {
+      border-top: 1px solid var(--line-strong);
+    }
+
+    .quick-start-item {
+      min-height: 84px;
+      display: grid;
+      grid-template-columns: minmax(210px, .75fr) minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 28px;
+      padding: 14px 0;
+      color: var(--ink);
+      border-bottom: 1px solid var(--line);
+      text-decoration: none;
+      transition: color 180ms cubic-bezier(.16, 1, .3, 1), background-color 180ms cubic-bezier(.16, 1, .3, 1);
+    }
+
+    .quick-start-item:hover {
+      color: #ffffff;
+      background: var(--surface);
+    }
+
+    .quick-start-item strong {
+      font-size: 1.125rem;
+      line-height: 1.35;
+    }
+
+    .quick-start-item span:not(.quick-start-arrow) {
+      color: var(--muted);
+      font-size: .875rem;
+      line-height: 1.6;
+    }
+
+    .quick-start-arrow {
+      color: var(--accent);
+      font-size: 1.25rem;
+    }
+
+    .verification-note {
+      margin: 16px 0 0;
+      color: var(--subtle);
+      font-size: .8125rem;
     }
 
     .work-section {
@@ -511,6 +677,69 @@
       text-wrap: pretty;
     }
 
+    .system-flow {
+      display: flex;
+      align-items: stretch;
+      gap: 0;
+      margin: 24px 0 0;
+      padding: 0;
+      list-style: none;
+      border-block: 1px solid var(--line);
+    }
+
+    .system-flow li {
+      position: relative;
+      flex: 1 1 0;
+      min-width: 0;
+      padding: 14px 24px 14px 0;
+      color: var(--muted);
+      font-size: .8125rem;
+      line-height: 1.5;
+    }
+
+    .system-flow li + li {
+      padding-left: 24px;
+    }
+
+    .system-flow li + li::before {
+      content: "→";
+      position: absolute;
+      top: 50%;
+      left: -5px;
+      color: var(--accent);
+      transform: translateY(-50%);
+    }
+
+    .system-flow strong {
+      display: block;
+      margin-bottom: 2px;
+      color: var(--ink);
+      font-size: .875rem;
+    }
+
+    .mid-contact {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .mid-contact p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .mid-contact a {
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      color: var(--accent);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
     .project-facts {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -536,11 +765,30 @@
       line-height: 1.55;
     }
 
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
+    .project-tech {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0 18px;
       margin-top: 24px;
+      border-top: 1px solid var(--line);
+    }
+
+    .project-tech div {
+      padding: 10px 0 11px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .project-tech dt {
+      color: var(--subtle);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .project-tech dd {
+      margin: 4px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.55;
     }
 
     .project-actions {
@@ -570,16 +818,16 @@
 
     .project-row {
       display: grid;
-      grid-template-columns: 240px minmax(0, 1fr) auto;
-      align-items: center;
-      gap: 28px;
-      padding: 30px 0;
+      grid-template-columns: 180px minmax(0, 1fr);
+      align-items: start;
+      gap: 24px;
+      padding: 24px 0;
       border-bottom: 1px solid var(--line);
     }
 
     .project-thumb {
       overflow: hidden;
-      min-height: 138px;
+      min-height: 104px;
       border: 1px solid var(--line);
       border-radius: var(--radius-sm);
       background: var(--surface-strong);
@@ -587,9 +835,13 @@
 
     .project-thumb img {
       width: 100%;
-      height: 138px;
+      height: 104px;
       object-fit: cover;
       object-position: top;
+    }
+
+    .project-thumb-local-llm img {
+      object-position: left top;
     }
 
     .project-row-copy h3 {
@@ -616,12 +868,68 @@
       font-size: 13px;
     }
 
+    .project-disclosure {
+      margin-top: 14px;
+    }
+
+    .project-disclosure summary {
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--accent);
+      cursor: pointer;
+      font-size: .875rem;
+      font-weight: 700;
+      list-style: none;
+    }
+
+    .project-disclosure summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .project-disclosure summary::after {
+      content: "+";
+      font-size: 1rem;
+    }
+
+    .project-disclosure[open] summary::after {
+      content: "−";
+    }
+
+    .project-disclosure-body {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: end;
+      gap: 16px 28px;
+      padding: 2px 0 8px;
+    }
+
+    .project-disclosure-body p {
+      margin-top: 0;
+    }
+
+    .project-row-proof {
+      grid-column: 1;
+      display: grid;
+      gap: 2px;
+      color: var(--muted);
+      font-size: .8125rem;
+    }
+
+    .project-row-proof strong {
+      color: var(--ink);
+    }
+
     .project-row-action {
+      grid-column: 2;
+      grid-row: 1 / span 2;
       min-width: 180px;
       justify-self: end;
     }
 
     .credentials {
+      grid-column: 1;
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
@@ -665,6 +973,13 @@
       border-color: var(--accent);
     }
 
+    .copy-feedback {
+      flex: 1 0 100%;
+      min-height: 1.35em;
+      color: var(--muted);
+      font-size: .8125rem;
+    }
+
     .contact-section {
       padding: clamp(80px, 10vw, 126px) 0;
       background: var(--surface-blue);
@@ -674,8 +989,16 @@
     .contact-grid {
       display: grid;
       grid-template-columns: minmax(0, .8fr) minmax(420px, 1.2fr);
-      gap: clamp(40px, 8vw, 100px);
+      grid-template-areas:
+        "copy links"
+        "owner links";
+      column-gap: clamp(40px, 8vw, 100px);
+      row-gap: 28px;
       align-items: start;
+    }
+
+    .contact-copy {
+      grid-area: copy;
     }
 
     .contact-label {
@@ -694,7 +1017,8 @@
     }
 
     .contact-owner {
-      margin-top: 30px;
+      grid-area: owner;
+      margin-top: 0;
       padding-top: 20px;
       border-top: 1px solid #355679;
     }
@@ -711,6 +1035,7 @@
     }
 
     .contact-links {
+      grid-area: links;
       margin: 0;
       font-style: normal;
       border-top: 1px solid #4c6f93;
@@ -799,6 +1124,7 @@
       .project-feature,
       .section-header,
       .project-index-header,
+      .quick-start-header,
       .contact-grid {
         grid-template-columns: 1fr;
       }
@@ -820,7 +1146,8 @@
       }
 
       .section-header,
-      .project-index-header {
+      .project-index-header,
+      .quick-start-header {
         gap: 18px;
       }
 
@@ -829,16 +1156,15 @@
       }
 
       .project-row {
-        grid-template-columns: 190px minmax(0, 1fr);
-      }
-
-      .project-row-action {
-        grid-column: 2;
-        justify-self: start;
+        grid-template-columns: 160px minmax(0, 1fr);
       }
 
       .contact-grid {
-        gap: 48px;
+        grid-template-areas:
+          "copy"
+          "links"
+          "owner";
+        row-gap: 32px;
       }
     }
 
@@ -852,25 +1178,30 @@
       }
 
       .brand-copy span,
-      .site-nav a:not(.nav-contact) {
+      .site-nav {
         display: none;
+      }
+
+      .mobile-nav {
+        display: block;
+      }
+
+      .mobile-nav-panel {
+        position: fixed;
+        top: var(--header-height);
+        right: max(14px, env(safe-area-inset-right));
       }
 
       .header-actions {
         gap: 10px;
       }
 
-      .site-nav {
-        gap: 8px;
-      }
-
-      .site-nav .nav-contact {
-        padding-inline: 8px;
-        font-size: 13px;
-      }
-
       .hero {
         padding-top: 58px;
+      }
+
+      .work-section {
+        padding-block: 64px;
       }
 
       .hero h1 {
@@ -892,8 +1223,90 @@
         text-align: center;
       }
 
+      .quick-start-item {
+        grid-template-columns: 1fr auto;
+        gap: 4px 16px;
+        padding: 16px 0;
+      }
+
+      .quick-start-item strong {
+        grid-column: 1;
+      }
+
+      .quick-start-item span:not(.quick-start-arrow) {
+        grid-column: 1;
+      }
+
+      .quick-start-arrow {
+        grid-column: 2;
+        grid-row: 1 / span 2;
+      }
+
       .project-facts {
         grid-template-columns: 1fr;
+        gap: 0;
+        margin-top: 22px;
+      }
+
+      .project-facts div {
+        display: grid;
+        grid-template-columns: 88px minmax(0, 1fr);
+        gap: 12px;
+        padding: 10px 0;
+      }
+
+      .project-facts dd {
+        margin: 0;
+      }
+
+      .project-feature {
+        gap: 26px;
+        padding-block: 48px;
+      }
+
+      .project-summary {
+        margin-top: 14px;
+        line-height: 1.7;
+      }
+
+      .system-flow {
+        display: grid;
+        margin-top: 20px;
+      }
+
+      .system-flow li,
+      .system-flow li + li {
+        display: grid;
+        grid-template-columns: minmax(104px, .8fr) minmax(0, 1.2fr);
+        align-items: start;
+        gap: 10px;
+        padding: 10px 0;
+      }
+
+      .system-flow strong {
+        margin-bottom: 0;
+      }
+
+      .system-flow li + li {
+        border-top: 1px solid var(--line);
+      }
+
+      .system-flow li + li::before {
+        content: "↓";
+        top: 0;
+        left: auto;
+        right: 0;
+        transform: translateY(-50%);
+      }
+
+      .mid-contact {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .project-actions {
+        margin-top: 22px;
       }
 
       .project-row {
@@ -903,15 +1316,16 @@
       }
 
       .project-thumb {
-        min-height: 180px;
+        min-height: 128px;
       }
 
       .project-thumb img {
-        height: 180px;
+        height: 128px;
       }
 
       .project-row-action {
-        grid-column: auto;
+        grid-column: 1;
+        grid-row: auto;
         justify-self: stretch;
       }
 
@@ -919,8 +1333,21 @@
         width: 100%;
       }
 
+      .project-disclosure-body {
+        grid-template-columns: 1fr;
+      }
+
       .contact-grid {
         grid-template-columns: 1fr;
+        grid-template-areas:
+          "copy"
+          "links"
+          "owner";
+      }
+
+      .project-index,
+      .contact-section {
+        padding-block: 64px;
       }
 
       .contact-link {
@@ -937,10 +1364,6 @@
       .brand-copy strong {
         max-width: 94px;
         font-size: 13px;
-      }
-
-      .site-nav .nav-contact {
-        display: none;
       }
 
       .hero-actions,
@@ -977,6 +1400,16 @@
       }
     }
 
+    @media (max-width: 360px) {
+      .brand-copy {
+        display: none;
+      }
+
+      .header-actions {
+        gap: 6px;
+      }
+    }
+
     @media (prefers-reduced-motion: reduce) {
       html {
         scroll-behavior: auto;
@@ -1000,7 +1433,7 @@
   <header class="site-header">
     <div class="container header-inner">
       <a class="brand" href="#top" aria-label="ThaiAgent Studio portfolio home">
-        <span class="brand-mark" aria-hidden="true">TAS</span>
+        <img class="brand-mark" src="assets/thaiagentstudio-logo.png" width="142" height="138" alt="">
         <span class="brand-copy">
           <strong>ThaiAgent Studio</strong>
           <span>Sirichot Wipharat</span>
@@ -1009,10 +1442,21 @@
 
       <div class="header-actions">
         <nav class="site-nav" aria-label="Primary navigation">
-          <a href="#work" data-copy data-th="ผลงาน" data-en="Work">ผลงาน</a>
-          <a href="#systems" data-copy data-th="ระบบทั้งหมด" data-en="All systems">ระบบทั้งหมด</a>
-          <a class="nav-contact" href="#contact" data-copy data-th="ติดต่อ" data-en="Contact">ติดต่อ</a>
+          <a href="#work" data-section-link data-copy data-th="ผลงาน" data-en="Work">ผลงาน</a>
+          <a href="#systems" data-section-link data-copy data-th="ระบบทั้งหมด" data-en="All systems">ระบบทั้งหมด</a>
+          <a class="nav-contact" href="#contact" data-section-link data-copy data-th="ติดต่อ" data-en="Contact">ติดต่อ</a>
         </nav>
+
+        <details class="mobile-nav">
+          <summary data-aria-th="เปิดเมนูนำทาง" data-aria-en="Open navigation menu">
+            <span data-copy data-th="เมนู" data-en="Menu">เมนู</span>
+          </summary>
+          <nav class="mobile-nav-panel" aria-label="Mobile navigation">
+            <a href="#work" data-section-link><span data-copy data-th="ผลงานหลัก" data-en="Flagship work">ผลงานหลัก</span><span aria-hidden="true">↓</span></a>
+            <a href="#systems" data-section-link><span data-copy data-th="ระบบทั้งหมด" data-en="All systems">ระบบทั้งหมด</span><span aria-hidden="true">↓</span></a>
+            <a href="#contact" data-section-link><span data-copy data-th="ติดต่อร่วมงาน" data-en="Contact me">ติดต่อร่วมงาน</span><span aria-hidden="true">↓</span></a>
+          </nav>
+        </details>
 
         <div class="lang-switcher" aria-label="Language">
           <button id="btn-th" class="lang-btn active" type="button" aria-pressed="true" aria-label="เปลี่ยนเป็นภาษาไทย">TH</button>
@@ -1028,7 +1472,7 @@
         <div>
           <p class="hero-kicker" data-copy data-th="ThaiAgent Studio · Portfolio 2026" data-en="ThaiAgent Studio · Portfolio 2026">ThaiAgent Studio · Portfolio 2026</p>
           <h1 id="hero-title" data-copy data-th="ระบบที่ผมพัฒนา เชื่อมต่อ และนำขึ้นใช้งานจริง" data-en="Systems I built, integrated, and deployed">ระบบที่ผมพัฒนา เชื่อมต่อ และนำขึ้นใช้งานจริง</h1>
-          <p class="hero-description" data-copy data-th="สำรวจ 7 ผลงานด้าน AI เว็บ ERP และ Automation พร้อมบทบาทของผม ขอบเขตระบบ สถานะ และลิงก์ที่เปิดดูหรือทดลองได้ทันที" data-en="Explore seven live AI, web, ERP, and automation projects—with my role, system scope, status, and a working destination for each.">สำรวจ 7 ผลงานด้าน AI เว็บ ERP และ Automation พร้อมบทบาทของผม ขอบเขตระบบ สถานะ และลิงก์ที่เปิดดูหรือทดลองได้ทันที</p>
+          <p class="hero-description" data-copy data-th="สำรวจ 8 ผลงานด้าน AI เว็บ ERP และ Automation พร้อมบทบาทของผม ขอบเขตระบบ สถานะ และลิงก์ที่เปิดดูหรือทดลองได้ทันที" data-en="Explore eight live AI, web, ERP, and automation projects—with my role, system scope, status, and a working destination for each.">สำรวจ 8 ผลงานด้าน AI เว็บ ERP และ Automation พร้อมบทบาทของผม ขอบเขตระบบ สถานะ และลิงก์ที่เปิดดูหรือทดลองได้ทันที</p>
 
           <div class="hero-actions">
             <a class="button button-primary" href="#work" data-copy data-th="ดูระบบที่เปิดใช้งาน" data-en="Explore live systems">ดูระบบที่เปิดใช้งาน</a>
@@ -1036,7 +1480,7 @@
           </div>
 
           <p class="hero-proofline" aria-label="Portfolio scope">
-            <span data-copy data-th="7 โปรเจกต์" data-en="7 projects">7 โปรเจกต์</span>
+            <span data-copy data-th="8 โปรเจกต์" data-en="8 projects">8 โปรเจกต์</span>
             <span data-copy data-th="AI · Web · ERP · Automation" data-en="AI · Web · ERP · Automation">AI · Web · ERP · Automation</span>
             <span data-copy data-th="ระบบออนไลน์ตรวจสอบได้" data-en="Verifiable live systems">ระบบออนไลน์ตรวจสอบได้</span>
           </p>
@@ -1069,6 +1513,35 @@
       </div>
     </aside>
 
+    <section class="quick-start" aria-labelledby="quick-start-title">
+      <div class="container">
+        <header class="quick-start-header">
+          <h2 id="quick-start-title" data-copy data-th="เริ่มจากระบบไหนดี?" data-en="Choose where to start">เริ่มจากระบบไหนดี?</h2>
+          <p data-copy data-th="เลือกตามสิ่งที่ต้องการตรวจสอบ ระบบหลักเปิดให้ดูได้ทันที ส่วน Odoo มีบัญชี demo อยู่ในหน้านี้" data-en="Start with the capability you want to verify. The flagship systems open directly; Odoo demo credentials are provided on this page.">เลือกตามสิ่งที่ต้องการตรวจสอบ ระบบหลักเปิดให้ดูได้ทันที ส่วน Odoo มีบัญชี demo อยู่ในหน้านี้</p>
+        </header>
+
+        <div class="quick-start-list">
+          <a class="quick-start-item" href="https://agent2day.thaiagentstudio.com" target="_blank" rel="noopener noreferrer" data-aria-th="เปิด Agent2Day เพื่อตรวจระบบเผยแพร่ข่าวอัตโนมัติในแท็บใหม่" data-aria-en="Open Agent2Day to inspect automated news publishing in a new tab">
+            <strong data-copy data-th="ตรวจระบบเผยแพร่ข่าวอัตโนมัติ" data-en="Inspect automated news publishing">ตรวจระบบเผยแพร่ข่าวอัตโนมัติ</strong>
+            <span data-copy data-th="Agent2Day · เว็บไซต์สาธารณะ ไม่ต้องเข้าสู่ระบบ" data-en="Agent2Day · Public website, no sign-in required">Agent2Day · เว็บไซต์สาธารณะ ไม่ต้องเข้าสู่ระบบ</span>
+            <span class="quick-start-arrow" aria-hidden="true">↗</span>
+          </a>
+          <a class="quick-start-item" href="https://cartclip-ai.thaiagentstudio.com" target="_blank" rel="noopener noreferrer" data-aria-th="เปิด CartClip AI เพื่อทดลอง workflow สร้าง Video Prompt ในแท็บใหม่" data-aria-en="Open CartClip AI to try the video-prompt workflow in a new tab">
+            <strong data-copy data-th="ทดลอง workflow สร้าง Video Prompt" data-en="Try a video-prompt workflow">ทดลอง workflow สร้าง Video Prompt</strong>
+            <span data-copy data-th="CartClip AI · เว็บแอปพร้อมขั้นตอนทำงาน 4 ขั้น" data-en="CartClip AI · Web application with a four-step workflow">CartClip AI · เว็บแอปพร้อมขั้นตอนทำงาน 4 ขั้น</span>
+            <span class="quick-start-arrow" aria-hidden="true">↗</span>
+          </a>
+          <a class="quick-start-item" href="#odoo-demo">
+            <strong data-copy data-th="ทดลอง ERP ด้วยบัญชี demo" data-en="Explore ERP with a demo account">ทดลอง ERP ด้วยบัญชี demo</strong>
+            <span data-copy data-th="Odoo ERP · ดูชื่อผู้ใช้และรหัสผ่านก่อนเปิดระบบ" data-en="Odoo ERP · Review the username and password before opening the system">Odoo ERP · ดูชื่อผู้ใช้และรหัสผ่านก่อนเปิดระบบ</span>
+            <span class="quick-start-arrow" aria-hidden="true">↓</span>
+          </a>
+        </div>
+
+        <p class="verification-note"><time datetime="2026-08-09" data-copy data-th="ตรวจสอบลิงก์ล่าสุด 9 สิงหาคม 2026" data-en="Links last verified 9 August 2026">ตรวจสอบลิงก์ล่าสุด 9 สิงหาคม 2026</time></p>
+      </div>
+    </section>
+
     <section id="work" class="work-section" aria-labelledby="work-title">
       <div class="container">
         <header class="section-header">
@@ -1088,37 +1561,49 @@
             <div class="project-copy">
               <div class="project-status">
                 <span class="live-label"><span class="status-dot" aria-hidden="true"></span><span data-copy data-th="ออนไลน์" data-en="Online">ออนไลน์</span></span>
-                <span data-copy data-th="AI Publishing System" data-en="AI Publishing System">AI Publishing System</span>
+                <span data-copy data-th="Workflow Automation · Next.js" data-en="Workflow Automation · Next.js">Workflow Automation · Next.js</span>
               </div>
               <h3>Agent2Day</h3>
-              <p class="project-summary" data-copy data-th="ผมพัฒนาและ deploy ระบบข่าว AI ที่ดูแลกระบวนการตั้งแต่รวบรวมข้อมูล เรียบเรียงเนื้อหา อ้างอิงแหล่งข่าว ไปจนถึงเผยแพร่บนเว็บไซต์ภาษาไทย" data-en="I built and deployed an AI-news system covering source collection, content preparation, source attribution, and publishing to a Thai-language website.">ผมพัฒนาและ deploy ระบบข่าว AI ที่ดูแลกระบวนการตั้งแต่รวบรวมข้อมูล เรียบเรียงเนื้อหา อ้างอิงแหล่งข่าว ไปจนถึงเผยแพร่บนเว็บไซต์ภาษาไทย</p>
+              <p class="project-summary" data-copy data-th="Agent2Day ใช้ระบบ Workflow Automation เป็นแกนหลัก ดูแลตั้งแต่ค้นหาและคัดเลือกข่าว สรุป แปล เรียบเรียง สร้างภาพและเสียง จนเผยแพร่บนเว็บไซต์โดยอัตโนมัติ" data-en="Agent2Day is built around an end-to-end workflow automation system that finds and selects stories, summarizes, translates, edits, generates images and audio, and publishes them automatically.">Agent2Day ใช้ระบบ Workflow Automation เป็นแกนหลัก ดูแลตั้งแต่ค้นหาและคัดเลือกข่าว สรุป แปล เรียบเรียง สร้างภาพและเสียง จนเผยแพร่บนเว็บไซต์โดยอัตโนมัติ</p>
+
+              <ol class="system-flow" aria-label="เส้นทางระบบ Agent2Day" data-aria-th="เส้นทางระบบ Agent2Day" data-aria-en="Agent2Day system flow">
+                <li><strong data-copy data-th="ค้นหาและคัดเลือกข่าว" data-en="Discover and select stories">ค้นหาและคัดเลือกข่าว</strong><span data-copy data-th="รวบรวมและจัดลำดับข่าวจากหลายแหล่ง" data-en="Collect and prioritize stories from multiple sources">รวบรวมและจัดลำดับข่าวจากหลายแหล่ง</span></li>
+                <li><strong data-copy data-th="ผลิตเนื้อหาและสื่อ" data-en="Produce content and media">ผลิตเนื้อหาและสื่อ</strong><span data-copy data-th="สรุป · แปล · เรียบเรียง · สร้างภาพและเสียง" data-en="Summarize · Translate · Edit · Generate images and audio">สรุป · แปล · เรียบเรียง · สร้างภาพและเสียง</span></li>
+                <li><strong data-copy data-th="เผยแพร่อัตโนมัติ" data-en="Publish automatically">เผยแพร่อัตโนมัติ</strong><span data-copy data-th="ส่งบทความและสื่อขึ้นเว็บไซต์ปลายทาง" data-en="Deliver articles and media to the live website">ส่งบทความและสื่อขึ้นเว็บไซต์ปลายทาง</span></li>
+              </ol>
 
               <dl class="project-facts">
                 <div>
                   <dt data-copy data-th="บทบาท" data-en="Role">บทบาท</dt>
-                  <dd data-copy data-th="Product design · Web development · Deployment" data-en="Product design · Web development · Deployment">Product design · Web development · Deployment</dd>
+                  <dd data-copy data-th="Workflow automation · Next.js development · Deployment" data-en="Workflow automation · Next.js development · Deployment">Workflow automation · Next.js development · Deployment</dd>
                 </div>
                 <div>
                   <dt data-copy data-th="ขอบเขตระบบ" data-en="System scope">ขอบเขตระบบ</dt>
-                  <dd data-copy data-th="รวบรวมข่าว · จัดการเนื้อหา · เผยแพร่อัตโนมัติ" data-en="News collection · Content workflow · Automated publishing">รวบรวมข่าว · จัดการเนื้อหา · เผยแพร่อัตโนมัติ</dd>
+                  <dd data-copy data-th="คัดเลือกข่าว · ผลิตสื่อหลายรูปแบบ · เผยแพร่อัตโนมัติ" data-en="News selection · Multiformat content production · Automated publishing">คัดเลือกข่าว · ผลิตสื่อหลายรูปแบบ · เผยแพร่อัตโนมัติ</dd>
                 </div>
                 <div>
-                  <dt data-copy data-th="หลักฐาน" data-en="Evidence">หลักฐาน</dt>
-                  <dd data-copy data-th="มีบทความเผยแพร่ 327 รายการในระบบจริง" data-en="327 published articles visible in the live system">มีบทความเผยแพร่ 327 รายการในระบบจริง</dd>
+                  <dt data-copy data-th="ระบบที่เปิดใช้งาน" data-en="Live system">ระบบที่เปิดใช้งาน</dt>
+                  <dd data-copy data-th="เผยแพร่บทความแล้ว 327 รายการบนเว็บไซต์จริง" data-en="327 articles published on the production site">เผยแพร่บทความแล้ว 327 รายการบนเว็บไซต์จริง</dd>
                 </div>
               </dl>
 
-              <div class="tags" aria-label="Agent2Day capabilities">
-                <span class="tag">AI workflow</span>
-                <span class="tag">Publishing</span>
-                <span class="tag">Web deployment</span>
-              </div>
+              <dl class="project-tech" aria-label="เทคโนโลยีของ Agent2Day" data-aria-th="เทคโนโลยีของ Agent2Day" data-aria-en="Agent2Day technology stack">
+                <div><dt data-copy data-th="ภาษา" data-en="Language">ภาษา</dt><dd>TypeScript</dd></div>
+                <div><dt data-copy data-th="Framework" data-en="Framework">Framework</dt><dd>Next.js 16 · React 19</dd></div>
+                <div><dt data-copy data-th="ข้อมูล" data-en="Data">ข้อมูล</dt><dd>Firestore · Firebase Storage</dd></div>
+                <div><dt>Deploy</dt><dd>Docker · Cloud Run</dd></div>
+              </dl>
 
               <div class="project-actions">
                 <a class="button button-primary" href="https://agent2day.thaiagentstudio.com" target="_blank" rel="noopener noreferrer" data-copy data-th="เปิด Agent2Day เวอร์ชันใช้งานจริง ↗" data-en="Open live Agent2Day ↗" data-aria-th="เปิด Agent2Day เวอร์ชันใช้งานจริงในแท็บใหม่" data-aria-en="Open live Agent2Day in a new tab">เปิด Agent2Day เวอร์ชันใช้งานจริง ↗</a>
               </div>
             </div>
           </article>
+
+          <aside class="mid-contact" aria-label="Contact after Agent2Day proof">
+            <p data-copy data-th="ต้องการระบบอัตโนมัติที่เชื่อมตั้งแต่ข้อมูลต้นทางถึงปลายทางจริง?" data-en="Need an automated system that connects source data to a live destination?">ต้องการระบบอัตโนมัติที่เชื่อมตั้งแต่ข้อมูลต้นทางถึงปลายทางจริง?</p>
+            <a href="#contact" data-copy data-th="คุยเรื่องระบบลักษณะนี้ →" data-en="Discuss a system like this →">คุยเรื่องระบบลักษณะนี้ →</a>
+          </aside>
 
           <article class="project-feature">
             <figure class="project-media">
@@ -1136,6 +1621,12 @@
               <h3>CartClip AI</h3>
               <p class="project-summary" data-copy data-th="เครื่องมือที่รับภาพหรือข้อมูลสินค้า แล้วจัดโครงสร้างเป็น Video Prompt ผ่าน workflow สี่ขั้น เพื่อให้ทีมคอนเทนต์เริ่มงานจากข้อมูลชุดเดียวกัน" data-en="A tool that turns product images and information into structured video prompts through a four-step workflow, giving content teams a consistent starting point.">เครื่องมือที่รับภาพหรือข้อมูลสินค้า แล้วจัดโครงสร้างเป็น Video Prompt ผ่าน workflow สี่ขั้น เพื่อให้ทีมคอนเทนต์เริ่มงานจากข้อมูลชุดเดียวกัน</p>
 
+              <ol class="system-flow" aria-label="เส้นทางระบบ CartClip AI" data-aria-th="เส้นทางระบบ CartClip AI" data-aria-en="CartClip AI system flow">
+                <li><strong data-copy data-th="ข้อมูลสินค้า" data-en="Product input">ข้อมูลสินค้า</strong><span data-copy data-th="ภาพและรายละเอียดสินค้า" data-en="Images and product details">ภาพและรายละเอียดสินค้า</span></li>
+                <li><strong data-copy data-th="Workflow 4 ขั้น" data-en="Four-step workflow">Workflow 4 ขั้น</strong><span data-copy data-th="จัดโครงสร้างทีละขั้น" data-en="Build the prompt step by step">จัดโครงสร้างทีละขั้น</span></li>
+                <li><strong data-copy data-th="Video Prompt" data-en="Video prompt">Video Prompt</strong><span data-copy data-th="ผลลัพธ์พร้อมนำไปใช้ต่อ" data-en="Structured output for the next tool">ผลลัพธ์พร้อมนำไปใช้ต่อ</span></li>
+              </ol>
+
               <dl class="project-facts">
                 <div>
                   <dt data-copy data-th="บทบาท" data-en="Role">บทบาท</dt>
@@ -1151,11 +1642,12 @@
                 </div>
               </dl>
 
-              <div class="tags" aria-label="CartClip AI capabilities">
-                <span class="tag">Prompt workflow</span>
-                <span class="tag">Commerce tooling</span>
-                <span class="tag">Application UX</span>
-              </div>
+              <dl class="project-tech" aria-label="เทคโนโลยีของ CartClip AI" data-aria-th="เทคโนโลยีของ CartClip AI" data-aria-en="CartClip AI technology stack">
+                <div><dt data-copy data-th="ภาษา" data-en="Language">ภาษา</dt><dd>TypeScript</dd></div>
+                <div><dt>Frontend</dt><dd>Next.js · React · Tailwind CSS</dd></div>
+                <div><dt data-copy data-th="AI และข้อมูล" data-en="AI and data">AI และข้อมูล</dt><dd>Gemini · Firebase Auth · Firestore · Storage</dd></div>
+                <div><dt>Deploy</dt><dd>Firebase App Hosting · Cloud Functions (Node.js 22)</dd></div>
+              </dl>
 
               <div class="project-actions">
                 <a class="button button-primary" href="https://cartclip-ai.thaiagentstudio.com" target="_blank" rel="noopener noreferrer" data-copy data-th="ทดลอง CartClip AI ↗" data-en="Try CartClip AI ↗" data-aria-th="ทดลอง CartClip AI ในแท็บใหม่" data-aria-en="Try CartClip AI in a new tab">ทดลอง CartClip AI ↗</a>
@@ -1179,6 +1671,12 @@
               <h3>ThaiAgent Desk</h3>
               <p class="project-summary" data-copy data-th="ระบบ helpdesk ที่รวมบทสนทนาจากช่องทางที่เชื่อมต่อไว้ใน inbox เดียว พร้อม Leads, Contacts, Analytics, Simulator และเครื่องมือสำหรับผู้ดูแลระบบ" data-en="A helpdesk that brings connected customer conversations into one inbox, with leads, contacts, analytics, a simulator, and administration tools.">ระบบ helpdesk ที่รวมบทสนทนาจากช่องทางที่เชื่อมต่อไว้ใน inbox เดียว พร้อม Leads, Contacts, Analytics, Simulator และเครื่องมือสำหรับผู้ดูแลระบบ</p>
 
+              <ol class="system-flow" aria-label="เส้นทางระบบ ThaiAgent Desk" data-aria-th="เส้นทางระบบ ThaiAgent Desk" data-aria-en="ThaiAgent Desk system flow">
+                <li><strong data-copy data-th="ช่องทางที่เชื่อมต่อ" data-en="Connected channels">ช่องทางที่เชื่อมต่อ</strong><span data-copy data-th="รับบทสนทนาลูกค้า" data-en="Receive customer conversations">รับบทสนทนาลูกค้า</span></li>
+                <li><strong data-copy data-th="Unified inbox" data-en="Unified inbox">Unified inbox</strong><span data-copy data-th="จัดการบทสนทนาในที่เดียว" data-en="Manage conversations in one place">จัดการบทสนทนาในที่เดียว</span></li>
+                <li><strong data-copy data-th="งานต่อเนื่อง" data-en="Operational follow-up">งานต่อเนื่อง</strong><span data-copy data-th="Leads · Contacts · Analytics" data-en="Leads · Contacts · Analytics">Leads · Contacts · Analytics</span></li>
+              </ol>
+
               <dl class="project-facts">
                 <div>
                   <dt data-copy data-th="บทบาท" data-en="Role">บทบาท</dt>
@@ -1194,11 +1692,12 @@
                 </div>
               </dl>
 
-              <div class="tags" aria-label="ThaiAgent Desk capabilities">
-                <span class="tag">Helpdesk</span>
-                <span class="tag">Customer operations</span>
-                <span class="tag">System UX</span>
-              </div>
+              <dl class="project-tech" aria-label="เทคโนโลยีของ ThaiAgent Desk" data-aria-th="เทคโนโลยีของ ThaiAgent Desk" data-aria-en="ThaiAgent Desk technology stack">
+                <div><dt data-copy data-th="ภาษา" data-en="Language">ภาษา</dt><dd>TypeScript</dd></div>
+                <div><dt>Frontend</dt><dd>React · Vite · Tailwind CSS</dd></div>
+                <div><dt data-copy data-th="Backend และฐานข้อมูล" data-en="Backend and database">Backend และฐานข้อมูล</dt><dd>Express · Firebase Admin · Firestore</dd></div>
+                <div><dt>Deploy</dt><dd>Firebase Hosting · Cloud Functions (asia-southeast1)</dd></div>
+              </dl>
 
               <div class="project-actions">
                 <a class="button button-primary" href="https://chat.thaiagentstudio.com" target="_blank" rel="noopener noreferrer" data-copy data-th="เปิด ThaiAgent Desk ↗" data-en="Open ThaiAgent Desk ↗" data-aria-th="เปิด ThaiAgent Desk ในแท็บใหม่" data-aria-en="Open ThaiAgent Desk in a new tab">เปิด ThaiAgent Desk ↗</a>
@@ -1212,8 +1711,8 @@
     <section id="systems" class="project-index" aria-labelledby="systems-title">
       <div class="container">
         <header class="project-index-header">
-          <h2 id="systems-title" data-copy data-th="Project index" data-en="Project index">Project index</h2>
-          <p data-copy data-th="ระบบและบริการอีก 4 รายการที่แสดงทักษะด้าน AI integration, web delivery, ERP และ self-hosted automation" data-en="Four additional systems and services demonstrating AI integration, web delivery, ERP, and self-hosted automation.">ระบบและบริการอีก 4 รายการที่แสดงทักษะด้าน AI integration, web delivery, ERP และ self-hosted automation</p>
+          <h2 id="systems-title" data-copy data-th="ระบบอื่นที่เปิดให้ดู" data-en="More systems to inspect">ระบบอื่นที่เปิดให้ดู</h2>
+          <p data-copy data-th="อีก 5 ระบบแสดงเป็นรายการแบบย่อ เปิดรายละเอียดเพื่อดูบทบาท เทคโนโลยี และลิงก์ใช้งานจริง" data-en="Five more systems are shown in a compact list. Expand one to see the role, technology, and live link.">อีก 5 ระบบแสดงเป็นรายการแบบย่อ เปิดรายละเอียดเพื่อดูบทบาท เทคโนโลยี และลิงก์ใช้งานจริง</p>
         </header>
 
         <div class="project-list">
@@ -1224,11 +1723,16 @@
             <div class="project-row-copy">
               <div class="project-status"><span class="live-label"><span class="status-dot" aria-hidden="true"></span><span data-copy data-th="ออนไลน์" data-en="Online">ออนไลน์</span></span><span>AI Integration</span></div>
               <h3>ThaiAgent Studio</h3>
-              <p data-copy data-th="ออกแบบและพัฒนา AI Chatbot กับ AI Agent ที่เชื่อมต่อฐานความรู้ CRM, API และ human handoff สำหรับการใช้งานในองค์กร" data-en="AI chatbot and AI agent design connected to organizational knowledge bases, CRM systems, APIs, and human handoff.">ออกแบบและพัฒนา AI Chatbot กับ AI Agent ที่เชื่อมต่อฐานความรู้ CRM, API และ human handoff สำหรับการใช้งานในองค์กร</p>
               <div class="project-row-meta"><span data-copy data-th="บทบาท: Solution design · Integration · Deployment" data-en="Role: Solution design · Integration · Deployment">บทบาท: Solution design · Integration · Deployment</span></div>
-            </div>
-            <div class="project-row-action">
-              <a class="button button-secondary" href="https://thaiagentstudio.com" target="_blank" rel="noopener noreferrer" data-copy data-th="ดู ThaiAgent Studio ↗" data-en="View ThaiAgent Studio ↗" data-aria-th="ดูเว็บไซต์ ThaiAgent Studio ในแท็บใหม่" data-aria-en="View ThaiAgent Studio in a new tab">ดู ThaiAgent Studio ↗</a>
+
+              <details class="project-disclosure">
+                <summary><span data-copy data-th="ดูรายละเอียดและลิงก์" data-en="View details and link">ดูรายละเอียดและลิงก์</span></summary>
+                <div class="project-disclosure-body">
+                  <p data-copy data-th="ออกแบบผู้ช่วย AI สำหรับตอบคำถามจากฐานความรู้ เชื่อมข้อมูลกับ CRM หรือ API และส่งต่อเจ้าหน้าที่เมื่อระบบอัตโนมัติไม่ควรตอบเอง" data-en="AI assistants designed to answer from organizational knowledge, connect data to CRM systems or APIs, and hand conversations to staff when automation should not respond alone.">ออกแบบผู้ช่วย AI สำหรับตอบคำถามจากฐานความรู้ เชื่อมข้อมูลกับ CRM หรือ API และส่งต่อเจ้าหน้าที่เมื่อระบบอัตโนมัติไม่ควรตอบเอง</p>
+                  <div class="project-row-proof"><strong data-copy data-th="ปลายทางที่เปิด" data-en="What opens">ปลายทางที่เปิด</strong><span data-copy data-th="เว็บไซต์อธิบายบริการและตัวอย่างการเชื่อมต่อระบบ" data-en="A service overview with system-integration examples">เว็บไซต์อธิบายบริการและตัวอย่างการเชื่อมต่อระบบ</span></div>
+                  <div class="project-row-action"><a class="button button-secondary" href="https://thaiagentstudio.com" target="_blank" rel="noopener noreferrer" data-copy data-th="ดู ThaiAgent Studio ↗" data-en="View ThaiAgent Studio ↗" data-aria-th="ดูเว็บไซต์ ThaiAgent Studio ในแท็บใหม่" data-aria-en="View ThaiAgent Studio in a new tab">ดู ThaiAgent Studio ↗</a></div>
+                </div>
+              </details>
             </div>
           </article>
 
@@ -1239,32 +1743,76 @@
             <div class="project-row-copy">
               <div class="project-status"><span class="live-label"><span class="status-dot" aria-hidden="true"></span><span data-copy data-th="ออนไลน์" data-en="Online">ออนไลน์</span></span><span>Web Delivery</span></div>
               <h3>FastWeb</h3>
-              <p data-copy data-th="บริการพัฒนาและ deploy เว็บไซต์หน้าเดียวสำหรับ SME โดยเน้นความเร็ว ขอบเขตชัดเจน และพร้อมใช้งานโดยไม่เพิ่มระบบที่ไม่จำเป็น" data-en="Single-page website development and deployment for SMEs, focused on speed, clear scope, and practical delivery without unnecessary system complexity.">บริการพัฒนาและ deploy เว็บไซต์หน้าเดียวสำหรับ SME โดยเน้นความเร็ว ขอบเขตชัดเจน และพร้อมใช้งานโดยไม่เพิ่มระบบที่ไม่จำเป็น</p>
               <div class="project-row-meta"><span data-copy data-th="บทบาท: Web design · Development · Deployment" data-en="Role: Web design · Development · Deployment">บทบาท: Web design · Development · Deployment</span></div>
-            </div>
-            <div class="project-row-action">
-              <a class="button button-secondary" href="https://fastweb.thaiagentstudio.com" target="_blank" rel="noopener noreferrer" data-copy data-th="ดูบริการ FastWeb ↗" data-en="View FastWeb ↗" data-aria-th="ดูบริการ FastWeb ในแท็บใหม่" data-aria-en="View FastWeb in a new tab">ดูบริการ FastWeb ↗</a>
+
+              <details class="project-disclosure">
+                <summary><span data-copy data-th="ดูรายละเอียดและลิงก์" data-en="View details and link">ดูรายละเอียดและลิงก์</span></summary>
+                <div class="project-disclosure-body">
+                  <p data-copy data-th="บริการออกแบบ พัฒนา และ deploy เว็บไซต์หน้าเดียวสำหรับ SME โดยกำหนดขอบเขตให้ชัดและตัดระบบที่ไม่จำเป็นต่อการเปิดใช้งาน" data-en="Single-page website design, development, and deployment for SMEs, with a clear scope and no systems beyond what the launch requires.">บริการออกแบบ พัฒนา และ deploy เว็บไซต์หน้าเดียวสำหรับ SME โดยกำหนดขอบเขตให้ชัดและตัดระบบที่ไม่จำเป็นต่อการเปิดใช้งาน</p>
+                  <dl class="project-tech" aria-label="เทคโนโลยีของ FastWeb" data-aria-th="เทคโนโลยีของ FastWeb" data-aria-en="FastWeb technology stack">
+                    <div><dt data-copy data-th="ภาษา" data-en="Language">ภาษา</dt><dd>JavaScript · CSS</dd></div>
+                    <div><dt>Frontend</dt><dd>Astro · Tailwind CSS</dd></div>
+                    <div><dt data-copy data-th="ฐานข้อมูล" data-en="Database">ฐานข้อมูล</dt><dd data-copy data-th="ไม่ใช้ฐานข้อมูล (Static site)" data-en="No database (static site)">ไม่ใช้ฐานข้อมูล (Static site)</dd></div>
+                    <div><dt>Deploy</dt><dd>Netlify</dd></div>
+                  </dl>
+                  <div class="project-row-proof"><strong data-copy data-th="ปลายทางที่เปิด" data-en="What opens">ปลายทางที่เปิด</strong><span data-copy data-th="เว็บไซต์บริการ FastWeb และขอบเขตงานที่ส่งมอบ" data-en="The FastWeb service page and its delivery scope">เว็บไซต์บริการ FastWeb และขอบเขตงานที่ส่งมอบ</span></div>
+                  <div class="project-row-action"><a class="button button-secondary" href="https://fastweb.thaiagentstudio.com" target="_blank" rel="noopener noreferrer" data-copy data-th="ดูบริการ FastWeb ↗" data-en="View FastWeb ↗" data-aria-th="ดูบริการ FastWeb ในแท็บใหม่" data-aria-en="View FastWeb in a new tab">ดูบริการ FastWeb ↗</a></div>
+                </div>
+              </details>
             </div>
           </article>
 
-          <article class="project-row">
+          <article id="odoo-demo" class="project-row">
             <div class="project-thumb">
               <img src="assets/odoo.png" width="1425" height="800" loading="lazy" alt="หน้าเข้าสู่ระบบ Odoo ERP Demo ที่ติดตั้งสำหรับทดลอง workflow ธุรกิจ" data-alt-th="หน้าเข้าสู่ระบบ Odoo ERP Demo ที่ติดตั้งสำหรับทดลอง workflow ธุรกิจ" data-alt-en="Odoo ERP demo login deployed for exploring business workflows">
             </div>
             <div class="project-row-copy">
               <div class="project-status"><span class="live-label"><span class="status-dot" aria-hidden="true"></span><span data-copy data-th="Demo ออนไลน์" data-en="Online demo">Demo ออนไลน์</span></span><span>ERP Deployment</span></div>
               <h3>Odoo ERP Demo</h3>
-              <p data-copy data-th="Odoo ERP environment ที่ติดตั้งบนเซิร์ฟเวอร์เพื่อให้ทดลอง workflow และโมดูลธุรกิจ โดยมีบัญชี demo สำหรับเข้าดูระบบ" data-en="A hosted Odoo ERP environment for exploring business workflows and modules, with a public demo account for inspection.">Odoo ERP environment ที่ติดตั้งบนเซิร์ฟเวอร์เพื่อให้ทดลอง workflow และโมดูลธุรกิจ โดยมีบัญชี demo สำหรับเข้าดูระบบ</p>
               <div class="project-row-meta"><span data-copy data-th="บทบาท: Installation · Configuration · Hosting" data-en="Role: Installation · Configuration · Hosting">บทบาท: Installation · Configuration · Hosting</span></div>
-              <div class="credentials" aria-label="Odoo demo credentials">
-                <span class="credential"><span data-copy data-th="ผู้ใช้" data-en="User">ผู้ใช้</span> <code>demo</code></span>
-                <button class="copy-btn" type="button" data-copy-value="demo" data-copy data-th="คัดลอก" data-en="Copy" data-label-th="คัดลอกชื่อผู้ใช้ demo" data-label-en="Copy demo username">คัดลอก</button>
-                <span class="credential"><span data-copy data-th="รหัสผ่าน" data-en="Password">รหัสผ่าน</span> <code>tasodoo</code></span>
-                <button class="copy-btn" type="button" data-copy-value="tasodoo" data-copy data-th="คัดลอก" data-en="Copy" data-label-th="คัดลอกรหัสผ่าน Odoo demo" data-label-en="Copy Odoo demo password">คัดลอก</button>
-              </div>
+
+              <details class="project-disclosure">
+                <summary><span data-copy data-th="ดูบัญชี demo และลิงก์" data-en="View demo credentials and link">ดูบัญชี demo และลิงก์</span></summary>
+                <div class="project-disclosure-body">
+                  <p data-copy data-th="สภาพแวดล้อม Odoo ที่ติดตั้งและตั้งค่าบนเซิร์ฟเวอร์ เพื่อให้ตรวจ workflow และโมดูลธุรกิจผ่านบัญชี demo โดยไม่ใช้ข้อมูลจริงขององค์กร" data-en="A server-hosted Odoo environment configured for inspecting business workflows and modules through a demo account, without using real organizational data.">สภาพแวดล้อม Odoo ที่ติดตั้งและตั้งค่าบนเซิร์ฟเวอร์ เพื่อให้ตรวจ workflow และโมดูลธุรกิจผ่านบัญชี demo โดยไม่ใช้ข้อมูลจริงขององค์กร</p>
+                  <div class="project-row-proof"><strong data-copy data-th="ปลายทางที่เปิด" data-en="What opens">ปลายทางที่เปิด</strong><span data-copy data-th="หน้าเข้าสู่ระบบ Odoo ใช้บัญชีด้านล่างเพื่อทดลอง" data-en="An Odoo sign-in page; use the credentials below to inspect the demo">หน้าเข้าสู่ระบบ Odoo ใช้บัญชีด้านล่างเพื่อทดลอง</span></div>
+                  <div class="credentials" aria-label="Odoo demo credentials">
+                    <span class="credential"><span data-copy data-th="ผู้ใช้" data-en="User">ผู้ใช้</span> <code>demo</code></span>
+                    <button class="copy-btn" type="button" data-copy-value="demo" data-copy data-th="คัดลอก" data-en="Copy" data-label-th="คัดลอกชื่อผู้ใช้ demo" data-label-en="Copy demo username">คัดลอก</button>
+                    <span class="credential"><span data-copy data-th="รหัสผ่าน" data-en="Password">รหัสผ่าน</span> <code>tasodoo</code></span>
+                    <button class="copy-btn" type="button" data-copy-value="tasodoo" data-copy data-th="คัดลอก" data-en="Copy" data-label-th="คัดลอกรหัสผ่าน Odoo demo" data-label-en="Copy Odoo demo password">คัดลอก</button>
+                    <span class="copy-feedback" role="status" aria-live="polite"></span>
+                  </div>
+                  <div class="project-row-action"><a class="button button-secondary" href="https://odoo.thaiagentstudio.com" target="_blank" rel="noopener noreferrer" data-copy data-th="ทดลอง Odoo ERP ↗" data-en="Try Odoo ERP demo ↗" data-aria-th="ทดลอง Odoo ERP Demo ในแท็บใหม่" data-aria-en="Try the Odoo ERP demo in a new tab">ทดลอง Odoo ERP ↗</a></div>
+                </div>
+              </details>
             </div>
-            <div class="project-row-action">
-              <a class="button button-secondary" href="https://odoo.thaiagentstudio.com" target="_blank" rel="noopener noreferrer" data-copy data-th="ทดลอง Odoo ERP ↗" data-en="Try Odoo ERP demo ↗" data-aria-th="ทดลอง Odoo ERP Demo ในแท็บใหม่" data-aria-en="Try the Odoo ERP demo in a new tab">ทดลอง Odoo ERP ↗</a>
+          </article>
+
+          <article id="local-llm" class="project-row">
+            <div class="project-thumb project-thumb-local-llm">
+              <img src="assets/local-llm-server.png" width="1361" height="536" loading="lazy" alt="หน้าจอ Open WebUI บนเซิร์ฟเวอร์ส่วนตัว แสดงบทสนทนากับโมเดล Local LLM" data-alt-th="หน้าจอ Open WebUI บนเซิร์ฟเวอร์ส่วนตัว แสดงบทสนทนากับโมเดล Local LLM" data-alt-en="Open WebUI running on a private server, showing a conversation with a local LLM">
+            </div>
+            <div class="project-row-copy">
+              <div class="project-status"><span class="live-label"><span class="status-dot" aria-hidden="true"></span><span data-copy data-th="Demo ออนไลน์" data-en="Online demo">Demo ออนไลน์</span></span><span>Self-hosted LLM</span></div>
+              <h3>Local LLM Server</h3>
+              <div class="project-row-meta"><span data-copy data-th="บทบาท: Ollama · Model setup · Open WebUI · Access control" data-en="Role: Ollama · Model setup · Open WebUI · Access control">บทบาท: Ollama · Model setup · Open WebUI · Access control</span></div>
+
+              <details class="project-disclosure">
+                <summary><span data-copy data-th="ดูบัญชี demo และลิงก์" data-en="View demo credentials and link">ดูบัญชี demo และลิงก์</span></summary>
+                <div class="project-disclosure-body">
+                  <p data-copy data-th="ติดตั้ง Local LLM บนเซิร์ฟเวอร์ส่วนตัวด้วย Ollama และ Open WebUI พร้อมติดตั้งโมเดล จัดการบัญชี และกำหนดสิทธิ์การเข้าถึง" data-en="A private-server Local LLM deployment using Ollama and Open WebUI, including model installation, user accounts, and access permissions.">ติดตั้ง Local LLM บนเซิร์ฟเวอร์ส่วนตัวด้วย Ollama และ Open WebUI พร้อมติดตั้งโมเดล จัดการบัญชี และกำหนดสิทธิ์การเข้าถึง</p>
+                  <div class="project-row-proof"><strong data-copy data-th="ปลายทางที่เปิด" data-en="What opens">ปลายทางที่เปิด</strong><span data-copy data-th="หน้า Open WebUI สำหรับทดลองสนทนากับโมเดลผ่านบัญชี demo" data-en="An Open WebUI chat workspace for testing the hosted model with a demo account">หน้า Open WebUI สำหรับทดลองสนทนากับโมเดลผ่านบัญชี demo</span></div>
+                  <div class="credentials" aria-label="Local LLM demo credentials">
+                    <span class="credential"><span data-copy data-th="อีเมล" data-en="Email">อีเมล</span> <code>user1@test.com</code></span>
+                    <button class="copy-btn" type="button" data-copy-value="user1@test.com" data-copy data-th="คัดลอก" data-en="Copy" data-label-th="คัดลอกอีเมลบัญชี Local LLM demo" data-label-en="Copy the Local LLM demo email">คัดลอก</button>
+                    <span class="credential"><span data-copy data-th="รหัสผ่าน" data-en="Password">รหัสผ่าน</span> <code>12345678</code></span>
+                    <button class="copy-btn" type="button" data-copy-value="12345678" data-copy data-th="คัดลอก" data-en="Copy" data-label-th="คัดลอกรหัสผ่าน Local LLM demo" data-label-en="Copy the Local LLM demo password">คัดลอก</button>
+                    <span class="copy-feedback" role="status" aria-live="polite"></span>
+                  </div>
+                  <div class="project-row-action"><a class="button button-secondary" href="https://openwebui.thaiagentstudio.com" target="_blank" rel="noopener noreferrer" data-copy data-th="ทดลอง Local LLM ↗" data-en="Try Local LLM ↗" data-aria-th="ทดลอง Local LLM ผ่าน Open WebUI ในแท็บใหม่" data-aria-en="Try the Local LLM through Open WebUI in a new tab">ทดลอง Local LLM ↗</a></div>
+                </div>
+              </details>
             </div>
           </article>
 
@@ -1275,11 +1823,16 @@
             <div class="project-row-copy">
               <div class="project-status"><span class="live-label"><span class="status-dot" aria-hidden="true"></span><span data-copy data-th="HTTPS ออนไลน์" data-en="Online over HTTPS">HTTPS ออนไลน์</span></span><span>Workflow Automation</span></div>
               <h3>n8n Self-hosted</h3>
-              <p data-copy data-th="n8n environment แบบ self-hosted สำหรับเชื่อมต่อ API และรัน production workflows อย่างต่อเนื่อง พร้อมหน้าติดตาม executions และสถานะการทำงาน" data-en="A self-hosted n8n environment for connecting APIs and running continuous production workflows, with execution and status monitoring.">n8n environment แบบ self-hosted สำหรับเชื่อมต่อ API และรัน production workflows อย่างต่อเนื่อง พร้อมหน้าติดตาม executions และสถานะการทำงาน</p>
               <div class="project-row-meta"><span data-copy data-th="บทบาท: Self-hosting · API integration · Workflow operations" data-en="Role: Self-hosting · API integration · Workflow operations">บทบาท: Self-hosting · API integration · Workflow operations</span></div>
-            </div>
-            <div class="project-row-action">
-              <a class="button button-secondary" href="https://n8n.thaiagentstudio.com" target="_blank" rel="noopener noreferrer" data-copy data-th="เปิด n8n environment ↗" data-en="Open n8n environment ↗" data-aria-th="เปิด n8n self-hosted environment ในแท็บใหม่" data-aria-en="Open the self-hosted n8n environment in a new tab">เปิด n8n environment ↗</a>
+
+              <details class="project-disclosure">
+                <summary><span data-copy data-th="ดูรายละเอียดและลิงก์" data-en="View details and link">ดูรายละเอียดและลิงก์</span></summary>
+                <div class="project-disclosure-body">
+                  <p data-copy data-th="ระบบ automation ที่ติดตั้งและดูแลบนเซิร์ฟเวอร์ของสตูดิโอ ใช้เชื่อม API รัน workflow ต่อเนื่อง และตรวจสถานะงานแต่ละรอบจากหน้ารวม executions" data-en="An automation environment hosted and operated by the studio to connect APIs, run continuous workflows, and inspect each run from the executions view.">ระบบ automation ที่ติดตั้งและดูแลบนเซิร์ฟเวอร์ของสตูดิโอ ใช้เชื่อม API รัน workflow ต่อเนื่อง และตรวจสถานะงานแต่ละรอบจากหน้ารวม executions</p>
+                  <div class="project-row-proof"><strong data-copy data-th="ปลายทางที่เปิด" data-en="What opens">ปลายทางที่เปิด</strong><span data-copy data-th="สภาพแวดล้อม n8n ที่ใช้ HTTPS และหน้าติดตาม executions" data-en="The HTTPS-hosted n8n environment and its execution-monitoring interface">สภาพแวดล้อม n8n ที่ใช้ HTTPS และหน้าติดตาม executions</span></div>
+                  <div class="project-row-action"><a class="button button-secondary" href="https://n8n.thaiagentstudio.com" target="_blank" rel="noopener noreferrer" data-copy data-th="เปิด n8n environment ↗" data-en="Open n8n environment ↗" data-aria-th="เปิด n8n self-hosted environment ในแท็บใหม่" data-aria-en="Open the self-hosted n8n environment in a new tab">เปิด n8n environment ↗</a></div>
+                </div>
+              </details>
             </div>
           </article>
         </div>
@@ -1292,10 +1845,6 @@
           <p class="contact-label" data-copy data-th="ติดต่อร่วมงาน" data-en="Work with me">ติดต่อร่วมงาน</p>
           <h2 id="contact-title" data-copy data-th="ต้องการคนที่พัฒนาและนำระบบขึ้นใช้งานได้จริง?" data-en="Need someone who can build and deploy the system?">ต้องการคนที่พัฒนาและนำระบบขึ้นใช้งานได้จริง?</h2>
           <p data-copy data-th="ติดต่อผมเพื่อพูดคุยงานพัฒนา AI, Web Application, ERP integration, workflow automation และการ deploy ระบบสำหรับทีมของคุณ" data-en="Contact me to discuss AI development, web applications, ERP integration, workflow automation, and system deployment for your team.">ติดต่อผมเพื่อพูดคุยงานพัฒนา AI, Web Application, ERP integration, workflow automation และการ deploy ระบบสำหรับทีมของคุณ</p>
-          <div class="contact-owner">
-            <strong>Sirichot Wipharat</strong>
-            <span data-copy data-th="Owner · ThaiAgent Studio" data-en="Owner · ThaiAgent Studio">Owner · ThaiAgent Studio</span>
-          </div>
         </div>
 
         <address class="contact-links">
@@ -1320,6 +1869,11 @@
             <span class="contact-arrow" aria-hidden="true">↗</span>
           </a>
         </address>
+
+        <div class="contact-owner">
+          <strong>Sirichot Wipharat</strong>
+          <span data-copy data-th="Owner · ThaiAgent Studio" data-en="Owner · ThaiAgent Studio">Owner · ThaiAgent Studio</span>
+        </div>
       </div>
     </section>
   </main>
@@ -1331,17 +1885,17 @@
     </div>
   </footer>
 
-  <div id="copy-status" aria-live="polite" hidden></div>
-
   <script>
     const pageMetadata = {
       th: {
         title: "Sirichot Wipharat — ThaiAgent Studio Portfolio",
-        description: "Portfolio ของ Sirichot Wipharat และ ThaiAgent Studio — ระบบ AI เว็บ ERP และ Automation ที่พัฒนา เชื่อมต่อ และ deploy ใช้งานจริง"
+        description: "Portfolio ของ Sirichot Wipharat และ ThaiAgent Studio — ระบบ AI เว็บ ERP และ Automation ที่พัฒนา เชื่อมต่อ และ deploy ใช้งานจริง",
+        imageAlt: "Agent2Day ระบบจริงที่พัฒนาและ deploy โดย Sirichot Wipharat"
       },
       en: {
         title: "Sirichot Wipharat — ThaiAgent Studio Portfolio",
-        description: "Live AI, web, ERP, and automation systems built, integrated, and deployed by Sirichot Wipharat under ThaiAgent Studio."
+        description: "Live AI, web, ERP, and automation systems built, integrated, and deployed by Sirichot Wipharat under ThaiAgent Studio.",
+        imageAlt: "Agent2Day, a live system built and deployed by Sirichot Wipharat"
       }
     };
 
@@ -1372,6 +1926,7 @@
       document.title = pageMetadata[lang].title;
       document.querySelector('meta[name="description"]').setAttribute("content", pageMetadata[lang].description);
       document.querySelector('meta[property="og:description"]').setAttribute("content", pageMetadata[lang].description);
+      document.querySelector('meta[property="og:image:alt"]').setAttribute("content", pageMetadata[lang].imageAlt);
 
       const thaiButton = document.getElementById("btn-th");
       const englishButton = document.getElementById("btn-en");
@@ -1380,27 +1935,48 @@
       thaiButton.setAttribute("aria-pressed", String(lang === "th"));
       englishButton.setAttribute("aria-pressed", String(lang === "en"));
 
+      updateMobileNavLabel();
+
       if (persist) localStorage.setItem("tas-language", lang);
+    }
+
+    function updateMobileNavLabel() {
+      const mobileNav = document.querySelector(".mobile-nav");
+      const summary = mobileNav?.querySelector("summary");
+      if (!mobileNav || !summary) return;
+
+      const label = currentLanguage === "th"
+        ? (mobileNav.open ? "ปิดเมนูนำทาง" : "เปิดเมนูนำทาง")
+        : (mobileNav.open ? "Close navigation menu" : "Open navigation menu");
+      summary.setAttribute("aria-label", label);
     }
 
     async function copyCredential(button) {
       const value = button.dataset.copyValue;
       const originalText = currentLanguage === "th" ? button.dataset.th : button.dataset.en;
       const successText = currentLanguage === "th" ? "คัดลอกแล้ว" : "Copied";
-      const status = document.getElementById("copy-status");
+      const status = button.closest(".credentials")?.querySelector(".copy-feedback");
 
       try {
         await navigator.clipboard.writeText(value);
         button.textContent = successText;
-        status.hidden = false;
-        status.textContent = currentLanguage === "th" ? "คัดลอกข้อมูลแล้ว" : "Credential copied";
+        if (status) status.textContent = currentLanguage === "th" ? `คัดลอก ${value} แล้ว` : `Copied ${value}`;
         window.setTimeout(() => {
           button.textContent = originalText;
-          status.hidden = true;
-        }, 1600);
+          if (status) status.textContent = "";
+        }, 2000);
       } catch {
-        status.hidden = false;
-        status.textContent = currentLanguage === "th" ? "ไม่สามารถคัดลอกอัตโนมัติได้ กรุณาเลือกข้อความ" : "Automatic copy failed. Select the text manually.";
+        if (status) status.textContent = currentLanguage === "th" ? "คัดลอกอัตโนมัติไม่ได้ กรุณาเลือกข้อความด้านบน" : "Automatic copy failed. Select the text above.";
+      }
+    }
+
+    function revealHashTarget() {
+      if (!window.location.hash) return;
+      const target = document.getElementById(window.location.hash.slice(1));
+      const disclosure = target?.querySelector(".project-disclosure");
+      if (disclosure) {
+        disclosure.open = true;
+        window.requestAnimationFrame(() => target.scrollIntoView({ block: "start" }));
       }
     }
 
@@ -1412,9 +1988,57 @@
       document.getElementById("btn-th").addEventListener("click", () => applyLanguage("th"));
       document.getElementById("btn-en").addEventListener("click", () => applyLanguage("en"));
 
+      const mobileNav = document.querySelector(".mobile-nav");
+      mobileNav.addEventListener("toggle", updateMobileNavLabel);
+      mobileNav.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+          mobileNav.open = false;
+        });
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && mobileNav.open) {
+          mobileNav.open = false;
+          mobileNav.querySelector("summary").focus();
+        }
+      });
+
+      document.querySelectorAll('a[href^="#"]').forEach((link) => {
+        link.addEventListener("click", () => {
+          const target = document.getElementById(link.hash.slice(1));
+          const disclosure = target?.querySelector(".project-disclosure");
+          if (disclosure) disclosure.open = true;
+        });
+      });
+
+      const sectionLinks = document.querySelectorAll("[data-section-link]");
+      const observedSections = ["work", "systems", "contact"]
+        .map((id) => document.getElementById(id))
+        .filter(Boolean);
+
+      if ("IntersectionObserver" in window) {
+        const sectionObserver = new IntersectionObserver((entries) => {
+          const visible = entries
+            .filter((entry) => entry.isIntersecting)
+            .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+          if (!visible) return;
+
+          sectionLinks.forEach((link) => {
+            const active = link.getAttribute("href") === `#${visible.target.id}`;
+            if (active) link.setAttribute("aria-current", "location");
+            else link.removeAttribute("aria-current");
+          });
+        }, { rootMargin: "-28% 0px -58% 0px", threshold: [0, .1, .5] });
+
+        observedSections.forEach((section) => sectionObserver.observe(section));
+      }
+
       document.querySelectorAll("[data-copy-value]").forEach((button) => {
         button.addEventListener("click", () => copyCredential(button));
       });
+
+      revealHashTarget();
+      window.addEventListener("hashchange", revealHashTarget);
     });
   </script>
 </body>
