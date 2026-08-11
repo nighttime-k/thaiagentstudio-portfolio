@@ -29,7 +29,7 @@
       --surface-strong: #151c25;
       --surface-blue: #112841;
       --ink: #f5f7fa;
-      --muted: #b6c0cc;
+      --muted: #c2cad6;
       --subtle: #8f9aaa;
       --line: #2a3441;
       --line-strong: #465366;
@@ -50,6 +50,7 @@
       --space-xl: 32px;
       --space-2xl: 48px;
       --space-3xl: 64px;
+      --ease-out: cubic-bezier(.16, 1, .3, 1);
     }
 
     * {
@@ -133,8 +134,10 @@
       z-index: 20;
       top: 0;
       min-height: var(--header-height);
-      background: var(--bg);
+      background: rgba(9, 12, 17, .82);
       border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
     }
 
     .header-inner {
@@ -336,17 +339,18 @@
     .hero-kicker {
       margin: 0 0 20px;
       color: var(--accent);
-      font-size: 15px;
+      font-size: 14px;
       font-weight: 600;
+      letter-spacing: 0.04em;
     }
 
     .hero h1 {
-      max-width: 12ch;
+      max-width: 13ch;
       margin: 0;
-      font-size: clamp(2.8rem, 6.1vw, 4.65rem);
-      font-weight: 700;
-      letter-spacing: -0.035em;
-      line-height: 1.04;
+      font-size: clamp(2.5rem, 5.5vw, 4.2rem);
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      line-height: 1.25;
       text-wrap: balance;
     }
 
@@ -435,11 +439,45 @@
     }
 
     .screenshot-frame {
+      position: relative;
       overflow: hidden;
       aspect-ratio: 16 / 10;
       border: 1px solid var(--line-strong);
       border-radius: var(--radius-md);
       background: #dfe5ec;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, .35);
+      transition: transform 400ms var(--ease-out), box-shadow 400ms var(--ease-out);
+    }
+
+    .screenshot-frame::before {
+      content: "";
+      position: absolute;
+      z-index: 2;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 28px;
+      background: linear-gradient(to bottom, rgba(21, 28, 37, .88) 60%, transparent);
+      pointer-events: none;
+    }
+
+    .screenshot-frame::after {
+      content: "";
+      position: absolute;
+      z-index: 3;
+      top: 9px;
+      left: 12px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #ff5f57;
+      box-shadow: 14px 0 0 #febc2e, 28px 0 0 #28c840;
+    }
+
+    .project-feature:hover .screenshot-frame,
+    .hero-media:hover .screenshot-frame {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, .45);
     }
 
     .screenshot-frame img {
@@ -513,13 +551,19 @@
     }
 
     .owner-capabilities li {
-      padding: 7px 10px;
-      color: var(--muted);
+      padding: 9px 16px;
+      color: var(--ink);
       background: var(--surface-strong);
       border: 1px solid var(--line);
       border-radius: 999px;
-      font-size: 13px;
+      font-size: 14px;
       font-weight: 600;
+      transition: border-color 200ms var(--ease-out), background 200ms var(--ease-out);
+    }
+
+    .owner-capabilities li:hover {
+      border-color: var(--accent);
+      background: var(--surface-blue);
     }
 
     .quick-start {
@@ -539,8 +583,9 @@
     .quick-start-header h2 {
       margin: 0;
       font-size: clamp(1.8rem, 3.8vw, 3.2rem);
-      line-height: 1.12;
-      letter-spacing: -0.025em;
+      font-weight: 600;
+      line-height: 1.25;
+      letter-spacing: -0.01em;
     }
 
     .quick-start-header p {
@@ -560,16 +605,18 @@
       grid-template-columns: minmax(210px, .75fr) minmax(0, 1fr) auto;
       align-items: center;
       gap: 28px;
-      padding: 14px 0;
+      padding: 14px 12px;
       color: var(--ink);
       border-bottom: 1px solid var(--line);
+      border-radius: var(--radius-sm);
       text-decoration: none;
-      transition: color 180ms cubic-bezier(.16, 1, .3, 1), background-color 180ms cubic-bezier(.16, 1, .3, 1);
+      transition: color 180ms var(--ease-out), background-color 180ms var(--ease-out), transform 180ms var(--ease-out);
     }
 
     .quick-start-item:hover {
       color: #ffffff;
       background: var(--surface);
+      transform: translateX(4px);
     }
 
     .quick-start-item strong {
@@ -610,9 +657,10 @@
     .project-index-header h2,
     .contact-copy h2 {
       margin: 0;
-      font-size: clamp(2.2rem, 4.8vw, 4.4rem);
-      line-height: 1.08;
-      letter-spacing: -0.032em;
+      font-size: clamp(2.2rem, 4.5vw, 4rem);
+      font-weight: 600;
+      line-height: 1.22;
+      letter-spacing: -0.01em;
       text-wrap: balance;
     }
 
@@ -636,6 +684,14 @@
       gap: clamp(40px, 7vw, 88px);
       padding: clamp(60px, 8vw, 96px) 0;
       border-bottom: 1px solid var(--line);
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 600ms var(--ease-out), transform 600ms var(--ease-out);
+    }
+
+    .project-feature.is-visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .project-feature:nth-child(even) .project-media {
@@ -766,29 +822,47 @@
     }
 
     .project-tech {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 0 18px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
       margin-top: 24px;
+      padding-top: 20px;
       border-top: 1px solid var(--line);
     }
 
     .project-tech div {
-      padding: 10px 0 11px;
-      border-bottom: 1px solid var(--line);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      transition: border-color 200ms var(--ease-out);
+    }
+
+    .project-tech div:hover {
+      border-color: var(--line-strong);
     }
 
     .project-tech dt {
       color: var(--subtle);
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    .project-tech dt::after {
+      content: ":";
     }
 
     .project-tech dd {
-      margin: 4px 0 0;
-      color: var(--muted);
+      margin: 0;
+      color: var(--ink);
       font-size: 13px;
-      line-height: 1.55;
+      font-weight: 600;
+      line-height: 1.4;
     }
 
     .project-actions {
@@ -818,24 +892,35 @@
 
     .project-row {
       display: grid;
-      grid-template-columns: 180px minmax(0, 1fr);
+      grid-template-columns: 200px minmax(0, 1fr);
       align-items: start;
       gap: 24px;
-      padding: 24px 0;
+      padding: 24px 8px;
       border-bottom: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      transition: background-color 200ms var(--ease-out);
+    }
+
+    .project-row:hover {
+      background: var(--surface-strong);
     }
 
     .project-thumb {
       overflow: hidden;
-      min-height: 104px;
+      min-height: 140px;
       border: 1px solid var(--line);
       border-radius: var(--radius-sm);
       background: var(--surface-strong);
+      transition: transform 300ms var(--ease-out);
+    }
+
+    .project-row:hover .project-thumb {
+      transform: scale(1.03);
     }
 
     .project-thumb img {
       width: 100%;
-      height: 104px;
+      height: 140px;
       object-fit: cover;
       object-position: top;
     }
@@ -1316,11 +1401,11 @@
       }
 
       .project-thumb {
-        min-height: 128px;
+        min-height: 160px;
       }
 
       .project-thumb img {
-        height: 128px;
+        height: 160px;
       }
 
       .project-row-action {
@@ -1410,6 +1495,65 @@
       }
     }
 
+    /* Hero entrance animation */
+    @keyframes hero-enter {
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero-kicker {
+      animation: hero-enter 700ms var(--ease-out) 100ms both;
+    }
+
+    .hero h1 {
+      animation: hero-enter 700ms var(--ease-out) 200ms both;
+    }
+
+    .hero-description {
+      animation: hero-enter 700ms var(--ease-out) 350ms both;
+    }
+
+    .hero-actions {
+      animation: hero-enter 600ms var(--ease-out) 500ms both;
+    }
+
+    .hero-proofline {
+      animation: hero-enter 600ms var(--ease-out) 600ms both;
+    }
+
+    .hero-media {
+      animation: hero-enter 800ms var(--ease-out) 350ms both;
+    }
+
+    /* Scroll reveal for project rows */
+    .project-row {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 500ms var(--ease-out), transform 500ms var(--ease-out), background-color 200ms var(--ease-out);
+    }
+
+    .project-row.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .mid-contact {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 500ms var(--ease-out), transform 500ms var(--ease-out);
+    }
+
+    .mid-contact.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     @media (prefers-reduced-motion: reduce) {
       html {
         scroll-behavior: auto;
@@ -1422,6 +1566,13 @@
         transition-duration: .01ms !important;
         animation-duration: .01ms !important;
         animation-iteration-count: 1 !important;
+      }
+
+      .project-feature,
+      .project-row,
+      .mid-contact {
+        opacity: 1 !important;
+        transform: none !important;
       }
     }
   </style>
@@ -1470,9 +1621,9 @@
     <section id="top" class="hero" aria-labelledby="hero-title">
       <div class="container hero-grid">
         <div>
-          <p class="hero-kicker" data-copy data-th="ThaiAgent Studio · Portfolio 2026" data-en="ThaiAgent Studio · Portfolio 2026">ThaiAgent Studio · Portfolio 2026</p>
-          <h1 id="hero-title" data-copy data-th="ระบบที่ผมพัฒนา เชื่อมต่อ และนำขึ้นใช้งานจริง" data-en="Systems I built, integrated, and deployed">ระบบที่ผมพัฒนา เชื่อมต่อ และนำขึ้นใช้งานจริง</h1>
-          <p class="hero-description" data-copy data-th="สำรวจ 8 ผลงานด้าน AI เว็บ ERP และ Automation พร้อมบทบาทของผม ขอบเขตระบบ สถานะ และลิงก์ที่เปิดดูหรือทดลองได้ทันที" data-en="Explore eight live AI, web, ERP, and automation projects—with my role, system scope, status, and a working destination for each.">สำรวจ 8 ผลงานด้าน AI เว็บ ERP และ Automation พร้อมบทบาทของผม ขอบเขตระบบ สถานะ และลิงก์ที่เปิดดูหรือทดลองได้ทันที</p>
+          <p class="hero-kicker" data-copy data-th="ผู้พัฒนาระบบ · ผู้เชื่อมต่อ · ผู้นำขึ้นใช้งาน" data-en="Developer · Integrator · DevOps">ผู้พัฒนาระบบ · ผู้เชื่อมต่อ · ผู้นำขึ้นใช้งาน</p>
+          <h1 id="hero-title" data-copy data-th="พัฒนา เชื่อมต่อ และนำระบบขึ้นใช้งานจริง" data-en="Systems I built, integrated, and deployed">พัฒนา เชื่อมต่อ และนำระบบขึ้นใช้งานจริง</h1>
+          <p class="hero-description" data-copy data-th="ผมพัฒนา เชื่อมต่อ และ deploy ระบบจริง ตั้งแต่ AI ถึง ERP — ทุกระบบในหน้านี้เปิดให้ทดลองหรือตรวจสอบได้ทันที" data-en="I build, integrate, and deploy real systems — from AI to ERP. Every system on this page is live and verifiable.">ผมพัฒนา เชื่อมต่อ และ deploy ระบบจริง ตั้งแต่ AI ถึง ERP — ทุกระบบในหน้านี้เปิดให้ทดลองหรือตรวจสอบได้ทันที</p>
 
           <div class="hero-actions">
             <a class="button button-primary" href="#work" data-copy data-th="ดูระบบที่เปิดใช้งาน" data-en="Explore live systems">ดูระบบที่เปิดใช้งาน</a>
@@ -1505,10 +1656,10 @@
           <p class="owner-role" data-copy data-th="เจ้าของ Portfolio · ThaiAgent Studio" data-en="Portfolio owner · ThaiAgent Studio">เจ้าของ Portfolio · ThaiAgent Studio</p>
         </div>
         <ul class="owner-capabilities">
-          <li data-copy data-th="Product & System Design" data-en="Product & System Design">Product & System Design</li>
-          <li data-copy data-th="Application Development" data-en="Application Development">Application Development</li>
-          <li data-copy data-th="API & Business Integration" data-en="API & Business Integration">API & Business Integration</li>
-          <li data-copy data-th="Deployment & Self-hosting" data-en="Deployment & Self-hosting">Deployment & Self-hosting</li>
+          <li data-copy data-th="⚙ Product & System Design" data-en="⚙ Product & System Design">⚙ Product & System Design</li>
+          <li data-copy data-th="🛠 Application Development" data-en="🛠 Application Development">🛠 Application Development</li>
+          <li data-copy data-th="🔗 API & Business Integration" data-en="🔗 API & Business Integration">🔗 API & Business Integration</li>
+          <li data-copy data-th="🚀 Deployment & Self-hosting" data-en="🚀 Deployment & Self-hosting">🚀 Deployment & Self-hosting</li>
         </ul>
       </div>
     </aside>
@@ -1601,8 +1752,8 @@
           </article>
 
           <aside class="mid-contact" aria-label="Contact after Agent2Day proof">
-            <p data-copy data-th="ต้องการระบบ AI + Automation ที่เชื่อมตั้งแต่ข้อมูลต้นทางถึงปลายทางจริง?" data-en="Need an AI + Automation system that connects source data to a live destination?">ต้องการระบบ AI + Automation ที่เชื่อมตั้งแต่ข้อมูลต้นทางถึงปลายทางจริง?</p>
-            <a href="#contact" data-copy data-th="คุยเรื่องระบบลักษณะนี้ →" data-en="Discuss a system like this →">คุยเรื่องระบบลักษณะนี้ →</a>
+            <p data-copy data-th="เห็นระบบ Agent2Day แล้ว — ต้องการ pipeline แบบนี้สำหรับทีมของคุณ?" data-en="Seen Agent2Day in action — need a pipeline like this for your team?">เห็นระบบ Agent2Day แล้ว — ต้องการ pipeline แบบนี้สำหรับทีมของคุณ?</p>
+            <a href="#contact" data-copy data-th="พูดคุยเรื่องระบบ →" data-en="Let's talk →">พูดคุยเรื่องระบบ →</a>
           </aside>
 
           <article class="project-feature">
@@ -1658,23 +1809,23 @@
           <article class="project-feature">
             <figure class="project-media">
               <div class="screenshot-frame">
-                <img src="assets/thaiagent-desk.png" width="1425" height="800" loading="lazy" alt="ThaiAgent Desk แสดง inbox ลูกค้า รายการสนทนา และเมนูจัดการระบบ" data-alt-th="ThaiAgent Desk แสดง inbox ลูกค้า รายการสนทนา และเมนูจัดการระบบ" data-alt-en="ThaiAgent Desk showing a customer inbox, conversation list, and management navigation">
+                <img src="assets/thaiagent-desk.png" width="1425" height="800" loading="lazy" alt="ThaiAgent Desk แสดง inbox รวมแชทจากหลายช่องทาง รายการสนทนา และเมนูจัดการระบบ" data-alt-th="ThaiAgent Desk แสดง inbox รวมแชทจากหลายช่องทาง รายการสนทนา และเมนูจัดการระบบ" data-alt-en="ThaiAgent Desk showing a unified omnichannel inbox, conversation list, and management navigation">
               </div>
-              <figcaption><span>chat.thaiagentstudio.com</span><span data-copy data-th="ระบบ Helpdesk ออนไลน์" data-en="Live helpdesk system">ระบบ Helpdesk ออนไลน์</span></figcaption>
+              <figcaption><span>chat.thaiagentstudio.com</span><span data-copy data-th="ระบบ Omnichat ออนไลน์" data-en="Live omnichat platform">ระบบ Omnichat ออนไลน์</span></figcaption>
             </figure>
 
             <div class="project-copy">
               <div class="project-status">
                 <span class="live-label"><span class="status-dot" aria-hidden="true"></span><span data-copy data-th="ออนไลน์" data-en="Online">ออนไลน์</span></span>
-                <span data-copy data-th="Customer Support Platform" data-en="Customer Support Platform">Customer Support Platform</span>
+                <span data-copy data-th="Omnichannel Chat Platform" data-en="Omnichannel Chat Platform">Omnichannel Chat Platform</span>
               </div>
               <h3>ThaiAgent Desk</h3>
-              <p class="project-summary" data-copy data-th="ระบบ helpdesk ที่รวมบทสนทนาจากช่องทางที่เชื่อมต่อไว้ใน inbox เดียว พร้อม Leads, Contacts, Analytics, Simulator และเครื่องมือสำหรับผู้ดูแลระบบ" data-en="A helpdesk that brings connected customer conversations into one inbox, with leads, contacts, analytics, a simulator, and administration tools.">ระบบ helpdesk ที่รวมบทสนทนาจากช่องทางที่เชื่อมต่อไว้ใน inbox เดียว พร้อม Leads, Contacts, Analytics, Simulator และเครื่องมือสำหรับผู้ดูแลระบบ</p>
+              <p class="project-summary" data-copy data-th="ระบบ omnichat ที่รวมแชทจากทุกช่องทางไว้ใน inbox เดียว ทำงานร่วมกับ AI Chatbot ของ ThaiAgent Studio — บอทตอบแชทอัตโนมัติจากช่องทางที่ตั้งค่าไว้ และผู้ใช้งานสามารถ hand off เข้ามาแชทเองได้ทันที หรือปล่อยให้บอทดูแลต่อได้" data-en="An omnichat platform that unifies conversations from every connected channel into one inbox. Works with ThaiAgent Studio’s AI Chatbot—the bot handles messages automatically, and agents can hand off into the conversation at any time or let the bot continue.">ระบบ omnichat ที่รวมแชทจากทุกช่องทางไว้ใน inbox เดียว ทำงานร่วมกับ AI Chatbot ของ ThaiAgent Studio — บอทตอบแชทอัตโนมัติจากช่องทางที่ตั้งค่าไว้ และผู้ใช้งานสามารถ hand off เข้ามาแชทเองได้ทันที หรือปล่อยให้บอทดูแลต่อได้</p>
 
               <ol class="system-flow" aria-label="เส้นทางระบบ ThaiAgent Desk" data-aria-th="เส้นทางระบบ ThaiAgent Desk" data-aria-en="ThaiAgent Desk system flow">
-                <li><strong data-copy data-th="ช่องทางที่เชื่อมต่อ" data-en="Connected channels">ช่องทางที่เชื่อมต่อ</strong><span data-copy data-th="รับบทสนทนาลูกค้า" data-en="Receive customer conversations">รับบทสนทนาลูกค้า</span></li>
-                <li><strong data-copy data-th="Unified inbox" data-en="Unified inbox">Unified inbox</strong><span data-copy data-th="จัดการบทสนทนาในที่เดียว" data-en="Manage conversations in one place">จัดการบทสนทนาในที่เดียว</span></li>
-                <li><strong data-copy data-th="งานต่อเนื่อง" data-en="Operational follow-up">งานต่อเนื่อง</strong><span data-copy data-th="Leads · Contacts · Analytics" data-en="Leads · Contacts · Analytics">Leads · Contacts · Analytics</span></li>
+                <li><strong data-copy data-th="ช่องทางที่เชื่อมต่อ" data-en="Connected channels">ช่องทางที่เชื่อมต่อ</strong><span data-copy data-th="รับแชทจากทุกช่องทาง" data-en="Receive messages from every channel">รับแชทจากทุกช่องทาง</span></li>
+                <li><strong data-copy data-th="AI Chatbot ตอบอัตโนมัติ" data-en="AI Chatbot responds">AI Chatbot ตอบอัตโนมัติ</strong><span data-copy data-th="บอทตอบจากฐานความรู้ · ผู้ใช้ hand off ได้ทันที" data-en="Bot replies from knowledge base · agents can hand off anytime">บอทตอบจากฐานความรู้ · ผู้ใช้ hand off ได้ทันที</span></li>
+                <li><strong data-copy data-th="Unified inbox" data-en="Unified inbox">Unified inbox</strong><span data-copy data-th="จัดการทุกสนทนาในที่เดียว · Leads · Analytics" data-en="Manage all conversations in one place · Leads · Analytics">จัดการทุกสนทนาในที่เดียว · Leads · Analytics</span></li>
               </ol>
 
               <dl class="project-facts">
@@ -1684,11 +1835,11 @@
                 </div>
                 <div>
                   <dt data-copy data-th="ขอบเขตระบบ" data-en="System scope">ขอบเขตระบบ</dt>
-                  <dd data-copy data-th="Unified inbox · Contacts · Leads · Analytics" data-en="Unified inbox · Contacts · Leads · Analytics">Unified inbox · Contacts · Leads · Analytics</dd>
+                  <dd data-copy data-th="Omnichannel inbox · AI Chatbot integration · Human handoff · Leads · Contacts · Analytics" data-en="Omnichannel inbox · AI Chatbot integration · Human handoff · Leads · Contacts · Analytics">Omnichannel inbox · AI Chatbot integration · Human handoff · Leads · Contacts · Analytics</dd>
                 </div>
                 <div>
                   <dt data-copy data-th="สิ่งที่ตรวจสอบได้" data-en="Verifiable proof">สิ่งที่ตรวจสอบได้</dt>
-                  <dd data-copy data-th="หน้าจอระบบจริงและเส้นทางจัดการบทสนทนา" data-en="A working interface and live conversation-management flow">หน้าจอระบบจริงและเส้นทางจัดการบทสนทนา</dd>
+                  <dd data-copy data-th="หน้าจอระบบจริงและเส้นทางจัดการสนทนาผ่าน inbox" data-en="A working interface with live conversation management through the inbox">หน้าจอระบบจริงและเส้นทางจัดการสนทนาผ่าน inbox</dd>
                 </div>
               </dl>
 
@@ -1711,7 +1862,7 @@
     <section id="systems" class="project-index" aria-labelledby="systems-title">
       <div class="container">
         <header class="project-index-header">
-          <h2 id="systems-title" data-copy data-th="ระบบอื่นที่เปิดให้ดู" data-en="More systems to inspect">ระบบอื่นที่เปิดให้ดู</h2>
+          <h2 id="systems-title" data-copy data-th="ระบบอื่นๆ ที่พร้อมให้ทดลองใช้งาน" data-en="More systems to inspect">ระบบอื่นๆ ที่พร้อมให้ทดลองใช้งาน</h2>
           <p data-copy data-th="อีก 5 ระบบแสดงเป็นรายการแบบย่อ เปิดรายละเอียดเพื่อดูบทบาท เทคโนโลยี และลิงก์ใช้งานจริง" data-en="Five more systems are shown in a compact list. Expand one to see the role, technology, and live link.">อีก 5 ระบบแสดงเป็นรายการแบบย่อ เปิดรายละเอียดเพื่อดูบทบาท เทคโนโลยี และลิงก์ใช้งานจริง</p>
         </header>
 
@@ -1843,7 +1994,7 @@
       <div class="container contact-grid">
         <div class="contact-copy">
           <p class="contact-label" data-copy data-th="ติดต่อร่วมงาน" data-en="Work with me">ติดต่อร่วมงาน</p>
-          <h2 id="contact-title" data-copy data-th="ต้องการคนที่พัฒนาและนำระบบขึ้นใช้งานได้จริง?" data-en="Need someone who can build and deploy the system?">ต้องการคนที่พัฒนาและนำระบบขึ้นใช้งานได้จริง?</h2>
+          <h2 id="contact-title" data-copy data-th="สนใจพัฒนาหรือนำระบบไปใช้งานจริง?" data-en="Need someone who can build and deploy the system?">สนใจพัฒนาหรือนำระบบไปใช้งานจริง?</h2>
           <p data-copy data-th="ติดต่อผมเพื่อพูดคุยงานพัฒนา AI, Web Application, ERP integration, workflow automation และการ deploy ระบบสำหรับทีมของคุณ" data-en="Contact me to discuss AI development, web applications, ERP integration, workflow automation, and system deployment for your team.">ติดต่อผมเพื่อพูดคุยงานพัฒนา AI, Web Application, ERP integration, workflow automation และการ deploy ระบบสำหรับทีมของคุณ</p>
         </div>
 
@@ -2031,6 +2182,29 @@
         }, { rootMargin: "-28% 0px -58% 0px", threshold: [0, .1, .5] });
 
         observedSections.forEach((section) => sectionObserver.observe(section));
+      }
+
+      /* Scroll reveal for project features, project rows, and mid-contact */
+      const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if ("IntersectionObserver" in window && !prefersReducedMotion) {
+        const revealObserver = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              revealObserver.unobserve(entry.target);
+            }
+          });
+        }, { rootMargin: "0px 0px -60px 0px", threshold: 0.05 });
+
+        document.querySelectorAll(".project-feature, .project-row, .mid-contact").forEach((el, i) => {
+          el.style.transitionDelay = `${Math.min(i * 80, 320)}ms`;
+          revealObserver.observe(el);
+        });
+      } else {
+        /* Reduced motion or no IO: show everything immediately */
+        document.querySelectorAll(".project-feature, .project-row, .mid-contact").forEach((el) => {
+          el.classList.add("is-visible");
+        });
       }
 
       document.querySelectorAll("[data-copy-value]").forEach((button) => {
