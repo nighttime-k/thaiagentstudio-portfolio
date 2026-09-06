@@ -1,0 +1,13 @@
+---
+import { bodyTailHtml, headHtml } from '../lib/legacy-page';
+---
+<!doctype html>
+<html lang="th">
+  <head>
+    <Fragment set:html={headHtml} />
+  </head>
+  <body>
+    <slot />
+    <Fragment set:html={bodyTailHtml} />
+  </body>
+</html>
