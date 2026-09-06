@@ -21,11 +21,20 @@ async function walk(dir) {
   return files.sort();
 }
 
-const sourceHtml = await readFile('index.html');
-const builtHtml = await readFile('dist/index.html');
+function normalizeHtml(html) {
+  return html
+    .replace(/\r\n/g, '\n')
+    .replace(/<!DOCTYPE html>/i, '<!doctype html>')
+    .replace(/>\s+</g, '><')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
 
-if (!sourceHtml.equals(builtHtml)) {
-  throw new Error('HTML parity check failed: dist/index.html differs from the current index.html');
+const sourceHtml = await readFile('index.html', 'utf8');
+const builtHtml = await readFile('dist/index.html', 'utf8');
+
+if (normalizeHtml(sourceHtml) !== normalizeHtml(builtHtml)) {
+  throw new Error('HTML parity check failed: the Astro build changed rendered markup beyond formatting whitespace');
 }
 
 const sourceAssets = await walk('assets');
@@ -55,4 +64,4 @@ for (const file of ['CNAME', '.nojekyll']) {
   }
 }
 
-console.log('Parity check passed: HTML, assets, CNAME and .nojekyll are unchanged in dist.');
+console.log('Parity check passed: Astro components render the same page structure and preserve assets, CNAME and .nojekyll.');
