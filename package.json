@@ -1,0 +1,15 @@
+{
+  "name": "thaiagentstudio-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build && node scripts/copy-static.mjs",
+    "preview": "astro preview",
+    "check:parity": "node scripts/check-parity.mjs"
+  },
+  "devDependencies": {
+    "astro": "^5.0.0"
+  }
+}
