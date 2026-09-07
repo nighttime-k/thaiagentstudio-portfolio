@@ -1,7 +1,9 @@
 name: Deploy Astro to GitHub Pages
 
-# Manual only. No push trigger is intentionally configured.
 on:
+  push:
+    branches:
+      - main
   workflow_dispatch:
 
 permissions:
@@ -11,7 +13,7 @@ permissions:
 
 concurrency:
   group: pages
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   build:
