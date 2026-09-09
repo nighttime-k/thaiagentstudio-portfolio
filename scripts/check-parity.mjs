@@ -58,7 +58,7 @@ const requiredFooterContent = [
   '© 2026 Sirichot Wipharat / ThaiAgent Studio. All rights reserved.',
   'เว้นแต่จะระบุไว้อย่างชัดเจนว่าเป็นผลงานของนายจ้างหรือลูกค้า',
   'Unless explicitly identified as employer or client work',
-  'เครื่องหมายการค้าและทรัพย์สินของบุคคลที่สามยังคงเป็นกรรมสิทธิ์ของเจ้าของแต่ละราย',
+  'เครื่องหมายการค้าและทรัพสินของบุคคลที่สามยังคงเป็นกรรมสิทธิ์ของเจ้าของแต่ละราย',
   'Third-party trademarks and assets remain the property of their respective owners.',
 ];
 
@@ -73,9 +73,10 @@ const requiredOpenSourceContent = [
   'โครงการ Open Source และงานวิศวกรรม',
   'Open Source & Engineering Projects',
   'OWASP Top 10:2025 Read-Only Auditor',
-  'Zero-contact',
-  'Evidence-first',
-  'assets/owasp-readonly-auditor-cover.webp',
+  'Example prompt from the Skill',
+  'Perform a full OWASP Top 10:2025 evidence review of the supplied artifacts.',
+  'Use zero-contact, report-only mode.',
+  'owasp-top10-2025-assessment-report.md',
   'https://github.com/nighttime-k/owasp-2025-read-only-auditor',
 ];
 
@@ -83,6 +84,10 @@ for (const text of requiredOpenSourceContent) {
   if (!builtHtml.includes(text)) {
     throw new Error(`Open-source section check failed: missing required content: ${text}`);
   }
+}
+
+if (builtHtml.includes('owasp-readonly-auditor-cover.webp')) {
+  throw new Error('OWASP prompt preview check failed: legacy cover image is still referenced in rendered HTML');
 }
 
 const sourceAssets = await walk('assets');
@@ -94,25 +99,12 @@ if (JSON.stringify(sourceRelative) !== JSON.stringify(builtRelative)) {
   throw new Error('Asset parity check failed: dist/assets file list differs from assets');
 }
 
-const rebuiltAsset = 'owasp-readonly-auditor-cover.webp';
-
 for (let index = 0; index < sourceAssets.length; index += 1) {
-  if (sourceRelative[index] === rebuiltAsset) continue;
-
   const sourceHash = await sha256(sourceAssets[index]);
   const builtHash = await sha256(builtAssets[index]);
   if (sourceHash !== builtHash) {
     throw new Error(`Asset parity check failed: ${sourceRelative[index]}`);
   }
-}
-
-const owaspCover = await readFile(`dist/assets/${rebuiltAsset}`);
-if (
-  owaspCover.length < 25000 ||
-  owaspCover.subarray(0, 4).toString('ascii') !== 'RIFF' ||
-  owaspCover.subarray(8, 12).toString('ascii') !== 'WEBP'
-) {
-  throw new Error(`OWASP cover validation failed: expected a valid rebuilt WebP, got ${owaspCover.length} bytes`);
 }
 
 for (const file of ['CNAME', '.nojekyll']) {
@@ -125,4 +117,4 @@ for (const file of ['CNAME', '.nojekyll']) {
   }
 }
 
-console.log(`Parity check passed: Astro preserves approved content, the OWASP cover rebuilt as a valid ${owaspCover.length}-byte WebP, and CNAME/.nojekyll are preserved.`);
+console.log('Parity check passed: Astro preserves approved content, validates the OWASP prompt preview, and preserves assets, CNAME and .nojekyll.');
