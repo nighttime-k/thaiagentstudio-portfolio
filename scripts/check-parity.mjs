@@ -94,12 +94,25 @@ if (JSON.stringify(sourceRelative) !== JSON.stringify(builtRelative)) {
   throw new Error('Asset parity check failed: dist/assets file list differs from assets');
 }
 
+const rebuiltAsset = 'owasp-readonly-auditor-cover.webp';
+
 for (let index = 0; index < sourceAssets.length; index += 1) {
+  if (sourceRelative[index] === rebuiltAsset) continue;
+
   const sourceHash = await sha256(sourceAssets[index]);
   const builtHash = await sha256(builtAssets[index]);
   if (sourceHash !== builtHash) {
     throw new Error(`Asset parity check failed: ${sourceRelative[index]}`);
   }
+}
+
+const owaspCover = await readFile(`dist/assets/${rebuiltAsset}`);
+if (
+  owaspCover.length < 25000 ||
+  owaspCover.subarray(0, 4).toString('ascii') !== 'RIFF' ||
+  owaspCover.subarray(8, 12).toString('ascii') !== 'WEBP'
+) {
+  throw new Error(`OWASP cover validation failed: expected a valid rebuilt WebP, got ${owaspCover.length} bytes`);
 }
 
 for (const file of ['CNAME', '.nojekyll']) {
@@ -112,4 +125,4 @@ for (const file of ['CNAME', '.nojekyll']) {
   }
 }
 
-console.log('Parity check passed: Astro preserves the approved legacy page structure, validates the bilingual ownership notice and open-source engineering section, and preserves assets, CNAME and .nojekyll.');
+console.log(`Parity check passed: Astro preserves approved content, the OWASP cover rebuilt as a valid ${owaspCover.length}-byte WebP, and CNAME/.nojekyll are preserved.`);
