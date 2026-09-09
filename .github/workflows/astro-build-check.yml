@@ -3,7 +3,7 @@ name: Astro build check
 on:
   push:
     branches:
-      - agent/astro-migration
+      - 'agent/**'
   workflow_dispatch:
 
 permissions:
