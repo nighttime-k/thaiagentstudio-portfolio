@@ -30,22 +30,25 @@ function normalizeHtml(html) {
     .trim();
 }
 
-function replaceFooterWithMarker(html) {
+function stripApprovedAstroAdditions(html) {
   const footerPattern = /<footer class="site-footer">[\s\S]*?<\/footer>/i;
   if (!footerPattern.test(html)) {
     throw new Error('Footer parity check failed: site footer was not found');
   }
-  return html.replace(footerPattern, '<footer class="site-footer"></footer>');
+
+  return html
+    .replace(footerPattern, '<footer class="site-footer"></footer>')
+    .replace(/<section id="open-source"[\s\S]*?<\/section>/i, '');
 }
 
 const sourceHtml = await readFile('index.html', 'utf8');
 const builtHtml = await readFile('dist/index.html', 'utf8');
 
-const sourceWithoutFooter = normalizeHtml(replaceFooterWithMarker(sourceHtml));
-const builtWithoutFooter = normalizeHtml(replaceFooterWithMarker(builtHtml));
+const sourceForParity = normalizeHtml(stripApprovedAstroAdditions(sourceHtml));
+const builtForParity = normalizeHtml(stripApprovedAstroAdditions(builtHtml));
 
-if (sourceWithoutFooter !== builtWithoutFooter) {
-  throw new Error('HTML parity check failed: the Astro build changed rendered markup outside the approved footer component');
+if (sourceForParity !== builtForParity) {
+  throw new Error('HTML parity check failed: the Astro build changed rendered markup outside the approved Astro components');
 }
 
 const requiredFooterContent = [
@@ -60,6 +63,23 @@ const requiredFooterContent = [
 for (const text of requiredFooterContent) {
   if (!builtHtml.includes(text)) {
     throw new Error(`Footer content check failed: missing required notice text: ${text}`);
+  }
+}
+
+const requiredOpenSourceContent = [
+  'id="open-source"',
+  'โครงการ Open Source และงานวิศวกรรม',
+  'Open Source &amp; Engineering Projects',
+  'OWASP Top 10:2025 Read-Only Auditor',
+  'Zero-contact',
+  'Evidence-first',
+  'assets/owasp-readonly-auditor-cover.webp',
+  'https://github.com/nighttime-k/owasp-2025-read-only-auditor',
+];
+
+for (const text of requiredOpenSourceContent) {
+  if (!builtHtml.includes(text)) {
+    throw new Error(`Open-source section check failed: missing required content: ${text}`);
   }
 }
 
@@ -90,4 +110,4 @@ for (const file of ['CNAME', '.nojekyll']) {
   }
 }
 
-console.log('Parity check passed: Astro preserves the approved page structure outside the footer, validates the bilingual ownership notice, and preserves assets, CNAME and .nojekyll.');
+console.log('Parity check passed: Astro preserves the approved legacy page structure, validates the bilingual ownership notice and open-source engineering section, and preserves assets, CNAME and .nojekyll.');
