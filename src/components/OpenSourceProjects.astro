@@ -10,16 +10,22 @@
 
     <div class="engineering-grid">
       <article class="engineering-card">
-        <div class="engineering-media">
-          <img
-            src="assets/owasp-readonly-auditor-cover.webp"
-            width="1672"
-            height="941"
-            loading="lazy"
-            alt="ภาพอธิบาย OWASP Top 10:2025 Read-Only AI Auditor แบบ evidence-first และ zero-contact"
-            data-alt-th="ภาพอธิบาย OWASP Top 10:2025 Read-Only AI Auditor แบบ evidence-first และ zero-contact"
-            data-alt-en="OWASP Top 10:2025 Read-Only AI Auditor illustration showing an evidence-first, zero-contact security assessment flow"
-          >
+        <div class="engineering-terminal" aria-label="OWASP auditor example prompt">
+          <div class="terminal-bar">
+            <span class="terminal-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="terminal-label" data-copy data-th="ตัวอย่าง Prompt จาก Skill" data-en="Example prompt from the Skill">ตัวอย่าง Prompt จาก Skill</span>
+            <span class="terminal-file">docs/USAGE.md</span>
+          </div>
+          <pre><code><span class="terminal-prefix">›</span> Perform a full OWASP Top 10:2025 evidence review of the supplied artifacts.
+  Use zero-contact, report-only mode. Do not browse, execute, test, clone,
+  install, modify, or remediate anything. Produce the English Markdown report
+  as <span class="terminal-output">owasp-top10-2025-assessment-report.md</span>.</code></pre>
+          <div class="terminal-meta">
+            <span>ZERO-CONTACT</span>
+            <span>READ-ONLY</span>
+            <span>REPORT-ONLY</span>
+            <span>EVIDENCE-FIRST</span>
+          </div>
         </div>
 
         <div class="engineering-body">
@@ -120,16 +126,112 @@
     box-shadow: 0 24px 70px rgba(0, 0, 0, .24);
   }
 
-  .engineering-media {
-    background: #07121f;
+  .engineering-terminal {
+    position: relative;
+    overflow: hidden;
+    background:
+      radial-gradient(circle at 82% 16%, rgba(26, 118, 255, .13), transparent 30%),
+      linear-gradient(135deg, #07101b 0%, #081522 54%, #071019 100%);
     border-bottom: 1px solid var(--line);
   }
 
-  .engineering-media img {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 1672 / 941;
-    object-fit: cover;
+  .engineering-terminal::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(rgba(255,255,255,.018) 1px, transparent 1px);
+    background-size: 100% 24px;
+    mask-image: linear-gradient(to bottom, rgba(0,0,0,.65), transparent);
+  }
+
+  .terminal-bar {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 14px;
+    min-height: 48px;
+    padding: 0 22px;
+    color: var(--subtle);
+    background: rgba(4, 10, 17, .7);
+    border-bottom: 1px solid rgba(121, 157, 193, .14);
+    font-size: 11px;
+  }
+
+  .terminal-dots {
+    display: flex;
+    gap: 6px;
+  }
+
+  .terminal-dots i {
+    display: block;
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    background: #2f4359;
+  }
+
+  .terminal-dots i:first-child { background: #ff6b6b; }
+  .terminal-dots i:nth-child(2) { background: #f5c451; }
+  .terminal-dots i:last-child { background: #63d49a; }
+
+  .terminal-label {
+    color: #b8c9db;
+    font-weight: 700;
+    letter-spacing: .04em;
+  }
+
+  .terminal-file {
+    color: #5e7690;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  }
+
+  .engineering-terminal pre {
+    position: relative;
+    z-index: 1;
+    margin: 0;
+    padding: clamp(28px, 4vw, 48px) clamp(22px, 5vw, 58px) 30px;
+    overflow-x: auto;
+    white-space: pre-wrap;
+  }
+
+  .engineering-terminal code {
+    color: #d9e8f7;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+    font-size: clamp(13px, 1.35vw, 16px);
+    line-height: 1.9;
+  }
+
+  .terminal-prefix {
+    color: #63d49a;
+    font-weight: 800;
+  }
+
+  .terminal-output {
+    color: #70b7ff;
+  }
+
+  .terminal-meta {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 0 clamp(22px, 5vw, 58px) 26px;
+  }
+
+  .terminal-meta span {
+    padding: 5px 8px;
+    color: #6f8dad;
+    background: rgba(9, 24, 39, .72);
+    border: 1px solid rgba(61, 110, 159, .24);
+    border-radius: 5px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: .09em;
   }
 
   .engineering-body {
@@ -297,8 +399,26 @@
       padding: 24px 20px;
     }
 
-    .engineering-media img {
-      aspect-ratio: 16 / 10;
+    .terminal-bar {
+      grid-template-columns: auto 1fr;
+      padding-inline: 16px;
+    }
+
+    .terminal-file {
+      display: none;
+    }
+
+    .engineering-terminal pre {
+      padding: 24px 18px 22px;
+    }
+
+    .engineering-terminal code {
+      font-size: 12px;
+      line-height: 1.75;
+    }
+
+    .terminal-meta {
+      padding: 0 18px 22px;
     }
 
     .engineering-actions .button {
