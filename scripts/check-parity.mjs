@@ -30,11 +30,37 @@ function normalizeHtml(html) {
     .trim();
 }
 
+function replaceFooterWithMarker(html) {
+  const footerPattern = /<footer class="site-footer">[\s\S]*?<\/footer>/i;
+  if (!footerPattern.test(html)) {
+    throw new Error('Footer parity check failed: site footer was not found');
+  }
+  return html.replace(footerPattern, '<footer class="site-footer"></footer>');
+}
+
 const sourceHtml = await readFile('index.html', 'utf8');
 const builtHtml = await readFile('dist/index.html', 'utf8');
 
-if (normalizeHtml(sourceHtml) !== normalizeHtml(builtHtml)) {
-  throw new Error('HTML parity check failed: the Astro build changed rendered markup beyond formatting whitespace');
+const sourceWithoutFooter = normalizeHtml(replaceFooterWithMarker(sourceHtml));
+const builtWithoutFooter = normalizeHtml(replaceFooterWithMarker(builtHtml));
+
+if (sourceWithoutFooter !== builtWithoutFooter) {
+  throw new Error('HTML parity check failed: the Astro build changed rendered markup outside the approved footer component');
+}
+
+const requiredFooterContent = [
+  '© 2026 ศิริโชติ วิภารัตน์ / ThaiAgent Studio สงวนลิขสิทธิ์',
+  '© 2026 Sirichot Wipharat / ThaiAgent Studio. All rights reserved.',
+  'เว้นแต่จะระบุไว้อย่างชัดเจนว่าเป็นผลงานของนายจ้างหรือลูกค้า',
+  'Unless explicitly identified as employer or client work',
+  'เครื่องหมายการค้าและทรัพย์สินของบุคคลที่สามยังคงเป็นกรรมสิทธิ์ของเจ้าของแต่ละราย',
+  'Third-party trademarks and assets remain the property of their respective owners.',
+];
+
+for (const text of requiredFooterContent) {
+  if (!builtHtml.includes(text)) {
+    throw new Error(`Footer content check failed: missing required notice text: ${text}`);
+  }
 }
 
 const sourceAssets = await walk('assets');
@@ -64,4 +90,4 @@ for (const file of ['CNAME', '.nojekyll']) {
   }
 }
 
-console.log('Parity check passed: Astro components render the same page structure and preserve assets, CNAME and .nojekyll.');
+console.log('Parity check passed: Astro preserves the approved page structure outside the footer, validates the bilingual ownership notice, and preserves assets, CNAME and .nojekyll.');
