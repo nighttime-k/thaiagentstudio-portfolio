@@ -58,7 +58,7 @@ const requiredFooterContent = [
   '© 2026 Sirichot Wipharat / ThaiAgent Studio. All rights reserved.',
   'เว้นแต่จะระบุไว้อย่างชัดเจนว่าเป็นผลงานของนายจ้างหรือลูกค้า',
   'Unless explicitly identified as employer or client work',
-  'เครื่องหมายการค้าและทรัพสินของบุคคลที่สามยังคงเป็นกรรมสิทธิ์ของเจ้าของแต่ละราย',
+  'เครื่องหมายการค้าและทรัพย์สินของบุคคลที่สามยังคงเป็นกรรมสิทธิ์ของเจ้าของแต่ละราย',
   'Third-party trademarks and assets remain the property of their respective owners.',
 ];
 
