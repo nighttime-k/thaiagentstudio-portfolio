@@ -71,7 +71,7 @@ for (const text of requiredFooterContent) {
 const requiredOpenSourceContent = [
   'id="open-source"',
   'โครงการ Open Source และงานวิศวกรรม',
-  'Open Source &amp; Engineering Projects',
+  'Open Source & Engineering Projects',
   'OWASP Top 10:2025 Read-Only Auditor',
   'Zero-contact',
   'Evidence-first',
